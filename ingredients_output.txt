@@ -1,0 +1,30 @@
+﻿100% Agave Tequila
+Absinthe
+Agave Nectar
+Aged Rum
+Allspice Saint Elizabeth
+Amaretto
+Amaro Nonino
+Amber Jamaican Rum
+Amontillado sherry
+Angostura (Optional)
+Angostura Bitters
+Angostura Bitters Top up Ginger beer
+Angostura bitters Few drops of Grand Marnier (optional)
+Aperol
+Aperol Splash of Soda water
+Apricot Brandy
+Aromatic Bitters
+python : Traceback (most recent call last):
+At line:1 char:1
++ python extract_ingredients.py 2>&1 | Out-File -Encoding utf8 ingredie ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "C:\Users\yuval\OneDrive\Desktop\cocktailmasterVS\extract_ingredients.py", line 50, in <module>
+    print(i)
+  File "C:\Users\yuval\AppData\Local\Programs\Python\Python312\Lib\encodings\cp1255.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u0301' in position 2: character maps to <undefined>
