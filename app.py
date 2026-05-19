@@ -26,11 +26,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-images_dir = current_dir / "cocktail_images"
-if not images_dir.exists():
-    images_dir.mkdir(parents=True, exist_ok=True)
-
-app.mount("/images", StaticFiles(directory=images_dir), name="images")
+app.mount("/images", StaticFiles(directory=current_dir), name="images")
 
 @app.get("/")
 async def serve_index():
