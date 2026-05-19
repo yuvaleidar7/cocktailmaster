@@ -269,7 +269,12 @@ def apply_hierarchical_weights(tokenized_query):
 def _get_image_markdown(metadata):
     image_path_raw = metadata.get('image_path', 'No Image')
     if image_path_raw and image_path_raw != "No Image":
+        # ניקוי אגרסיבי: הסרת כל נתיב התיקיות והשארת שם הקובץ בלבד
         filename = os.path.basename(image_path_raw)
+        
+        # אם במקרה עדיין נשאר 'cocktail_images/' בשם הקובץ, נסיר אותו
+        filename = filename.replace('cocktail_images/', '')
+        
         return f"![{metadata.get('name', 'Cocktail')}](/images/{filename})"
     return ""
 
