@@ -38,8 +38,11 @@ async function searchCocktails() {
             const chunk = decoder.decode(value);
             accumulatedText += chunk;
 
-            // המרת הטקסט הגולמי לעיצוב HTML יפהפה והצגתו במסך
-            resultsArea.innerHTML = marked.parse(accumulatedText);
+            // הוסף את השורה הזו לפני ה-marked.parse:
+            const sanitizedText = accumulatedText.replace(/\\/g, '/');
+
+            // הצג את הטקסט הנקי
+            resultsArea.innerHTML = marked.parse(sanitizedText);
         }
 
     } catch (error) {
