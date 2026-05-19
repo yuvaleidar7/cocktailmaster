@@ -65,6 +65,7 @@ _INGREDIENT_SYNONYMS = {
     "rye": "whiskey",
     "scotch": "whiskey",
     "Blended Scotch Whisky": "whiskey",
+    "Scotch Whisky": "whiskey",
 
     "lagavulin 16y": "smoked whisky",
     "lagavulin 16": "smoked whisky",
