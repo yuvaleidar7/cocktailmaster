@@ -234,6 +234,90 @@
             color: var(--text-color);
         }
 
+        /* ── Welcome Modal ───────────────────────────────────── */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(36, 30, 26, 0.6);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: var(--container-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal-content h2 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        
+        .modal-content p, .modal-content li {
+            color: var(--text-color);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        
+        .modal-content ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .disclaimer {
+            font-size: 0.75rem !important; /* אזהרה קטנה כאותיות קטנות */
+            color: var(--text-muted) !important;
+            background: rgba(36, 30, 26, 0.05);
+            padding: 10px;
+            border-radius: 8px;
+            border-left: 4px solid #d9534f; /* פס אדום משמאל כי האפליקציה באנגלית */
+            margin-top: 20px;
+            line-height: 1.4;
+        }
+        
+        .close-modal-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            margin-top: 24px;
+            background: linear-gradient(135deg, var(--accent-hover), var(--accent-color));
+            color: #fff;
+            border: none;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(169, 130, 56, 0.2);
+            transition: transform 0.15s;
+        }
+        
+        .close-modal-btn:hover {
+            transform: translateY(-2px);
+        }
+
         /* ── Responsive ─────────────────────────────────────── */
         @media (max-width: 500px) {
             body {
@@ -249,7 +333,7 @@
             }
 
             /* הפיכת אזור הכפתור לבר תחתון קבוע (Sticky Bottom Bar) */
-            .button-row {
+            .button-row.is-sticky {
                 position: fixed;
                 bottom: 0;
                 left: 0;
@@ -368,14 +452,40 @@
 
         <input type="hidden" id="ingredientsInput" value="">
 
-        <div class="button-row">
+        <div class="button-row is-sticky" id="searchButtonRow">
             <button id="searchBtn" onclick="searchCocktails()">🔍 Search Cocktails</button>
         </div>
 
         <div id="resultsArea">Results will appear here...</div>
+        
+    </div> <div id="welcomeModal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>Welcome to Cocktailmaster 2.0 🍸</h2>
+            
+            <p><strong>What is it?</strong><br>
+            Your personal bartender on your phone. This app is designed to help you find and mix the perfect cocktails based on what you already have at home.</p>
+            
+            <p><strong>How to use?</strong></p>
+            <ul>
+                <li>Browse the categories and select the ingredients currently available in your bar.</li>
+                <li><strong>Base Spirits:</strong> The base alcohol (like vodka, gin, or rum).</li>
+                <li><strong>Liqueurs & Wine:</strong> Flavor additions and liqueurs.</li>
+                <li><strong>Syrups & Mixers:</strong> The juices, syrups, and sodas that top off the drink.</li>
+                <li>Click "Search Cocktails" and let our AI do the work!</li>
+            </ul>
+
+            <p><strong>Where do the recipes come from?</strong><br>
+            The recipes are pulled from a dedicated database and processed in real time by an AI model to ensure optimal matching and precise pouring measurements for every drink.</p>
+
+            <div class="disclaimer">
+                <strong>⚠️ Disclaimer:</strong><br>
+                The use of this app, preparation of drinks, and consumption of alcohol are strictly at the user's own risk. Please drink responsibly (legal drinking age applies)! The app developer bears no responsibility for any damage, injury, intoxication, or any other issue resulting from reliance on this app.
+            </div>
+
+            <button class="close-modal-btn" onclick="closeModal()">Got it, let's drink!</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
 </body>
-
 </html>

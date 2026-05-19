@@ -1,3 +1,29 @@
+// --- לוגיקת פופ-אפ פתיחה ---
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById('welcomeModal');
+    
+    // בדיקה האם המשתמש כבר אישר את החלון בעבר
+    const hasSeenWelcome = localStorage.getItem('hasSeenWelcomeCM2');
+    
+    if (!hasSeenWelcome) {
+        modal.classList.add('active');
+        
+        // כדי למנוע גלילה של הרקע כשהחלון פתוח
+        document.body.style.overflow = 'hidden'; 
+    }
+});
+
+function closeModal() {
+    const modal = document.getElementById('welcomeModal');
+    modal.classList.remove('active');
+    
+    // החזרת הגלילה למסך הראשי
+    document.body.style.overflow = 'auto';
+    
+    // שמירת העובדה שהמשתמש קרא וסגר את החלון כדי שלא יקפוץ שוב
+    localStorage.setItem('hasSeenWelcomeCM2', 'true');
+}
+
 async function searchCocktails() {
     const searchBtn = document.getElementById('searchBtn');
     const resultsArea = document.getElementById('resultsArea');
