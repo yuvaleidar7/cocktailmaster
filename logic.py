@@ -269,11 +269,13 @@ def apply_hierarchical_weights(tokenized_query):
 def _get_image_markdown(metadata):
     image_path_raw = metadata.get('image_path', 'No Image')
     if image_path_raw and image_path_raw != "No Image":
-        # ניקוי אגרסיבי: הסרת כל נתיב התיקיות והשארת שם הקובץ בלבד
+        # 1. קח רק את שם הקובץ (ללא נתיבים)
         filename = os.path.basename(image_path_raw)
         
-        # אם במקרה עדיין נשאר 'cocktail_images/' בשם הקובץ, נסיר אותו
+        # 2. ניקוי אגרסיבי במקרה ש-basename לא הסיר את התיקייה
+        # (למשל אם הנתיב היה מורכב או בפורמט שונה)
         filename = filename.replace('cocktail_images/', '')
+        filename = filename.replace('cocktail_images\\', '') # עבור Windows אם קיים
         
         return f"![{metadata.get('name', 'Cocktail')}](/images/{filename})"
     return ""
