@@ -1,4 +1,5 @@
 async function searchCocktails() {
+    const searchBtn = document.getElementById('searchBtn');
     const resultsArea = document.getElementById('resultsArea');
     const freeText = document.getElementById('ingredientsInput').value.trim();
 
@@ -13,8 +14,17 @@ async function searchCocktails() {
     const userInput = combined.join(', ');
     if (!userInput) return;
 
+    // --- שינויי UX ומובייל: השבתת הכפתור ועדכון הטקסט שלו בזמן עבודה ---
+    searchBtn.disabled = true;
+    searchBtn.innerText = "Mixing... ⏳";
+    searchBtn.style.opacity = "0.7";
+
     resultsArea.style.display = 'block';
-    resultsArea.innerHTML = "Mixing your drinks... ⏳";
+    resultsArea.innerHTML = "Gathering components... ⏳";
+    
+    // גלילה חלקה אוטומטית לעבר אזור התוצאות במובייל כדי לחסוך גלילה ידנית
+    resultsArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
     let accumulatedText = "";
 
     try {
@@ -23,6 +33,7 @@ async function searchCocktails() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message: userInput, history: [] })
         });
+        
         if (!response.ok) {
             resultsArea.innerHTML = "No matching recipes found or server error.";
             return;
@@ -38,14 +49,19 @@ async function searchCocktails() {
             const chunk = decoder.decode(value);
             accumulatedText += chunk;
 
-            // הוסף את השורה הזו לפני ה-marked.parse:
+            // החלפת לוכסנים הפוכים במידת הצורך עבור תמונות
             const sanitizedText = accumulatedText.replace(/\\/g, '/');
 
-            // הצג את הטקסט הנקי
+            // הצגת הטקסט והזרמתו בזמן אמת לעמוד
             resultsArea.innerHTML = marked.parse(sanitizedText);
         }
 
     } catch (error) {
         resultsArea.innerHTML = "⚠️ Error connecting to server: " + error.message;
+    } finally {
+        // --- שחרור הכפתור והחזרתו למצב המקור שלו בסיום הזרמת המידע או בשגיאה ---
+        searchBtn.disabled = false;
+        searchBtn.innerText = "🔍 Search Cocktails";
+        searchBtn.style.opacity = "1";
     }
 }

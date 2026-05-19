@@ -36,6 +36,10 @@ async def serve_index():
 async def serve_script():
     return FileResponse(current_dir / "script.js")
 
+@app.get("/manifest.json")
+async def serve_manifest():
+    return FileResponse(current_dir / "manifest.json")
+
 bm25_data = logic.load_bm25_index()
 
 class ChatRequest(BaseModel):
