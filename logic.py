@@ -28,19 +28,20 @@ _FILLER_WORDS = {
 }
 
 _INGREDIENT_SYNONYMS = {
-    # סירופים וממתיקים
+   # סירופים וממתיקים
     "demerara sugar syrup": "sugar syrup",
     "rich simple syrup": "sugar syrup",
     "simple syrup": "sugar syrup",
     "sugar syrup": "sugar syrup",
     "demerara syrup": "sugar syrup",
-    "gomme syrup": "sugar syrup",
-    "gum syrup": "sugar syrup",
-    "agave syrup": "agave",
-    "agave nectar": "agave",
+    "gomme syrup": "Monin gomme (sugar syrup)",
+    "gum syrup": "Monin gum (sugar syrup)",
     "passion fruit syrup": "passion fruit syrup",
-    "maple syrup": "maple syrup",
-    "Agave": "Agave Nectar(sugar syrup)",
+    "maple syrup": "maple syrup (sugar syrup)",
+    "agave nectar": "agave nectar (sugar syrup)",
+    "agave syrup": "agave nectar (sugar syrup)",
+    "100% agave nectar": "agave Nectar (sugar syrup)",
+    "Honey Syrup": "honey syrup (sugar syrup)",
 
     
     # מיצים 
@@ -57,15 +58,19 @@ _INGREDIENT_SYNONYMS = {
     "irish whiskey": "whiskey",
     "tennessee whiskey": "whiskey",
     "blended whiskey": "whiskey",
-    "Blended Whiskey": "whisky",
+    "Blended Whiskey": "whiskey",
     "single malt scotch": "whiskey",
     "single malt": "whiskey",
     "bourbon": "whiskey",
     "rye": "whiskey",
     "scotch": "whiskey",
+    "Blended Scotch Whisky": "whiskey",
+
     "lagavulin 16y": "smoked whisky",
     "lagavulin 16": "smoked whisky",
     "lagavulin": "smoked whisky",
+    "islay whisky": "smoked whisky",
+    "islay whiskey": "smoked whisky",
     
 
     # ליקרי תפוז
@@ -73,6 +78,7 @@ _INGREDIENT_SYNONYMS = {
     "triple sec": "orange liqueur",
     "grand marnier": "orange liqueur",
     "orange curaçao": "orange liqueur",
+    "Bitter Campari": "campari",
 
     # קפה וליקרי קפה
     "kahlúa": "coffee liqueur",
@@ -108,10 +114,11 @@ _INGREDIENT_SYNONYMS = {
     "Cuban Rum":"white rum",
     "Ron Profundo Havana Club":"white rum",
     "Jamaica Overproof White Rum":"white rum",
+    "Martinique Molasses Rhum": "white rum",
     
-    "Goslings Rum": "black rum",
+    "Goslings Rum": "dark rum (black rum)",
 
-    "Jamaican dark rum": "dark rum",
+    "dark rum": "dark rum",
     "Gold Puerto Rican rum": "dark rum",
     "Gold Jamaican Rum":"dark rum",
     "Aged Rum":"dark rum",
@@ -119,7 +126,8 @@ _INGREDIENT_SYNONYMS = {
     "añejo rum": "dark rum",
     "añejo rum": "dark rum",
     "Demerara Rum": "dark rum",
-
+    "Amber Jamaican Rum": "dark rum",
+     
 
 
 
@@ -134,6 +142,7 @@ _INGREDIENT_SYNONYMS = {
     "kina lillet": "lillet",
     "cocchi americano": "lillet",
     "campari bitter": "campari",
+    "Red Tawny Port Wine": "red port wine",
 
     # ליקרי שוקולד / קקאו
     "white crème de cacao": "white chocolate liqueur",
@@ -145,8 +154,8 @@ _INGREDIENT_SYNONYMS = {
 
     # ליקרי דובדבנים
     "maraschino liqueur": "maraschino cherry liqueur",
-    "Maraschino Cherry Liqueur Luxardo": "cherry liqueur(Luxardo Maraschino)",
-    "maraschino": "cherry liqueur(Luxardo Maraschino)",
+    "Maraschino Cherry Liqueur Luxardo": "cherry liqueur",
+    "maraschino": "cherry liqueur",
     "cherry heering": "cherry liqueur",
     "heering cherry liqueur": "cherry liqueur",
     "cherry brandy": "cherry liqueur",
@@ -154,8 +163,10 @@ _INGREDIENT_SYNONYMS = {
     # ליקרי מנטה / קרם דה מנטה
     "green crème de menthe": "green mint liqueur",
     "green creme de menthe": "green mint liqueur",
+
     "white crème de menthe": "white mint liqueur",
     "white creme de menthe": "white mint liqueur",
+
     "crème de menthe": "mint liqueur",
     "creme de menthe": "mint liqueur",
 
@@ -195,10 +206,10 @@ _INGREDIENT_SYNONYMS = {
 
 
     # ביצים, שמנת ומחיות פרי
-    "white of one egg": "egg white",
-    "fresh egg white": "egg white",
-    "aquafaba": "egg white",
-    "chickpea water": "egg white",
+    "white of one egg": "egg white(optional)",
+    "fresh egg white": "egg white(optional)",
+    "aquafaba": "egg white(optional)",
+    "chickpea water": "egg white(optional)",
     "heavy cream": "cream",
     "fresh cream": "cream",
     "single cream": "cream",
@@ -221,6 +232,7 @@ _INGREDIENT_SYNONYMS = {
     "Apricot Brandy": "apricot brandy",
     "cognac vsop": "cognac",
     "cognac v.s.o.p.": "cognac",
+    "Brandy": "brandy",
     
     # וודקה
     "Smirnoff Vodka": "vodka",
