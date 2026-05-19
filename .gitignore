@@ -1,1 +1,19 @@
 .env
+# System files
+.vscode/
+__pycache__/
+
+# Environments and Secrets
+.env
+
+# Data files (Databases, CSVs, Excel, Docx)
+*.csv
+*.xlsx
+*.docx
+*.pkl
+cocktails_vector_db/
+cocktail_images/
+
+# General OS files
+.DS_Store
+Thumbs.db
