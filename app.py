@@ -3,24 +3,22 @@ from pathlib import Path
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse, FileResponse
+from fastapi.staticfiles import StaticFiles 
 from pydantic import BaseModel
 from groq import Groq
 import logic
 from dotenv import load_dotenv
 
-# 1. מציאת הנתיב המדויק של התיקייה שבה נמצא הקובץ app.py
 current_dir = Path(__file__).parent
 env_path = current_dir / ".env"
 
-# 2. טעינת קובץ ה-.env מהנתיב שחישבנו
 load_dotenv(dotenv_path=env_path)
 
-# 3. טעינת המפתח מתוך משתני הסביבה (במקום מ-Streamlit)
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+# Uses GROQ_API_KEY_1 to match your rotation setup configuration
+client = Groq(api_key=os.getenv("GROQ_API_KEY_1"))
 
 app = FastAPI()
 
-# הגדרת CORS כדי שה-JavaScript יוכל לגשת לשרת
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"], 
@@ -28,7 +26,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# --- הגשת קבצים סטטיים ---
+images_dir = current_dir / "cocktail_images"
+if not images_dir.exists():
+    images_dir.mkdir(parents=True, exist_ok=True)
+
+app.mount("/images", StaticFiles(directory=images_dir), name="images")
+
 @app.get("/")
 async def serve_index():
     return FileResponse(current_dir / "index.html")
@@ -37,7 +40,6 @@ async def serve_index():
 async def serve_script():
     return FileResponse(current_dir / "script.js")
 
-# טעינת נתוני ה-BM25 פעם אחת עם עליית השרת
 bm25_data = logic.load_bm25_index()
 
 class ChatRequest(BaseModel):
@@ -46,16 +48,13 @@ class ChatRequest(BaseModel):
 
 @app.post("/chat")
 async def chat_endpoint(request: ChatRequest):
-    # שימוש ישיר בקלט ללא תיקון כתיב — הצ'יפים שולחים ערכים מדויקים באנגלית
     exact_message = request.message.lower()
 
-    # חיפוש קוקטיילים רלוונטיים — מחזיר (context, match_type)
     context, match_type = logic.retrieve_candidates(bm25_data, exact_message, top_k=4)
 
     if context is None:
         return {"error": "No matching recipes found."}
 
-    # החזרת תשובה בסטרימינג
     return StreamingResponse(
         logic.stream_llm_response(client, request.message, context, request.history, match_type),
         media_type="text/plain"
@@ -63,4 +62,4 @@ async def chat_endpoint(request: ChatRequest):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)

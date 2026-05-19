@@ -2,13 +2,23 @@ import pickle
 import numpy as np
 import re
 import difflib
+import os
 from thefuzz import fuzz, process
+import groq  
+from rank_bm25 import BM25Okapi # הוספתי את הייבוא הזה כדי שהחיפוש יעבוד
+import ast
 
 # ====================================================================
-# הגדרות וקבועים
+# API Key Rotation Configuration
+# ====================================================================
+_API_KEYS = [os.getenv("GROQ_API_KEY_1"), os.getenv("GROQ_API_KEY_2")]
+_API_KEYS = [k for k in _API_KEYS if k]  
+_CURRENT_KEY_IDX = 0
+
+# ====================================================================
+# Constants & Weighting Configurations
 # ====================================================================
 
-# מילים שאינן מרכיבים ממשיים — מסוננות כדי למנוע רעש בחיפוש
 _FILLER_WORDS = {
     'fresh', 'freshly', 'squeezed', 'dash', 'dashes', 'drops', 'drop',
     'fill', 'top', 'splash', 'slice', 'slices', 'sliced', 'wedges',
@@ -17,185 +27,456 @@ _FILLER_WORDS = {
     'plain', 'raw', 'into', 'with', 'and', 'the', 'pcs', 'size',
     'chilled', 'powdered', 'superfine', 'granulated', 'cube',
     'sheets', 'dots', 'replace', 'serve', 'mix', 'blended',
-    'quarter', 'three', 'between', 'juice', 'syrup'
+    'quarter', 'three', 'between', 'or', 'can', 'be'
 }
 
-# מיפוי עברית למרכיבים המדויקים כפי שהם מופיעים ב-CSV שלך
-_HEBREW_TO_CSV_ENGLISH = {
-    "וודקה": "vodka",
-    "ג'ין": "dry gin",
-    "רום לבן": "white rum",
-    "רום מיושן": "aged rum",
-    "רום כהה": "jamaican dark rum",
-    "רום זהוב": "gold puerto rican rum",
-    "טקילה": "tequila",
-    "מזקל": "espadin mezcal",
-    "ברבון": "bourbon whiskey",
-    "וויסקי שיפון": "rye whiskey",
-    "קוניאק": "cognac",
-    "קמפרי": "campari",
-    "אפרול": "aperol",
-    "קואנטרו": "cointreau",
-    "טריפל סק": "triple sec",
-    "ליקר קפה": "kahlúa",
-    "אמרטו": "amaretto",
-    "ורמוט מתוק": "sweet red vermouth",
-    "ורמוט יבש": "dry vermouth",
-    "מיץ לימון": "lemon juice",
-    "מיץ ליים": "lime juice",
-    "מי סוכר": "simple syrup",
-    "גרנדין": "grenadine",
-    "אנגוסטורה ביטרס": "angostura bitters",
-    "חלבון ביצה": "egg white",
-    "סודה": "soda water"
+_INGREDIENT_SYNONYMS = {
+    # סירופים וממתיקים
+    "demerara sugar syrup": "sugar syrup",
+    "rich simple syrup": "sugar syrup",
+    "simple syrup": "sugar syrup",
+    "sugar syrup": "sugar syrup",
+    "demerara syrup": "sugar syrup",
+    "gomme syrup": "sugar syrup",
+    "gum syrup": "sugar syrup",
+    "agave syrup": "agave",
+    "agave nectar": "agave",
+    "passion fruit syrup": "passion fruit syrup",
+    "maple syrup": "maple syrup",
+    
+    # מיצים 
+    "freshly squeezed lemon juice": "lemon juice",
+    "fresh lemon juice": "lemon juice",
+    "freshly squeezed lime juice": "lime juice",
+    "fresh lime juice": "lime juice",
+    "fresh orange juice": "orange juice",
+
+    # וויסקי
+    "bourbon whiskey": "whiskey",
+    "rye whiskey": "whiskey",
+    "scotch whisky": "whiskey",
+    "irish whiskey": "whiskey",
+    "tennessee whiskey": "whiskey",
+    "blended whiskey": "whiskey",
+    "single malt scotch": "whiskey",
+    "single malt": "whiskey",
+    "bourbon": "whiskey",
+    "rye": "whiskey",
+    "scotch": "whiskey",
+    "lagavulin 16y": "smoked whisky",
+    "lagavulin 16": "smoked whisky",
+    "lagavulin": "smoked whisky",
+
+    # ליקרי תפוז
+    "cointreau": "orange liqueur",
+    "triple sec": "orange liqueur",
+    "grand marnier": "orange liqueur",
+    "orange curaçao": "orange liqueur",
+
+    # קפה וליקרי קפה
+    "kahlúa": "coffee liqueur",
+    "kahlua": "coffee liqueur",
+    "tia maria": "coffee liqueur",
+    "fresh espresso": "espresso",
+    "espresso shot": "espresso",
+    "cold brew coffee": "espresso",
+    "cold brew": "espresso",
+
+    # ג'ין
+    "london dry gin": "gin",
+    "plymouth gin": "gin",
+    "old tom gin": "gin",
+    "Dry Gin": "gin",
+
+    # טקילה ומזקל
+    "tequila blanco": "tequila",
+    "tequila silver": "tequila",
+    "tequila reposado": "tequila",
+    "100% agave tequila": "tequila",
+    "blanco tequila": "tequila",
+    "reposado tequila": "tequila",
+    "mezcal espadin": "mezcal",
+    "anejo mezcal": "mezcal",
+    "joven mezcal": "mezcal",
+
+    # רום וקשאסה
+    "white cuban rum": "white rum",
+    "light rum": "white rum",
+    "dark jamaican rum": "dark rum",
+    "añejo rum": "dark rum",
+    "Goslings Rum": "black rum",
+    "Jamaican dark rum": "dark rum",
+    "Gold Puerto Rican rum": "dark rum",
+    "cachaça": "cachaça",
+    "cachaca": "cachaça",
+
+    # ורמוט ואפרטיפים
+    "dry french vermouth": "dry vermouth",
+    "sweet red vermouth": "sweet vermouth",
+    "lillet blanc": "lillet",
+    "lillet blonde": "lillet",
+    "kina lillet": "lillet",
+    "cocchi americano": "lillet",
+    "campari bitter": "campari",
+
+    # ליקרי שוקולד / קקאו
+    "white crème de cacao": "white chocolate liqueur",
+    "white creme de cacao": "white chocolate liqueur",
+    "dark crème de cacao": "chocolate liqueur",
+    "dark creme de cacao": "chocolate liqueur",
+    "crème de cacao": "chocolate liqueur",
+    "creme de cacao": "chocolate liqueur",
+
+    # ליקרי דובדבנים
+    "maraschino liqueur": "maraschino cherry liqueur",
+    "maraschino": "maraschino cherry liqueur",
+    "cherry heering": "cherry liqueur",
+    "heering cherry liqueur": "cherry liqueur",
+    "cherry brandy": "cherry liqueur",
+
+    # ליקרי מנטה / קרם דה מנטה
+    "green crème de menthe": "green mint liqueur",
+    "green creme de menthe": "green mint liqueur",
+    "white crème de menthe": "white mint liqueur",
+    "white creme de menthe": "white mint liqueur",
+    "crème de menthe": "mint liqueur",
+    "creme de menthe": "mint liqueur",
+
+    # ליקר פטל שחור / אפרסק / שקדים
+    "crème de cassis": "blackcurrant liqueur",
+    "creme de cassis": "blackcurrant liqueur",
+    "chambord": "raspberry liqueur",
+    "peach schnapps": "peach liqueur",
+    "crème de pêche": "peach liqueur",
+    "creme de peche": "peach liqueur",
+    "disaronno": "amaretto",
+
+    # ליקרים עשבוניים ואניס
+    "yellow chartreuse": "yellow chartreuse",
+    "green chartreuse": "green chartreuse",
+    "benedictine": "bénédictine",
+    "elderflower liqueur": "elderflower liqueur",
+    "st germain": "elderflower liqueur",
+    "st. germain": "elderflower liqueur",
+    "pernod": "absinthe",
+    "pastis": "absinthe",
+    "ricard": "absinthe",
+    "herbsaint": "absinthe",
+
+    # סודה ומים מוגזים
+    "club soda": "soda water",
+    "sparkling water": "soda water",
+    "carbonated water": "soda water",
+
+    # סוכר לבן (מוצק)
+    "sugar cube": "sugar",
+    "white sugar": "sugar",
+    "powdered sugar": "sugar",
+    "caster sugar": "sugar",
+    "granulated sugar": "sugar",
+
+    # ביצים, שמנת ומחיות פרי
+    "white of one egg": "egg white",
+    "fresh egg white": "egg white",
+    "aquafaba": "egg white",
+    "chickpea water": "egg white",
+    "heavy cream": "cream",
+    "fresh cream": "cream",
+    "single cream": "cream",
+    "cream of coconut": "coconut cream", 
+    "coco lopez": "coconut cream",
+    "white peach puree": "peach puree",
+    "white peach purée": "peach puree",
+    "peach puree": "peach puree",
+    "peach purée": "peach puree",
+    "passion fruit purée": "passion fruit puree",
+
+    # ביטרס
+    "angostura aromatic bitters": "angostura bitters",
+    "aromatic bitters": "angostura bitters",
+
+    # ברנדי וקוניאק
+    "calvados": "apple brandy",
+    "applejack": "apple brandy",
+    "pisco": "pisco",
+    "Apricot Brandy": "apricot brandy",
+    "cognac vsop": "cognac",
+    "cognac v.s.o.p.": "cognac",
+    
+    # וודקה
+    "Smirnoff Vodka": "vodka",
+    "citron vodka": "vodka",
+    "absolut citron": "vodka",
+    "lemon vodka": "vodka",
+    
+    # מבעבעים
+    "champagne": "sparkling wine",
+    "prosecco": "sparkling wine",
+    "cava": "sparkling wine"
 }
 
-# ====================================================================
-# מנגנון תיקון שגיאות ותרגום
-# ====================================================================
+_WEIGHT_CATEGORIES = {
+    "base_spirits": {
+        "words": ['vodka', 'gin', 'rum', 'tequila', 'mezcal', 'whiskey', 'blended', 'single', 'malt', 'cognac', 'brandy', 'pisco', 'calvados', 'grappa', 'cachaça', 'cachaca', 'smoked'],
+        "multiplier": 5
+    },
+    "liqueurs_wine": {
+        "words": ['campari', 'aperol', 'amaretto', 'coffee', 'liqueur', 'drambuie', 'chartreuse', 'crème', 'fernet', 'bénédictine', 'nonino', 'schnapps', 'vermouth', 'lillet', 'champagne', 'prosecco', 'wine', 'port', 'sherry', 'absinthe', 'pernod', 'orange', 'chocolate', 'mint', 'cherry', 'peach', 'elderflower'],
+        "multiplier": 4
+    },
+    "syrups_sweets": {
+        "words": ['sugar', 'syrup', 'grenadine', 'honey', 'agave', 'orgeat', 'caramel', 'simple', 'maple', 'passion'],
+        "multiplier": 3
+    },
+    "juices_mixers": {
+        "words": ['lemon', 'lime', 'orange', 'grapefruit', 'pineapple', 'cranberry', 'tomato', 'juice', 'soda', 'tonic', 'cola', 'ginger', 'beer', 'ale', 'milk', 'cream', 'coconut', 'water', 'espresso'],
+        "multiplier": 2
+    },
+    "bitters_garnishes_misc": {
+        "words": ['bitters', 'angostura', 'peychauds', 'mint', 'basil', 'rosemary', 'salt', 'pepper', 'egg', 'white', 'olive', 'cherry', 'celery', 'twist', 'aquafaba'],
+        "multiplier": 1
+    }
+}
 
-def _contains_hebrew(text: str) -> bool:
-    return bool(re.search(r'[\u05d0-\u05ea]', text))
+def get_ingredient_weight(ingredient_name: str) -> int:
+    """מוצא את המשקל הגבוה ביותר עבור המרכיב לפי הקטגוריות"""
+    words = re.sub(r'[^\w\s]', '', ingredient_name.lower()).split()
+    max_weight = 0
+    for cat, data in _WEIGHT_CATEGORIES.items():
+        if any(word in data["words"] for word in words):
+            max_weight = max(max_weight, data["multiplier"])
+    
+    return max_weight if max_weight > 0 else 1
+
+# ====================================================================
+# Helper Functions 
+# ====================================================================
 
 def correct_query(raw_query: str) -> str:
-    """מעבד את הקלט: מתקן עברית לערכי ה-CSV או מנקה קלט באנגלית."""
-    if _contains_hebrew(raw_query):
-        words = re.findall(r"[\u05d0-\u05ea'\"]+", raw_query)
-        translated = []
-        for w in words:
-            # ניסיון התאמה למילון העברי
-            match = process.extractOne(w, _HEBREW_TO_CSV_ENGLISH.keys(), scorer=fuzz.ratio)
-            if match and match[1] >= 80:
-                translated.append(_HEBREW_TO_CSV_ENGLISH[match[0]])
-            else:
-                translated.append(w)
-        return ", ".join(translated)
     return raw_query.lower()
 
+def apply_hierarchical_weights(tokenized_query):
+    boosted_query = []
+    for word in tokenized_query:
+        multiplier = 1
+        for cat, data in _WEIGHT_CATEGORIES.items():
+            if word in data["words"]:
+                multiplier = data["multiplier"]
+                break
+        boosted_query.extend([word] * multiplier)
+    return boosted_query
+
+def _get_image_markdown(metadata):
+    image_path_raw = metadata.get('image_path', 'No Image')
+    if image_path_raw and image_path_raw != "No Image":
+        filename = os.path.basename(image_path_raw)
+        return f"![{metadata.get('name', 'Cocktail')}](/images/{filename})"
+    return ""
+
 # ====================================================================
-# שליפת קוקטיילים מתוך ה-BM25 (נתוני ה-CSV)
+# BM25 Candidate Retrieval
 # ====================================================================
 
 def load_bm25_index():
     with open('bm25_index.pkl', 'rb') as f:
         return pickle.load(f)
-
-def retrieve_candidates(bm25_data, query, top_k=4):
-    """
-    חיפוש קוקטיילים המבוסס על מילים בודדות בתוך המרכיבים.
-    ממיין לפי: 1. מקסימום התאמה למרכיבי המשתמש. 2. מינימום מרכיבים נוספים נדרשים.
-    """
-    # פיצול המרכיבים שהגיעו מה-JS (מופרדים בפסיקים)
-    user_ingredients = [ing.strip().lower() for ing in query.split(',') if ing.strip()]
     
+def count_recipe_ingredients(raw_ingredients_str):
+    """
+    פונקציה לספירת מרכיבים שמתמודדת עם נתונים 'מלוכלכים' במבנים שונים
+    """
+    if not raw_ingredients_str:
+        return 1
+        
+    # שלב 1: ניקוי שבירות שורה שקודדו כמחרוזת בתוך ה-DB
+    clean_str = raw_ingredients_str.replace('\\n', '\n').replace('\\r', '')
+    
+    # שלב 2: ניסיון לפענח אם הנתון נשמר כ-String של רשימה: "['Rum', 'Lime']"
+    try:
+        parsed_list = ast.literal_eval(clean_str)
+        if isinstance(parsed_list, list):
+            return len(parsed_list)
+    except (ValueError, SyntaxError):
+        pass
+        
+    # שלב 3: פיצול אגרסיבי לפי כל סוגי המפרידים הנפוצים (פסיק, שורה חדשה, נקודה פסיק או HTML)
+    parts = [p.strip() for p in re.split(r',|\n|;|<br/?>', clean_str) if p.strip()]
+    
+    # שלב 4: אם זה עדיין בלוק אחד ארוך, ננסה לחתוך לפי המילה AND או לפי מקפים של Bullet points
+    if len(parts) <= 1 and len(clean_str) > 20:
+        parts = [p.strip() for p in re.split(r'\band\b|\&| - ', clean_str) if len(p.strip()) > 2]
+        
+    return max(len(parts), 1)
+
+def retrieve_candidates(bm25_data, query, top_k=102):
+    # נרמול השאילתה של המשתמש לפני הכל
+    query_normalized = query.lower()
+    for specific, generic in _INGREDIENT_SYNONYMS.items():
+        pattern = re.compile(r'\b' + re.escape(specific) + r'\b')
+        query_normalized = pattern.sub(generic, query_normalized)
+    
+    user_ingredients = [ing.strip() for ing in query_normalized.split(',') if ing.strip()]
     if not user_ingredients:
         return None, "none"
 
-    # שלב א': שליפה ראשונית של 100 מועמדים דרך BM25 למהירות
-    clean_query = re.sub(r'[^\w\s]', '', query.lower())
+    clean_query = re.sub(r'[^\w\s]', '', query_normalized)
     tokenized_query = clean_query.split()
-    scores = bm25_data['bm25'].get_scores(tokenized_query)
-    top_indices = np.argsort(scores)[::-1][:100]
-
-    candidates = []
-
-    for idx in top_indices:
-        ingredients_raw = bm25_data['metadatas'][idx].get('ingredients_raw', '').lower()
-        name = bm25_data['metadatas'][idx].get('name', 'Unknown')
-        doc = bm25_data['docs'][idx]
-
-        # בדיקה כמה מרכיבים מהמשתמש נמצאים במתכון
-        # הלוגיקה: כל המילים של המרכיב (למשל "gold" ו-"rum") חייבות להופיע בשורת המרכיבים
-        matched_from_user = []
-        for u_ing in user_ingredients:
-            u_words = u_ing.split()
-            if all(word in ingredients_raw for word in u_words):
-                matched_from_user.append(u_ing)
-        
-        match_count = len(matched_from_user)
-        
-        if match_count > 0:
-            # הערכת כמות המרכיבים הכוללת במתכון (לפי שורות או פסיקים)
-            total_in_recipe = len([i for i in re.split(r'[\n,]', ingredients_raw) if i.strip()])
-            # כמה מרכיבים המשתמש צריך להוסיף כדי להכין את זה?
-            additional_needed = max(0, total_in_recipe - match_count)
-            
-            candidates.append({
-                'doc': doc,
-                'name': name,
-                'match_count': match_count,
-                'additional_needed': additional_needed,
-                'missing_user_ingredients': list(set(user_ingredients) - set(matched_from_user))
-            })
-
-    if not candidates:
-        return _handle_fallback(bm25_data, top_indices, user_ingredients)
-
-    # מיון: קודם כל מי שיש לו הכי הרבה מהמרכיבים שלי, ואז מי שהכי "קצר" (הכי פחות תוספות)
-    candidates.sort(key=lambda x: (-x['match_count'], x['additional_needed']))
-
-    best_docs = [f"Cocktail Name: {c['name']}\nOriginal Data:\n{c['doc']}" for c in candidates[:top_k]]
-    best_candidate = candidates[0]
+    tokenized_query = [w for w in tokenized_query if w not in _FILLER_WORDS]
     
-    if best_candidate['match_count'] == len(user_ingredients):
-        return "\n\n--- NEXT CANDIDATE ---\n\n".join(best_docs), "strict"
+    boosted_query = apply_hierarchical_weights(tokenized_query)
+    
+    corpus_tokens = [re.sub(r'[^\w\s]', '', doc).lower().split() for doc in bm25_data['docs']]
+    bm25 = BM25Okapi(corpus_tokens)
+    doc_scores = bm25.get_scores(boosted_query)
+    top_indices = np.argsort(doc_scores)[::-1]
+    
+    results = []
+    best_overall_match_count = 0
+    
+    for idx in top_indices[:top_k]:
+        raw_ingredients = bm25_data['metadatas'][idx].get('ingredients_raw', '')
+        
+        # 1. ספירה אגרסיבית מבוססת יחידות מידה (מתעלם מפסיקים ושורות)
+        # מחפש מספרים שצמודים למידות כמו ml, oz, dash, pcs וכו'
+        measurements = re.findall(r'\b\d+(?:[./]\d+)?\s*(?:ml|oz|dash|dashes|drop|drops|tsp|tbsp|pcs|leaves|cl|part|parts|slice|wedge)\b', raw_ingredients, re.IGNORECASE)
+        
+        normalized_str = raw_ingredients.replace('\\n', ',').replace('\n', ',').replace(';', ',').replace('<br>', ',')
+        comma_separated = [ing.strip() for ing in normalized_str.split(',') if len(ing.strip()) > 2]
+        
+        # לוקחים את המספר הגבוה מבין השניים כדי להבטיח שלא נפספס מרכיבים
+        total_recipe_ingredients = max(len(measurements), len(comma_separated))
+        
+        if total_recipe_ingredients == 0:
+            total_recipe_ingredients = 1 # הגנה מקריסה
+            
+        recipe_ingredients = raw_ingredients.lower()
+        current_matched = []
+        current_missing = []
+        
+        # 2. בדיקה כמה מרכיבים מצאנו בפועל מתוך מה שהמשתמש הקליד
+        for u_ing in user_ingredients:
+            if fuzz.token_set_ratio(u_ing, recipe_ingredients) >= 80:
+                current_matched.append(u_ing)
+            else:
+                current_missing.append(u_ing)
+                
+        # 3. חישוב האחוז האמיתי
+        match_pct = int((len(current_matched) / total_recipe_ingredients) * 100)
+        match_pct = min(match_pct, 100) # הגנה ממעבר של 100%
+        
+        # --- הדפסת דיבאג לטרמינל שלך כדי שנוכל לראות בדיוק מה קורה ---
+        cocktail_name = bm25_data['metadatas'][idx].get('name', 'Unknown')
+        print(f"DEBUG: {cocktail_name} | Matched: {len(current_matched)} | Total Ing: {total_recipe_ingredients} | Pct: {match_pct}%")
+        
+        best_overall_match_count = max(best_overall_match_count, len(current_matched))
+        
+        results.append({
+            'idx': idx,
+            'match_pct': match_pct,
+            'missing': current_missing,
+            'total_recipe_ingredients': total_recipe_ingredients,
+            'bm25_score': doc_scores[idx]
+        })
+
+    # === החלק שהיה חסר: מיון, חיתוך, והחזרת נתונים לאפליקציה ===
+    
+    results.sort(key=lambda x: (
+        x['match_pct'], 
+        -x['total_recipe_ingredients'], 
+        x['bm25_score']
+    ), reverse=True)
+
+    # חותכים בחזרה ל-4 התוצאות הטובות ביותר כדי לא להעמיס על ה-LLM
+    final_top_results = results[:4]
+
+    # החלטה על סוג המענה (Match Type) עבור הפרומפט של ה-LLM
+    if best_overall_match_count == 0:
+         return _handle_fallback(bm25_data, top_indices, user_ingredients)
+    
+    if best_overall_match_count == len(user_ingredients):
+        match_type = "strict"
     else:
-        missing_str = ", ".join(best_candidate['missing_user_ingredients'])
-        return "\n\n--- NEXT CANDIDATE ---\n\n".join(best_docs), f"partial|{missing_str}"
-
-def _handle_fallback(bm25_data, top_indices, user_ingredients):
-    """טיפול במצב שבו אין התאמה לאף מרכיב."""
-    candidate_ingredients = set()
-    for idx in top_indices[:20]:
-        ingredients_raw = bm25_data['metadatas'][idx].get('ingredients_raw', '')
-        words = set(re.findall(r'\b[a-z]{3,}\b', ingredients_raw.lower()))
-        candidate_ingredients.update(words - _FILLER_WORDS)
-
-    suggestions = []
-    for uw in user_ingredients:
-        for word in uw.split():
-            close = difflib.get_close_matches(word, candidate_ingredients, n=1, cutoff=0.4)
-            if close: suggestions.append(close[0])
-
-    suggestions_str = ", ".join(list(set(suggestions))[:3]) if suggestions else "similar items"
-    fallback_docs = [f"Cocktail Name: {bm25_data['metadatas'][i].get('name', 'Unknown')}\nOriginal Data:\n{bm25_data['docs'][i]}" for i in top_indices[:3]]
-    return "\n\n--- NEXT CANDIDATE ---\n\n".join(fallback_docs), f"fallback|{suggestions_str}"
-
+        # לוקחים את הקוקטייל עם האחוז הכי גבוה (הראשון ברשימה הממוינת)
+        match_type = f"partial|{', '.join(final_top_results[0]['missing'])}"
+        
+    # בניית הקונטקסט ל-LLM מתוך 4 התוצאות המובילות בלבד
+    context_docs = []
+    for res in final_top_results:
+        meta = bm25_data['metadatas'][res['idx']]
+        img_md = _get_image_markdown(meta)
+        
+        context_docs.append(
+            f"Match: {res['match_pct']}%\n"
+            f"Cocktail Name: {meta.get('name', 'Unknown')}\n"
+            f"Image Markdown: {img_md}\n"
+            f"Original Data:\n{bm25_data['docs'][res['idx']]}"
+        )
+        
+    return "\n\n--- NEXT CANDIDATE ---\n\n".join(context_docs), match_type
 # ====================================================================
-# יצירת תשובה דרך ה-LLM
+# LLM Response Generation
 # ====================================================================
 
-def stream_llm_response(client, user_input, context, chat_history, match_type="strict"):
-    # 1. הוספנו הוראה מפורשת לגבי פורמט השם של הקוקטייל
+def stream_llm_response(client_unused, user_input, context, chat_history, match_type="strict"):
+    global _CURRENT_KEY_IDX
+
     system_prompt = (
-        "You are a professional AI Mixologist. Your knowledge is strictly limited to the provided context. "
-        "Use the recipes EXACTLY as they appear, and translate the ingredients, measurements, and instructions to Hebrew. "
-        "IMPORTANT: For the cocktail name, you MUST write the Hebrew name and add the original English name in parentheses next to it. Example: **מרגריטה (Margarita)**. "
-        "Do not invent ingredients or measurements. Format using Markdown with bold headers and bullet points."
+        "You are an expert, high-end AI Mixologist. Your task is to present cocktail recipes perfectly in English.\n"
+        "CRITICAL RULE: Your knowledge is strictly limited to the provided context. You MUST NOT use outside knowledge to modify, expand, or guess ingredient names. If the context says 'whiskey', you MUST write exactly 'whiskey' and NEVER autocorrect it to 'Bourbon' or 'Rye'. If it says 'tequila', do NOT add '100% Agave'. Copy the names exactly as they appear in the source.\n\n"
+        "MANDATORY MARKDOWN FORMATTING RULES:\n"
+        "1. Each cocktail MUST start with its title as a Markdown Level 3 header on its own fresh line. Example: ### Boulevardier\n"
+        "2. The exact 'Image Markdown' string provided in the context MUST be placed on its own line directly below the title header.\n"
+        "3. **NEW:** Extract the 'Match' percentage from the context and place it directly under the image like this: **Match:** 80%\n"
+        "4. The ingredients MUST be formatted as a standard bulleted list, under the header '**Ingredients:**'. Every single ingredient must be on its own line starting with a hyphen and a space.\n"
+        "5. The preparation steps MUST be placed under the header '**Preparation:**'.\n"
+        "6. You MUST use DOUBLE NEWLINES (\\n\\n) between sections (Title, Image, Match, Ingredients list, Preparation) to guarantee proper HTML separation.\n\n"
+        "FEW-SHOT EXAMPLE FOR STYLE:\n"
+        "### Sea Breeze\n"
+        "![Sea Breeze](/images/sea_breeze.jpg)\n"
+        "**Match:** 100%\n\n"
+        "**Ingredients:**\n"
+        "- 40 ml Vodka\n"
+        "- 120 ml Cranberry Juice\n"
+        "- 30 ml Grapefruit Juice\n\n"
+        "**Preparation:**\n"
+        "Pour all ingredients into a highball glass filled with ice, stir gently and serve."
     )
     
     messages = [{"role": "system", "content": system_prompt}]
     for msg in chat_history:
         messages.append({"role": msg["role"], "content": msg["content"]})
 
-    # 2. עדכון המשימות כך שיזכירו למודל את הפורמט הנדרש
     if match_type.startswith("fallback"):
-        sug = match_type.split("|")[1] if "|" in match_type else "חלופות"
-        prompt = f"Context:\n{context}\n\nTASK: Translate the recipes to Hebrew. Start with: 'לא מצאתי התאמה מדויקת. על בסיס מרכיבים דומים (**{sug}**), נסו את הקוקטיילים הבאים:'. Remember the name format: Hebrew (English)."
+        sug = match_type.split("|")[1] if "|" in match_type else "similar items"
+        prompt = f"Context:\n{context}\n\nTASK: Start your response with exactly this line: 'I could not find an exact match. Based on similar items (**{sug}**), try these cocktails:'. Then apply the MANDATORY MARKDOWN FORMATTING RULES."
     elif match_type.startswith("partial"):
-        missing = match_type.split("|")[1] if "|" in match_type else "כמה מרכיבים"
-        prompt = f"Context:\n{context}\n\nTASK: Translate the recipes to Hebrew. Start with: 'אין התאמה מדויקת עבור **{missing}**. עם זאת, הנה מתכונים שמשתמשים בשאר המרכיבים שלכם:'. Remember the name format: Hebrew (English)."
+        missing = match_type.split("|")[1] if "|" in match_type else "some items"
+        prompt = f"Context:\n{context}\n\nTASK: Start your response with exactly this line: 'No exact match found for **{missing}**. However, here are recipes based on your other base spirits and ingredients:'. Then apply the MANDATORY MARKDOWN FORMATTING RULES."
     else:
-        prompt = f"Context:\n{context}\n\nTASK: Format these exact cocktails perfectly. Translate ingredients and instructions to Hebrew. Format the title as: Hebrew Name (English Name)."
+        prompt = f"Context:\n{context}\n\nTASK: Format and present these exact cocktails perfectly. Strictly apply the MANDATORY MARKDOWN FORMATTING RULES."
         
     messages.append({"role": "user", "content": prompt})
 
-    completion = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
-        messages=messages,
-        stream=True,
-    )
+    keys_pool = _API_KEYS if _API_KEYS else [os.getenv("GROQ_API_KEY_1")]
 
-    for chunk in completion:
-        if chunk.choices[0].delta.content:
-            yield chunk.choices[0].delta.content
+    for attempt in range(len(keys_pool)):
+        try:
+            active_key = keys_pool[_CURRENT_KEY_IDX]
+            local_client = groq.Groq(api_key=active_key)
+
+            completion = local_client.chat.completions.create(
+                model="llama-3.3-70b-versatile",
+                messages=messages,
+                stream=True,
+            )
+
+            for chunk in completion:
+                if chunk.choices[0].delta.content:
+                    yield chunk.choices[0].delta.content
+            return  
+
+        except groq.RateLimitError:
+            print(f"⚠️ API Key number {_CURRENT_KEY_IDX + 1} rate limited (429). Switching to the next key...")
+            _CURRENT_KEY_IDX = (_CURRENT_KEY_IDX + 1) % len(keys_pool)
+
+    yield "\n\n⚠️ Error: All available API keys have reached their daily rate limit. Please try again later."

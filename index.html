@@ -1,14 +1,27 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cocktailmaster 2.0 – מאסטר הקוקטיילים</title>
+    <title>Cocktailmaster 2.0 – Cocktail Master</title>
     <meta name="description" content="Find cocktail recipes by selecting the ingredients you have at your bar.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
+        /* ── משתני עיצוב - פלטת בר יוקרתי בהיר (שיש, שמפנייה וזהב מוברש) ──────────────────────── */
+        :root {
+            --bg-gradient-start: #FAF8F5; /* גוון שמנת-שנהב רך ויוקרתי */
+            --bg-gradient-end: #EFEBE4;   /* גוון אבן טרוורטין בהירה */
+            --container-bg: #FFFFFF;      /* כרטיס לבן נקי ובוהק */
+            --border-color: rgba(169, 130, 56, 0.2); /* מסגרת זהב שמפנייה עדינה */
+            --accent-color: #A98238;      /* זהב מוברש עמוק לקריאות מושלמת */
+            --accent-hover: #C5A059;      /* זהב שמפנייה זוהר במעבר עכבר */
+            --text-color: #241E1A;        /* חום אספרסו עמוק ומתוחכם לטקסט הראשי */
+            --text-muted: #7A6E65;        /* גוון ברונזה-אפרפר עמום לטקסט משני */
+            --input-bg: #FDFDFD;          /* רקע אזור התוצאות */
+        }
+
         /* ── Reset & Base ───────────────────────────────────── */
         *,
         *::before,
@@ -20,8 +33,8 @@
 
         body {
             font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
-            background: linear-gradient(145deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%);
-            color: #e0e0e0;
+            background: linear-gradient(145deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            color: var(--text-color);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -31,13 +44,13 @@
 
         /* ── Container ──────────────────────────────────────── */
         .container {
-            background: rgba(30, 30, 46, 0.85);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: var(--container-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
             padding: 36px 32px 40px;
             border-radius: 20px;
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
+            box-shadow: 0 30px 60px rgba(36, 30, 26, 0.05); /* צל סופר-רך ויוקרתי */
             width: 100%;
             max-width: 720px;
         }
@@ -47,31 +60,33 @@
             font-weight: 700;
             text-align: center;
             margin-bottom: 6px;
-            background: linear-gradient(135deg, #ff9f43, #f7971e);
+            background: linear-gradient(135deg, var(--accent-hover), var(--accent-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: -0.5px;
         }
 
         .subtitle {
             text-align: center;
-            color: #888;
+            color: var(--text-muted);
             font-size: 0.95rem;
-            margin-bottom: 28px;
+            margin-bottom: 32px;
         }
 
         /* ── Category Sections ──────────────────────────────── */
         .category {
-            margin-bottom: 22px;
+            margin-bottom: 24px;
         }
 
         .category-title {
             font-size: 1.05rem;
             font-weight: 600;
-            color: #ff9f43;
-            margin-bottom: 10px;
+            color: var(--accent-color);
+            margin-bottom: 12px;
             padding-bottom: 6px;
-            border-bottom: 1px solid rgba(255, 159, 67, 0.2);
+            border-bottom: 1px solid var(--border-color);
+            letter-spacing: 0.3px;
         }
 
         .chips-grid {
@@ -94,76 +109,57 @@
 
         .tag-text {
             display: inline-block;
-            padding: 7px 16px;
+            padding: 8px 18px;
             font-size: 0.88rem;
             font-weight: 500;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            background: rgba(255, 255, 255, 0.05);
-            color: #ccc;
-            transition: all 0.2s ease;
+            border: 1px solid rgba(36, 30, 26, 0.08); 
+            background: rgba(36, 30, 26, 0.02);       
+            color: var(--text-muted);
+            transition: all 0.25s ease;
         }
 
         .tag-text:hover {
-            background: rgba(255, 159, 67, 0.15);
-            border-color: rgba(255, 159, 67, 0.4);
-            color: #fff;
+            background: rgba(169, 130, 56, 0.08);
+            border-color: var(--accent-color);
+            color: var(--text-color);
         }
 
         /* Checked state */
         .tag-label input[type="checkbox"]:checked+.tag-text {
-            background: linear-gradient(135deg, #ff9f43, #f39c12);
-            color: #fff;
+            background: linear-gradient(135deg, var(--accent-hover), var(--accent-color));
+            color: #FFFFFF; /* טקסט לבן נקי ובוהק על רקע הזהב היוקרתי */
+            font-weight: 600;
             border-color: transparent;
-            box-shadow: 0 2px 12px rgba(255, 159, 67, 0.35);
+            box-shadow: 0 6px 16px rgba(169, 130, 56, 0.25);
         }
 
-        /* ── Free-text input ────────────────────────────────── */
-        .input-row {
+        /* ── אזור כפתור החיפוש המרכזי ────────────────────────── */
+        .button-row {
             display: flex;
-            gap: 10px;
-            margin-top: 24px;
+            justify-content: center;
+            margin-top: 28px;
         }
 
-        #ingredientsInput {
-            flex: 1;
-            padding: 12px 16px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.06);
-            color: #fff;
-            font-size: 0.95rem;
-            font-family: inherit;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        #ingredientsInput::placeholder {
-            color: #666;
-        }
-
-        #ingredientsInput:focus {
-            border-color: #ff9f43;
-        }
-
-        /* ── Search Button ──────────────────────────────────── */
         #searchBtn {
-            padding: 12px 28px;
-            background: linear-gradient(135deg, #ff9f43, #f39c12);
-            color: #fff;
+            padding: 14px 40px;
+            background: linear-gradient(135deg, var(--accent-hover), var(--accent-color));
+            color: #FFFFFF;
             border: none;
-            border-radius: 12px;
+            border-radius: 25px; /* מראה קפסולה יוקרתי */
             cursor: pointer;
             font-size: 1rem;
             font-weight: 600;
             font-family: inherit;
+            letter-spacing: 0.5px;
             transition: transform 0.15s, box-shadow 0.2s;
             white-space: nowrap;
+            box-shadow: 0 4px 14px rgba(169, 130, 56, 0.2);
         }
 
         #searchBtn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(255, 159, 67, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(169, 130, 56, 0.35);
         }
 
         #searchBtn:active {
@@ -171,60 +167,86 @@
         }
 
         /* ── Results Area ───────────────────────────────────── */
-       /* ── Results Area ───────────────────────────────────── */
         #resultsArea {
             display: block;
-            margin-top: 28px;
-            text-align: right; /* יישור לימין */
-            direction: rtl; /* כיוון טקסט מימין לשמאל */
-            background: rgba(15, 15, 25, 0.6);
-            padding: 24px;
+            margin-top: 36px;
+            text-align: left;
+            direction: ltr;
+            background: var(--input-bg); 
+            padding: 26px;
             border-radius: 14px;
             min-height: 48px;
-            line-height: 1.7;
-            border-right: 4px solid #ff9f43; /* הפס הכתום עבר ימינה */
-            color: #ccc;
+            line-height: 1.75;
+            border-left: 4px solid var(--accent-color);
+            color: var(--text-muted);
             font-size: 0.95rem;
+            border-top: 1px solid rgba(169, 130, 56, 0.1);
+            border-bottom: 1px solid rgba(169, 130, 56, 0.1);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.01);
         }
 
         #resultsArea h3 {
-            color: #ff9f43;
-            margin-top: 22px;
-            margin-bottom: 8px;
-            border-bottom: 1px solid #2a2a3a;
-            padding-bottom: 4px;
+            clear: both;             
+            color: var(--accent-color);
+            font-size: 1.4rem;       
+            margin-top: 40px;
+            margin-bottom: 18px;
+            padding-top: 28px;
+            border-top: 1px solid rgba(169, 130, 56, 0.15); 
+            display: block;
+            width: 100%;
+        }
+
+        #resultsArea h3:first-of-type {
+            margin-top: 4px;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        #resultsArea img {
+            float: right;             
+            width: 160px;            
+            height: 160px;           
+            object-fit: cover;       
+            border-radius: 12px;     
+            margin-left: 24px;      
+            margin-bottom: 16px;     
+            box-shadow: 0 8px 24px rgba(36, 30, 26, 0.08); /* צל רך ומעודן לתמונת הקוקטייל */
         }
 
         #resultsArea strong {
-            color: #fff;
+            color: var(--text-color);
         }
 
         #resultsArea ul {
-            padding-right: 20px; /* ריווח פנימי מצד ימין כדי שהנקודות יסתדרו */
+            padding-left: 20px;
             margin-top: 5px;
         }
 
         #resultsArea li {
             margin-bottom: 6px;
-            color: #bbb;
+            color: var(--text-color);
         }
 
         /* ── Responsive ─────────────────────────────────────── */
         @media (max-width: 500px) {
             .container {
-                padding: 24px 18px 28px;
+                padding: 28px 20px 32px;
             }
 
             h1 {
                 font-size: 1.6rem;
             }
 
-            .input-row {
-                flex-direction: column;
-            }
-
             #searchBtn {
                 width: 100%;
+            }
+            
+            #resultsArea img {
+                float: none;
+                margin: 0 auto 15px;
+                display: block;
+                max-width: 100%;
             }
         }
     </style>
@@ -234,239 +256,93 @@
 
     <div class="container">
         <h1>🍸 Cocktailmaster 2.0</h1>
-        <p class="subtitle">בחרו את המרכיבים שיש לכם בבר</p>
-
-        <!-- ═══ 🥃 Base Spirits ═══ -->
+        <p class="subtitle">Choose the ingredients you have at your bar</p>
+        
         <div class="category">
-            <div class="category-title">🥃 משקאות כבדים</div>
+            <div class="category-title">🥃 Base Spirits</div>
             <div class="chips-grid">
-                <label class="tag-label"><input type="checkbox" value="Vodka"><span
-                        class="tag-text">וודקה</span></label>
-                <label class="tag-label"><input type="checkbox" value="Gin"><span class="tag-text">ג'ין</span></label>
-                <label class="tag-label"><input type="checkbox" value="White Rum"><span class="tag-text">רום
-                        לבן</span></label>
-                <label class="tag-label"><input type="checkbox" value="Dark Rum"><span class="tag-text">רום
-                        כהה</span></label>
-                <label class="tag-label"><input type="checkbox" value="Gold Rum"><span class="tag-text">רום
-                        זהוב</span></label>
-                <label class="tag-label"><input type="checkbox" value="Aged Rum"><span class="tag-text">רום
-                        מיושן</span></label>
-                <label class="tag-label"><input type="checkbox" value="Tequila"><span
-                        class="tag-text">טקילה</span></label>
-                <label class="tag-label"><input type="checkbox" value="Mezcal"><span
-                        class="tag-text">מזקל</span></label>
-                <label class="tag-label"><input type="checkbox" value="Bourbon Whiskey"><span class="tag-text">וויסקי
-                        בורבון</span></label>
-                <label class="tag-label"><input type="checkbox" value="Rye Whiskey"><span class="tag-text">וויסקי
-                        שיפון</span></label>
-                <label class="tag-label"><input type="checkbox" value="Scotch Whisky"><span class="tag-text">סקוטש
-                        וויסקי</span></label>
-                <label class="tag-label"><input type="checkbox" value="Irish Whiskey"><span class="tag-text">וויסקי
-                        אירי</span></label>
-                <label class="tag-label"><input type="checkbox" value="Cognac"><span
-                        class="tag-text">קוניאק</span></label>
-                <label class="tag-label"><input type="checkbox" value="Brandy"><span
-                        class="tag-text">ברנדי</span></label>
-                <label class="tag-label"><input type="checkbox" value="Pisco"><span
-                        class="tag-text">פיסקו</span></label>
-                <label class="tag-label"><input type="checkbox" value="Cachaça"><span
-                        class="tag-text">קאשאסה</span></label>
-                <label class="tag-label"><input type="checkbox" value="Grappa"><span
-                        class="tag-text">גראפה</span></label>
-                <label class="tag-label"><input type="checkbox" value="Absinthe"><span
-                        class="tag-text">אבסינת</span></label>
-                <label class="tag-label"><input type="checkbox" value="Calvados"><span
-                        class="tag-text">קלבדוס</span></label>
+                <label class="tag-label"><input type="checkbox" value="Vodka"><span class="tag-text">Vodka</span></label>
+                <label class="tag-label"><input type="checkbox" value="Gin"><span class="tag-text">Gin</span></label>
+                <label class="tag-label"><input type="checkbox" value="Tequila"><span class="tag-text">Tequila / Mezcal</span></label>
+                <label class="tag-label"><input type="checkbox" value="Whiskey"><span class="tag-text">Whiskey</span></label>
+                <label class="tag-label"><input type="checkbox" value="White Rum"><span class="tag-text">White Rum</span></label>
+                <label class="tag-label"><input type="checkbox" value="Dark Rum"><span class="tag-text">Dark Rum</span></label>
+                <label class="tag-label"><input type="checkbox" value="Brandy"><span class="tag-text">Brandy / Cognac</span></label>
             </div>
         </div>
 
-        <!-- ═══ 🍾 Liqueurs & Wine ═══ -->
         <div class="category">
-            <div class="category-title">🍾 ליקרים ויין</div>
+            <div class="category-title">🍾 Liqueurs & Wine</div>
             <div class="chips-grid">
-                <label class="tag-label"><input type="checkbox" value="Cointreau"><span
-                        class="tag-text">קוואנטרו</span></label>
-                <label class="tag-label"><input type="checkbox" value="Triple Sec"><span class="tag-text">טריפל
-                        סק</span></label>
-                <label class="tag-label"><input type="checkbox" value="Campari"><span
-                        class="tag-text">קמפרי</span></label>
-                <label class="tag-label"><input type="checkbox" value="Aperol"><span
-                        class="tag-text">אפרול</span></label>
-                <label class="tag-label"><input type="checkbox" value="Amaretto"><span
-                        class="tag-text">אמרטו</span></label>
-                <label class="tag-label"><input type="checkbox" value="Maraschino Luxardo"><span
-                        class="tag-text">מרסקינו לוקסרדו</span></label>
-                <label class="tag-label"><input type="checkbox" value="Kahlúa"><span
-                        class="tag-text">קהלואה</span></label>
-                <label class="tag-label"><input type="checkbox" value="Coffee Liqueur"><span class="tag-text">ליקר
-                        קפה</span></label>
-                <label class="tag-label"><input type="checkbox" value="Drambuie"><span
-                        class="tag-text">דרמבואי</span></label>
-                <label class="tag-label"><input type="checkbox" value="Green Chartreuse"><span class="tag-text">שארטרז
-                        ירוק</span></label>
-                <label class="tag-label"><input type="checkbox" value="Yellow Chartreuse"><span class="tag-text">שארטרז
-                        צהוב</span></label>
-                <label class="tag-label"><input type="checkbox" value="Crème de Cacao"><span class="tag-text">קרם דה
-                        קקאו</span></label>
-                <label class="tag-label"><input type="checkbox" value="Crème de Menthe"><span class="tag-text">קרם דה
-                        מנט</span></label>
-                <label class="tag-label"><input type="checkbox" value="Crème de Mûre"><span class="tag-text">קרם דה
-                        מור</span></label>
-                <label class="tag-label"><input type="checkbox" value="Crème de Cassis"><span class="tag-text">קרם דה
-                        קסיס</span></label>
-                <label class="tag-label"><input type="checkbox" value="Crème de Violette"><span class="tag-text">קרם דה
-                        ויולט</span></label>
-                <label class="tag-label"><input type="checkbox" value="Fernet"><span
-                        class="tag-text">פרנט</span></label>
-                <label class="tag-label"><input type="checkbox" value="Bénédictine"><span
-                        class="tag-text">בנדיקטין</span></label>
-                <label class="tag-label"><input type="checkbox" value="Grand Marnier"><span class="tag-text">גראנד
-                        מרנייה</span></label>
-                <label class="tag-label"><input type="checkbox" value="Amaro Nonino"><span class="tag-text">אמארו
-                        נונינו</span></label>
-                <label class="tag-label"><input type="checkbox" value="Orange Curaçao"><span class="tag-text">קוראסאו
-                        תפוז</span></label>
-                <label class="tag-label"><input type="checkbox" value="Raspberry Liqueur"><span class="tag-text">ליקר
-                        פטל</span></label>
-                <label class="tag-label"><input type="checkbox" value="Passion Fruit Liqueur"><span
-                        class="tag-text">ליקר פסיפלורה</span></label>
-                <label class="tag-label"><input type="checkbox" value="Peach Schnapps"><span class="tag-text">שנאפס
-                        אפרסק</span></label>
-                <label class="tag-label"><input type="checkbox" value="Apricot Brandy"><span class="tag-text">ברנדי
-                        משמש</span></label>
-                <label class="tag-label"><input type="checkbox" value="Cherry Brandy"><span class="tag-text">ברנדי
-                        דובדבן</span></label>
-                <label class="tag-label"><input type="checkbox" value="Elderflower Cordial"><span class="tag-text">סירופ
-                        סמבוק</span></label>
-                <label class="tag-label"><input type="checkbox" value="Cynar"><span class="tag-text">צינר</span></label>
-                <label class="tag-label"><input type="checkbox" value="Allspice Dram"><span class="tag-text">אולספייס
-                        דראם</span></label>
-                <label class="tag-label"><input type="checkbox" value="Pernod"><span
-                        class="tag-text">פרנו</span></label>
-                <label class="tag-label"><input type="checkbox" value="Falernum"><span
-                        class="tag-text">פלרנום</span></label>
-                <label class="tag-label"><input type="checkbox" value="Sweet Red Vermouth"><span class="tag-text">ורמוט
-                        מתוק אדום</span></label>
-                <label class="tag-label"><input type="checkbox" value="Dry Vermouth"><span class="tag-text">ורמוט
-                        יבש</span></label>
-                <label class="tag-label"><input type="checkbox" value="Lillet Blanc"><span class="tag-text">לילה
-                        בלאן</span></label>
-                <label class="tag-label"><input type="checkbox" value="Champagne"><span
-                        class="tag-text">שמפניה</span></label>
-                <label class="tag-label"><input type="checkbox" value="Prosecco"><span
-                        class="tag-text">פרוסקו</span></label>
-                <label class="tag-label"><input type="checkbox" value="Dry White Wine"><span class="tag-text">יין לבן
-                        יבש</span></label>
-                <label class="tag-label"><input type="checkbox" value="Red Wine"><span class="tag-text">יין
-                        אדום</span></label>
-                <label class="tag-label"><input type="checkbox" value="Port Wine"><span class="tag-text">יין
-                        פורט</span></label>
-                <label class="tag-label"><input type="checkbox" value="Sherry"><span class="tag-text">שרי</span></label>
+                <label class="tag-label"><input type="checkbox" value="Orange Liqueur"><span class="tag-text">Orange Liqueur (Triple Sec)</span></label>
+                <label class="tag-label"><input type="checkbox" value="Campari"><span class="tag-text">Campari</span></label>
+                <label class="tag-label"><input type="checkbox" value="Aperol"><span class="tag-text">Aperol</span></label>
+                <label class="tag-label"><input type="checkbox" value="Coffee Liqueur"><span class="tag-text">Coffee Liqueur (Kahlúa)</span></label>
+                <label class="tag-label"><input type="checkbox" value="Amaretto"><span class="tag-text">Amaretto (Almond)</span></label>
+                <label class="tag-label"><input type="checkbox" value="Sweet Vermouth"><span class="tag-text">Sweet Vermouth</span></label>
+                <label class="tag-label"><input type="checkbox" value="Dry Vermouth"><span class="tag-text">Dry Vermouth</span></label>
+                <label class="tag-label"><input type="checkbox" value="Chartreuse"><span class="tag-text">Chartreuse</span></label>
+                <label class="tag-label"><input type="checkbox" value="Absinthe"><span class="tag-text">Absinthe</span></label>
+                <label class="tag-label"><input type="checkbox" value="Sparkling Wine"><span class="tag-text">Sparkling Wine (Champagne / Cava)</span></label>
+                <label class="tag-label"><input type="checkbox" value="Wine"><span class="tag-text">Wine (White / Red)</span></label>
             </div>
         </div>
 
-        <!-- ═══ 🍯 Syrups & Sweeteners ═══ -->
         <div class="category">
-            <div class="category-title">🍯 סירופים וממתיקים</div>
+            <div class="category-title">🍯 Syrups & Sweeteners</div>
             <div class="chips-grid">
-                <label class="tag-label"><input type="checkbox" value="sugar syrup"><span class="tag-text">סירופ
-                        סוכר</span></label>
-                <label class="tag-label"><input type="checkbox" value="Grenadine Syrup"><span class="tag-text">סירופ
-                        רימונים</span></label>
-                <label class="tag-label"><input type="checkbox" value="Honey Syrup"><span class="tag-text">סירופ
-                        דבש</span></label>
-                <label class="tag-label"><input type="checkbox" value="Agave Nectar"><span class="tag-text">נקטר
-                        אגבה</span></label>
-                <label class="tag-label"><input type="checkbox" value="Orgeat Syrup"><span class="tag-text">סירופ
-                        שקדים</span></label>
-                <label class="tag-label"><input type="checkbox" value="Raspberry Syrup"><span class="tag-text">סירופ
-                        פטל</span></label>
-                <label class="tag-label"><input type="checkbox" value="Passion Fruit Syrup"><span class="tag-text">סירופ
-                        פסיפלורה</span></label>
-                <label class="tag-label"><input type="checkbox" value="Demerara Sugar Syrup"><span
-                        class="tag-text">סירופ דמררה</span></label>
-                <label class="tag-label"><input type="checkbox" value="Sugar"><span class="tag-text">סוכר</span></label>
+                <label class="tag-label"><input type="checkbox" value="Sugar Syrup"><span class="tag-text">Simple Syrup</span></label>
+                <label class="tag-label"><input type="checkbox" value="Grenadine"><span class="tag-text">Grenadine</span></label>
+                <label class="tag-label"><input type="checkbox" value="Honey Syrup"><span class="tag-text">Honey Syrup</span></label>
+                <label class="tag-label"><input type="checkbox" value="Agave"><span class="tag-text">Agave Nectar</span></label>
+                <label class="tag-label"><input type="checkbox" value="Orgeat"><span class="tag-text">Orgeat (Almond Syrup)</span></label>
+                <label class="tag-label"><input type="checkbox" value="Sugar"><span class="tag-text">Sugar</span></label>
             </div>
         </div>
 
-        <!-- ═══ 🍋 Juices & Mixers ═══ -->
         <div class="category">
-            <div class="category-title">🍋 מיצים ותערובות</div>
+            <div class="category-title">🍋 Juices & Mixers</div>
             <div class="chips-grid">
-                <label class="tag-label"><input type="checkbox" value="Lemon Juice"><span class="tag-text">מיץ
-                        לימון</span></label>
-                <label class="tag-label"><input type="checkbox" value="Lime Juice"><span class="tag-text">מיץ
-                        ליים</span></label>
-                <label class="tag-label"><input type="checkbox" value="Orange Juice"><span class="tag-text">מיץ
-                        תפוזים</span></label>
-                <label class="tag-label"><input type="checkbox" value="Pineapple Juice"><span class="tag-text">מיץ
-                        אננס</span></label>
-                <label class="tag-label"><input type="checkbox" value="Grapefruit Juice"><span class="tag-text">מיץ
-                        אשכוליות</span></label>
-                <label class="tag-label"><input type="checkbox" value="Cranberry Juice"><span class="tag-text">מיץ
-                        חמוציות</span></label>
-                <label class="tag-label"><input type="checkbox" value="Tomato Juice"><span class="tag-text">מיץ
-                        עגבניות</span></label>
-                <label class="tag-label"><input type="checkbox" value="Soda Water"><span class="tag-text">מי
-                        סודה</span></label>
-                <label class="tag-label"><input type="checkbox" value="Ginger Beer"><span class="tag-text">בירת
-                        ג'ינג'ר</span></label>
-                <label class="tag-label"><input type="checkbox" value="Ginger Ale"><span class="tag-text">ג'ינג'ר
-                        אייל</span></label>
-                <label class="tag-label"><input type="checkbox" value="Cola"><span class="tag-text">קולה</span></label>
-                <label class="tag-label"><input type="checkbox" value="Tonic"><span
-                        class="tag-text">טוניק</span></label>
-                <label class="tag-label"><input type="checkbox" value="Espresso"><span
-                        class="tag-text">אספרסו</span></label>
-                <label class="tag-label"><input type="checkbox" value="Hot Coffee"><span class="tag-text">קפה
-                        חם</span></label>
-                <label class="tag-label"><input type="checkbox" value="Coconut Cream"><span class="tag-text">קרם
-                        קוקוס</span></label>
-                <label class="tag-label"><input type="checkbox" value="Cream"><span class="tag-text">שמנת</span></label>
+                <label class="tag-label"><input type="checkbox" value="Lemon Juice"><span class="tag-text">Lemon Juice</span></label>
+                <label class="tag-label"><input type="checkbox" value="Lime Juice"><span class="tag-text">Lime Juice</span></label>
+                <label class="tag-label"><input type="checkbox" value="Orange Juice"><span class="tag-text">Orange Juice</span></label>
+                <label class="tag-label"><input type="checkbox" value="Pineapple Juice"><span class="tag-text">Pineapple Juice</span></label>
+                <label class="tag-label"><input type="checkbox" value="Grapefruit Juice"><span class="tag-text">Grapefruit Juice</span></label>
+                <label class="tag-label"><input type="checkbox" value="Cranberry Juice"><span class="tag-text">Cranberry Juice</span></label>
+                <label class="tag-label"><input type="checkbox" value="Tomato Juice"><span class="tag-text">Tomato Juice</span></label>
+                <label class="tag-label"><input type="checkbox" value="Soda Water"><span class="tag-text">Soda</span></label>
+                <label class="tag-label"><input type="checkbox" value="Ginger Beer"><span class="tag-text">Ginger Beer</span></label>
+                <label class="tag-label"><input type="checkbox" value="Ginger Ale"><span class="tag-text">Ginger Ale</span></label>
+                <label class="tag-label"><input type="checkbox" value="Cola"><span class="tag-text">Cola</span></label>
+                <label class="tag-label"><input type="checkbox" value="Tonic"><span class="tag-text">Tonic</span></label>
+                <label class="tag-label"><input type="checkbox" value="Espresso"><span class="tag-text">Espresso</span></label>
+                <label class="tag-label"><input type="checkbox" value="Cream"><span class="tag-text">Cream</span></label>
             </div>
         </div>
 
-        <!-- ═══ 🌿 Bitters, Garnishes & Misc ═══ -->
         <div class="category">
-            <div class="category-title">🌿 ביטרס, קישוטים ושונות</div>
+            <div class="category-title">🌿 Bitters, Garnishes & Misc</div>
             <div class="chips-grid">
-                <label class="tag-label"><input type="checkbox" value="Angostura Bitters"><span
-                        class="tag-text">אנגוסטורה ביטרס</span></label>
-                <label class="tag-label"><input type="checkbox" value="Orange Bitters"><span class="tag-text">ביטרס
-                        תפוז</span></label>
-                <label class="tag-label"><input type="checkbox" value="Peychaud's Bitters"><span class="tag-text">ביטרס
-                        פישו</span></label>
-                <label class="tag-label"><input type="checkbox" value="Mint"><span class="tag-text">נענע</span></label>
-                <label class="tag-label"><input type="checkbox" value="Basil"><span
-                        class="tag-text">בזיליקום</span></label>
-                <label class="tag-label"><input type="checkbox" value="Egg White"><span class="tag-text">חלבון
-                        ביצה</span></label>
-                <label class="tag-label"><input type="checkbox" value="Egg Yolk"><span class="tag-text">חלמון
-                        ביצה</span></label>
-                <label class="tag-label"><input type="checkbox" value="Orange Flower Water"><span class="tag-text">מי
-                        פרחי תפוז</span></label>
-                <label class="tag-label"><input type="checkbox" value="Vanilla Extract"><span class="tag-text">תמצית
-                        וניל</span></label>
-                <label class="tag-label"><input type="checkbox" value="Passion Fruit Puree"><span class="tag-text">מחית
-                        פסיפלורה</span></label>
-                <label class="tag-label"><input type="checkbox" value="Peach Puree"><span class="tag-text">מחית
-                        אפרסק</span></label>
-                <label class="tag-label"><input type="checkbox" value="Salt"><span class="tag-text">מלח</span></label>
-                <label class="tag-label"><input type="checkbox" value="Tabasco"><span
-                        class="tag-text">טבסקו</span></label>
-                <label class="tag-label"><input type="checkbox" value="Worcestershire Sauce"><span class="tag-text">רוטב
-                        וורצ'סטר</span></label>
+                <label class="tag-label"><input type="checkbox" value="Angostura Bitters"><span class="tag-text">Angostura Bitters</span></label>
+                <label class="tag-label"><input type="checkbox" value="Orange Bitters"><span class="tag-text">Orange Bitters</span></label>
+                <label class="tag-label"><input type="checkbox" value="Peychaud's Bitters"><span class="tag-text">Peychaud's Bitters</span></label>
+                <label class="tag-label"><input type="checkbox" value="Mint"><span class="tag-text">Mint</span></label>
+                <label class="tag-label"><input type="checkbox" value="Basil"><span class="tag-text">Basil</span></label>
+                <label class="tag-label"><input type="checkbox" value="Egg White"><span class="tag-text">Egg White</span></label>
+                <label class="tag-label"><input type="checkbox" value="Egg Yolk"><span class="tag-text">Egg Yolk</span></label>
+                <label class="tag-label"><input type="checkbox" value="Salt"><span class="tag-text">Salt</span></label>
+                <label class="tag-label"><input type="checkbox" value="Tabasco"><span class="tag-text">Tabasco</span></label>
+                <label class="tag-label"><input type="checkbox" value="Worcestershire Sauce"><span class="tag-text">Worcestershire Sauce</span></label>
             </div>
         </div>
 
-        <!-- ═══ Free-text + Search ═══ -->
-        <div class="input-row">
-            <input type="text" id="ingredientsInput" placeholder="...או הקלידו מרכיבים נוספים">
-            <button id="searchBtn" onclick="searchCocktails()">🔍 חפשו קוקטיילים</button>
+        <input type="hidden" id="ingredientsInput" value="">
+
+        <div class="button-row">
+            <button id="searchBtn" onclick="searchCocktails()">🔍 Search Cocktails</button>
         </div>
 
-        <!-- ═══ Results ═══ -->
-        <div id="resultsArea">התוצאות יופיעו כאן...</div>
+        <div id="resultsArea">Results will appear here...</div>
     </div>
 
     <script src="script.js"></script>
