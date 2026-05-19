@@ -11,10 +11,7 @@ import ast
 # ====================================================================
 # API Key Rotation Configuration
 # ====================================================================
-_API_KEYS = [os.getenv("GROQ_API_KEY_1"), os.getenv("GROQ_API_KEY_2")]
-_API_KEYS = [k for k in _API_KEYS if k]  
 _CURRENT_KEY_IDX = 0
-
 # ====================================================================
 # Constants & Weighting Configurations
 # ====================================================================
@@ -43,6 +40,8 @@ _INGREDIENT_SYNONYMS = {
     "agave nectar": "agave",
     "passion fruit syrup": "passion fruit syrup",
     "maple syrup": "maple syrup",
+    "Agave": "Agave Nectar(sugar syrup)",
+
     
     # מיצים 
     "freshly squeezed lemon juice": "lemon juice",
@@ -58,6 +57,7 @@ _INGREDIENT_SYNONYMS = {
     "irish whiskey": "whiskey",
     "tennessee whiskey": "whiskey",
     "blended whiskey": "whiskey",
+    "Blended Whiskey": "whisky",
     "single malt scotch": "whiskey",
     "single malt": "whiskey",
     "bourbon": "whiskey",
@@ -66,6 +66,7 @@ _INGREDIENT_SYNONYMS = {
     "lagavulin 16y": "smoked whisky",
     "lagavulin 16": "smoked whisky",
     "lagavulin": "smoked whisky",
+    
 
     # ליקרי תפוז
     "cointreau": "orange liqueur",
@@ -93,20 +94,35 @@ _INGREDIENT_SYNONYMS = {
     "tequila silver": "tequila",
     "tequila reposado": "tequila",
     "100% agave tequila": "tequila",
+    "Tequila 100% agave": "tequila",
     "blanco tequila": "tequila",
     "reposado tequila": "tequila",
     "mezcal espadin": "mezcal",
     "anejo mezcal": "mezcal",
     "joven mezcal": "mezcal",
+    "Espadin Mezcal": "mezcal",
 
     # רום וקשאסה
     "white cuban rum": "white rum",
     "light rum": "white rum",
-    "dark jamaican rum": "dark rum",
-    "añejo rum": "dark rum",
+    "Cuban Rum":"white rum",
+    "Ron Profundo Havana Club":"white rum",
+    "Jamaica Overproof White Rum":"white rum",
+    
     "Goslings Rum": "black rum",
+
     "Jamaican dark rum": "dark rum",
     "Gold Puerto Rican rum": "dark rum",
+    "Gold Jamaican Rum":"dark rum",
+    "Aged Rum":"dark rum",
+    "dark jamaican rum": "dark rum",
+    "añejo rum": "dark rum",
+    "añejo rum": "dark rum",
+    "Demerara Rum": "dark rum",
+
+
+
+
     "cachaça": "cachaça",
     "cachaca": "cachaça",
 
@@ -129,7 +145,8 @@ _INGREDIENT_SYNONYMS = {
 
     # ליקרי דובדבנים
     "maraschino liqueur": "maraschino cherry liqueur",
-    "maraschino": "maraschino cherry liqueur",
+    "Maraschino Cherry Liqueur Luxardo": "cherry liqueur(Luxardo Maraschino)",
+    "maraschino": "cherry liqueur(Luxardo Maraschino)",
     "cherry heering": "cherry liqueur",
     "heering cherry liqueur": "cherry liqueur",
     "cherry brandy": "cherry liqueur",
@@ -174,6 +191,8 @@ _INGREDIENT_SYNONYMS = {
     "powdered sugar": "sugar",
     "caster sugar": "sugar",
     "granulated sugar": "sugar",
+    "White Cane Sugar": "sugar",
+
 
     # ביצים, שמנת ומחיות פרי
     "white of one egg": "egg white",
@@ -314,6 +333,31 @@ def count_recipe_ingredients(raw_ingredients_str):
         parts = [p.strip() for p in re.split(r'\band\b|\&| - ', clean_str) if len(p.strip()) > 2]
         
     return max(len(parts), 1)
+def _handle_fallback(bm25_data, top_indices, user_ingredients):
+    """
+    מנגנון חלופי (Fallback) למקרה שלא נמצאה אף התאמה למרכיבים שהוזנו.
+    מחזיר את 3 התוצאות המובילות של BM25 כהמלצות כלליות.
+    """
+    # לוקחים את 3 התוצאות הראשונות (אלו עם סקור ה-BM25 הגבוה ביותר)
+    fallback_indices = top_indices[:3]
+    
+    context_docs = []
+    for idx in fallback_indices:
+        meta = bm25_data['metadatas'][idx]
+        img_md = _get_image_markdown(meta)
+        
+        context_docs.append(
+            f"Match: 0% (Fallback)\n"
+            f"Cocktail Name: {meta.get('name', 'Unknown')}\n"
+            f"Image Markdown: {img_md}\n"
+            f"Original Data:\n{bm25_data['docs'][idx]}"
+        )
+        
+    # מייצרים את מחרוזת ה-match_type שתאותת ל-LLM לעבור לניסוח של חלופות
+    ingredients_str = ', '.join(user_ingredients) if user_ingredients else "your ingredients"
+    match_type = f"fallback|{ingredients_str}"
+    
+    return "\n\n--- NEXT CANDIDATE ---\n\n".join(context_docs), match_type
 
 def retrieve_candidates(bm25_data, query, top_k=102):
     # נרמול השאילתה של המשתמש לפני הכל
@@ -385,25 +429,30 @@ def retrieve_candidates(bm25_data, query, top_k=102):
             'bm25_score': doc_scores[idx]
         })
 
-    # === החלק שהיה חסר: מיון, חיתוך, והחזרת נתונים לאפליקציה ===
+    # === סינון, מיון והחזרת נתונים לאפליקציה ===
     
-    results.sort(key=lambda x: (
+    # סינון: שומרים רק תוצאות עם יותר מ-0% התאמה
+    valid_results = [res for res in results if res['match_pct'] > 0]
+    
+    # מיון: אחוז התאמה הכי גבוה קודם, ואז לפי מינימום מרכיבים חסרים, ואז סקור של BM25
+    valid_results.sort(key=lambda x: (
         x['match_pct'], 
         -x['total_recipe_ingredients'], 
         x['bm25_score']
     ), reverse=True)
 
     # חותכים בחזרה ל-4 התוצאות הטובות ביותר כדי לא להעמיס על ה-LLM
-    final_top_results = results[:4]
+    final_top_results = valid_results[:4]
 
-    # החלטה על סוג המענה (Match Type) עבור הפרומפט של ה-LLM
-    if best_overall_match_count == 0:
+    # אם אחרי הסינון לא נשארו תוצאות רלוונטיות, עוברים ל-Fallback
+    if not final_top_results:
          return _handle_fallback(bm25_data, top_indices, user_ingredients)
     
+    # החלטה על סוג המענה (Match Type) עבור הפרומפט של ה-LLM
     if best_overall_match_count == len(user_ingredients):
         match_type = "strict"
     else:
-        # לוקחים את הקוקטייל עם האחוז הכי גבוה (הראשון ברשימה הממוינת)
+        # לוקחים את הקוקטייל עם האחוז הכי גבוה (הראשון ברשימה הממוינת והמסוננת)
         match_type = f"partial|{', '.join(final_top_results[0]['missing'])}"
         
     # בניית הקונטקסט ל-LLM מתוך 4 התוצאות המובילות בלבד
@@ -464,7 +513,18 @@ def stream_llm_response(client_unused, user_input, context, chat_history, match_
         
     messages.append({"role": "user", "content": prompt})
 
-    keys_pool = _API_KEYS if _API_KEYS else [os.getenv("GROQ_API_KEY_1")]
+    # משיכת המפתחות בצורה דינמית בתוך הפונקציה עם השמות המעודכנים שלך
+    keys_pool = [os.getenv("GROQ_API_KEY_1"), os.getenv("GROQ_API_KEY")]
+    keys_pool = [k for k in keys_pool if k] # מסנן ערכים ריקים או None
+    
+    # הגנה: אם מסיבה כלשהי לא נטענו מפתחות בכלל
+    if not keys_pool:
+        yield "\n\n⚠️ Configuration Error: No API keys were found in the environment."
+        return
+
+    # מוודא שהאינדקס הנוכחי לא חורג מגודל המערך
+    if _CURRENT_KEY_IDX >= len(keys_pool):
+        _CURRENT_KEY_IDX = 0
 
     for attempt in range(len(keys_pool)):
         try:
@@ -484,6 +544,12 @@ def stream_llm_response(client_unused, user_input, context, chat_history, match_
 
         except groq.RateLimitError:
             print(f"⚠️ API Key number {_CURRENT_KEY_IDX + 1} rate limited (429). Switching to the next key...")
+            # עדכון למפתח הבא בסבב
+            _CURRENT_KEY_IDX = (_CURRENT_KEY_IDX + 1) % len(keys_pool)
+            
+        except Exception as e:
+            # תופס גם שגיאות רשת אחרות
+            print(f"⚠️ Unexpected error with API Key {_CURRENT_KEY_IDX + 1}: {e}")
             _CURRENT_KEY_IDX = (_CURRENT_KEY_IDX + 1) % len(keys_pool)
 
-    yield "\n\n⚠️ Error: All available API keys have reached their daily rate limit. Please try again later."
+    yield "\n\n⚠️ Error: All available API keys have reached their limits or failed. Please try again later."
