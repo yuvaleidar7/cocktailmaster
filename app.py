@@ -26,7 +26,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.mount("/cocktail_images", StaticFiles(directory=current_dir), name="images")
+app.mount("/images", StaticFiles(directory=current_dir), name="images")
 
 @app.get("/")
 async def serve_index():
