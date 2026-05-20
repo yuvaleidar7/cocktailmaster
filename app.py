@@ -1,6 +1,7 @@
+# app.py
 import os
 from pathlib import Path
-from fastapi import FastAPI
+from fastapi import FastAPI, BackgroundTasks, Request  # <--- שינוי: הוספנו Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse, FileResponse
 from fastapi.staticfiles import StaticFiles 
@@ -8,6 +9,7 @@ from pydantic import BaseModel
 from groq import Groq
 import logic
 from dotenv import load_dotenv
+from posthog import Posthog
 
 current_dir = Path(__file__).parent
 env_path = current_dir / ".env"
@@ -16,6 +18,9 @@ load_dotenv(dotenv_path=env_path)
 
 # Uses GROQ_API_KEY_1 to match your rotation setup configuration
 client = Groq(api_key=os.getenv("GROQ_API_KEY_1"))
+
+# אתחול פוסטהוג - ודא שאתה מוסיף את ה-POSTHOG_API_KEY לקובץ ה-.env שלך
+posthog = Posthog(project_api_key=os.getenv("POSTHOG_API_KEY"), host='https://eu.posthog.com')
 
 app = FastAPI()
 
@@ -42,21 +47,67 @@ async def serve_manifest():
 
 bm25_data = logic.load_bm25_index()
 
+# מודל הבקשה המעודכן
 class ChatRequest(BaseModel):
     message: str
     history: list = []
+    session_id: str = "anonymous_session"  # <--- שינוי: הוספת מזהה סשן כברירת מחדל
+
+# פונקציית רקע לשליחת אירועי חיפוש מוצלחים
+def track_search_event(session_id: str, message: str, history_len: int, client_ip: str, match_type: str):
+    try:
+        posthog.capture(
+            distinct_id=session_id,
+            event="cocktail_search",
+            properties={
+                "$ip": client_ip,  # מעביר את ה-IP האמיתי לפוסטהוג לצורך הפקת מיקום גאוגרפי
+                "search_term": message,
+                "chat_history_length": history_len,
+                "match_type": match_type  # שומר את סוג ההתאמה (מדויק, spell-checker וכו')
+            }
+        )
+    except Exception as e:
+        print(f"⚠️ Error logging to PostHog: {e}")
+
+# פונקציית רקע לשליחת אירועים שבהם לא נמצא מתכון
+def track_failed_search_event(session_id: str, message: str, client_ip: str):
+    try:
+        posthog.capture(
+            distinct_id=session_id,
+            event="cocktail_search_failed",
+            properties={
+                "$ip": client_ip,
+                "missing_recipe_term": message
+            }
+        )
+    except Exception as e:
+        print(f"⚠️ Error logging failed search to PostHog: {e}")
 
 @app.post("/chat")
-async def chat_endpoint(request: ChatRequest):
-    exact_message = request.message.lower()
+async def chat_endpoint(request_data: ChatRequest, request: Request, background_tasks: BackgroundTasks):
+    exact_message = request_data.message.lower()
+    client_ip = request.client.host  # שליפת כתובת ה-IP של המשתמש
 
     context, match_type = logic.retrieve_candidates(bm25_data, exact_message, top_k=4)
 
+    # אם לא נמצא קוקטייל מתאים במאגר
     if context is None:
+        # תיעוד ברקע שהחיפוש נכשל ומה המשתמש ניסה למצוא
+        background_tasks.add_task(track_failed_search_event, request_data.session_id, exact_message, client_ip)
         return {"error": "No matching recipes found."}
 
+    # אם נמצא קוקטייל - מתעדים את החיפוש בהצלחה יחד עם סוג ההתאמה
+    background_tasks.add_task(
+        track_search_event, 
+        request_data.session_id, 
+        exact_message, 
+        len(request_data.history), 
+        client_ip,
+        match_type
+    )
+
     return StreamingResponse(
-        logic.stream_llm_response(client, request.message, context, request.history, match_type),
+        logic.stream_llm_response(client, request_data.message, context, request_data.history, match_type),
         media_type="text/plain"
     )
 

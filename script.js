@@ -40,6 +40,18 @@ async function searchCocktails() {
     const userInput = combined.join(', ');
     if (!userInput) return;
 
+    // --- ניהול מזהה סשן (Session ID) לטובת אנליטיקס ---
+    if (!sessionStorage.getItem('cocktail_session_id')) {
+        // יצירת מזהה רנדומלי ייחודי מבוסס זמן לסשן הנוכחי
+        const randomId = 'sess_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        sessionStorage.setItem('cocktail_session_id', randomId);
+    }
+    const sessionId = sessionStorage.getItem('cocktail_session_id');
+
+    // --- איסוף העדפת Dark Mode (אופציונלי - נשלח כחלק מההיסטוריה או מאפייני בקשה מורחבים אם תרצה) ---
+    // כרגע בודק אם קיים class של dark-mode על ה-body או ה-html
+    const isDarkMode = document.body.classList.contains('dark-mode') || document.documentElement.classList.contains('dark-mode');
+
     // --- שינויי UX ומובייל: השבתת הכפתור ועדכון הטקסט שלו בזמן עבודה ---
     searchBtn.disabled = true;
     searchBtn.innerText = "Mixing... ⏳";
@@ -57,7 +69,12 @@ async function searchCocktails() {
         const response = await fetch('/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: userInput, history: [] })
+            // הוספת ה-session_id לפיילוד שנשלח לשרת
+            body: JSON.stringify({ 
+                message: userInput, 
+                history: [],
+                session_id: sessionId
+            })
         });
         
         if (!response.ok) {

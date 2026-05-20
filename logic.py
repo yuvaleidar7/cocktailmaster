@@ -401,17 +401,7 @@ def retrieve_candidates(bm25_data, query, top_k=102):
         raw_ingredients = bm25_data['metadatas'][idx].get('ingredients_raw', '')
         
         # 1. ספירה אגרסיבית מבוססת יחידות מידה (מתעלם מפסיקים ושורות)
-        # מחפש מספרים שצמודים למידות כמו ml, oz, dash, pcs וכו'
-        measurements = re.findall(r'\b\d+(?:[./]\d+)?\s*(?:ml|oz|dash|dashes|drop|drops|tsp|tbsp|pcs|leaves|cl|part|parts|slice|wedge)\b', raw_ingredients, re.IGNORECASE)
-        
-        normalized_str = raw_ingredients.replace('\\n', ',').replace('\n', ',').replace(';', ',').replace('<br>', ',')
-        comma_separated = [ing.strip() for ing in normalized_str.split(',') if len(ing.strip()) > 2]
-        
-        # לוקחים את המספר הגבוה מבין השניים כדי להבטיח שלא נפספס מרכיבים
-        total_recipe_ingredients = max(len(measurements), len(comma_separated))
-        
-        if total_recipe_ingredients == 0:
-            total_recipe_ingredients = 1 # הגנה מקריסה
+        total_recipe_ingredients = count_recipe_ingredients(raw_ingredients)
             
         recipe_ingredients = raw_ingredients.lower()
         current_matched = []
@@ -491,7 +481,7 @@ def stream_llm_response(client_unused, user_input, context, chat_history, match_
 
     system_prompt = (
         "You are an expert, high-end AI Mixologist. Your task is to present cocktail recipes perfectly in English.\n"
-        "CRITICAL RULE: Your knowledge is strictly limited to the provided context. You MUST NOT use outside knowledge to modify, expand, or guess ingredient names. If the context says 'whiskey', you MUST write exactly 'whiskey' and NEVER autocorrect it to 'Bourbon' or 'Rye'. If it says 'tequila', do NOT add '100% Agave'. Copy the names exactly as they appear in the source.\n\n"
+        "CRITICAL RULE: Your knowledge is strictly limited to the provided context. You MUST ONLY output the exact cocktails provided in the Context. DO NOT invent, hallucinate, or suggest ANY cocktail that is not listed in the Context. You MUST NOT use outside knowledge to modify, expand, or guess ingredient names. If the context says 'whiskey', you MUST write exactly 'whiskey' and NEVER autocorrect it to 'Bourbon' or 'Rye'. If it says 'tequila', do NOT add '100% Agave'. Copy the names exactly as they appear in the source.\n\n"
         "MANDATORY MARKDOWN FORMATTING RULES:\n"
         "1. Each cocktail MUST start with its title as a Markdown Level 3 header on its own fresh line. Example: ### Boulevardier\n"
         "2. The exact 'Image Markdown' string provided in the context MUST be placed on its own line directly below the title header.\n"
@@ -517,10 +507,10 @@ def stream_llm_response(client_unused, user_input, context, chat_history, match_
 
     if match_type.startswith("fallback"):
         sug = match_type.split("|")[1] if "|" in match_type else "similar items"
-        prompt = f"Context:\n{context}\n\nTASK: Start your response with exactly this line: 'I could not find an exact match. Based on similar items (**{sug}**), try these cocktails:'. Then apply the MANDATORY MARKDOWN FORMATTING RULES."
+        prompt = f"Context:\n{context}\n\nTASK: Start your response with exactly this line: 'I could not find an exact match. Based on similar items (**{sug}**), try these cocktails:'. Then apply the MANDATORY MARKDOWN FORMATTING RULES. DO NOT ADD ANY COCKTAILS NOT IN THE CONTEXT."
     elif match_type.startswith("partial"):
         missing = match_type.split("|")[1] if "|" in match_type else "some items"
-        prompt = f"Context:\n{context}\n\nTASK: Start your response with exactly this line: 'No exact match found for **{missing}**. However, here are recipes based on your other base spirits and ingredients:'. Then apply the MANDATORY MARKDOWN FORMATTING RULES."
+        prompt = f"Context:\n{context}\n\nTASK: Start your response with exactly this line: 'No exact match found for **{missing}**. However, here are recipes based on your other base spirits and ingredients:'. Then apply the MANDATORY MARKDOWN FORMATTING RULES. DO NOT ADD ANY COCKTAILS NOT IN THE CONTEXT."
     else:
         prompt = f"Context:\n{context}\n\nTASK: Format and present these exact cocktails perfectly. Strictly apply the MANDATORY MARKDOWN FORMATTING RULES."
         
