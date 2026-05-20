@@ -346,23 +346,6 @@ def count_recipe_ingredients(raw_ingredients_str):
         parts = [p.strip() for p in re.split(r'\band\b|\&| - ', clean_str) if len(p.strip()) > 2]
         
     return max(len(parts), 1)
-
-def calc_true_match(user_list, recipe_list):
-    user_set = {str(item).lower().strip() for item in user_list}
-    recipe_set = {str(item).lower().strip() for item in recipe_list}
-    
-    if not recipe_set:
-        return 0.0, []
-        
-    intersection = user_set.intersection(recipe_set)
-    missing_lower = recipe_set - user_set
-    
-    missing = [item for item in recipe_list if str(item).lower().strip() in missing_lower]
-    
-    match_pct = (len(intersection) / len(recipe_set)) * 100
-    
-    return match_pct, missing
-
 def _handle_fallback(bm25_data, top_indices, user_ingredients):
     """
     מנגנון חלופי (Fallback) למקרה שלא נמצאה אף התאמה למרכיבים שהוזנו.
@@ -417,20 +400,39 @@ def retrieve_candidates(bm25_data, query, top_k=102):
     for idx in top_indices[:top_k]:
         raw_ingredients = bm25_data['metadatas'][idx].get('ingredients_raw', '')
         
-        clean_str = raw_ingredients.replace('\\n', '\n').replace('\\r', '')
-        recipe_list = [p.strip() for p in re.split(r',|\n|;|<br/?>', clean_str) if p.strip()]
-        if len(recipe_list) <= 1 and len(clean_str) > 20:
-            recipe_list = [p.strip() for p in re.split(r'\band\b|\&| - ', clean_str) if len(p.strip()) > 2]
+        # 1. ספירה אגרסיבית מבוססת יחידות מידה (מתעלם מפסיקים ושורות)
+        # מחפש מספרים שצמודים למידות כמו ml, oz, dash, pcs וכו'
+        measurements = re.findall(r'\b\d+(?:[./]\d+)?\s*(?:ml|oz|dash|dashes|drop|drops|tsp|tbsp|pcs|leaves|cl|part|parts|slice|wedge)\b', raw_ingredients, re.IGNORECASE)
+        
+        normalized_str = raw_ingredients.replace('\\n', ',').replace('\n', ',').replace(';', ',').replace('<br>', ',')
+        comma_separated = [ing.strip() for ing in normalized_str.split(',') if len(ing.strip()) > 2]
+        
+        # לוקחים את המספר הגבוה מבין השניים כדי להבטיח שלא נפספס מרכיבים
+        total_recipe_ingredients = max(len(measurements), len(comma_separated))
+        
+        if total_recipe_ingredients == 0:
+            total_recipe_ingredients = 1 # הגנה מקריסה
             
-        match_pct_float, current_missing = calc_true_match(user_ingredients, recipe_list)
-        match_pct = int(min(match_pct_float, 100))
-        total_recipe_ingredients = max(len(recipe_list), 1)
+        recipe_ingredients = raw_ingredients.lower()
+        current_matched = []
+        current_missing = []
+        
+        # 2. בדיקה כמה מרכיבים מצאנו בפועל מתוך מה שהמשתמש הקליד
+        for u_ing in user_ingredients:
+            if fuzz.token_set_ratio(u_ing, recipe_ingredients) >= 80:
+                current_matched.append(u_ing)
+            else:
+                current_missing.append(u_ing)
+                
+        # 3. חישוב האחוז האמיתי
+        match_pct = int((len(current_matched) / total_recipe_ingredients) * 100)
+        match_pct = min(match_pct, 100) # הגנה ממעבר של 100%
         
         # --- הדפסת דיבאג לטרמינל שלך כדי שנוכל לראות בדיוק מה קורה ---
         cocktail_name = bm25_data['metadatas'][idx].get('name', 'Unknown')
-        print(f"DEBUG: {cocktail_name} | Matched: {len(recipe_list) - len(current_missing)} | Total Ing: {total_recipe_ingredients} | Pct: {match_pct}%")
+        print(f"DEBUG: {cocktail_name} | Matched: {len(current_matched)} | Total Ing: {total_recipe_ingredients} | Pct: {match_pct}%")
         
-        best_overall_match_count = max(best_overall_match_count, len(recipe_list) - len(current_missing))
+        best_overall_match_count = max(best_overall_match_count, len(current_matched))
         
         results.append({
             'idx': idx,
@@ -489,7 +491,7 @@ def stream_llm_response(client_unused, user_input, context, chat_history, match_
 
     system_prompt = (
         "You are an expert, high-end AI Mixologist. Your task is to present cocktail recipes perfectly in English.\n"
-        "CRITICAL RULE: Your knowledge is strictly limited to the provided context. You MUST ONLY output the exact cocktails provided in the Context. DO NOT invent, hallucinate, or suggest ANY cocktail that is not listed in the Context. You MUST NOT use outside knowledge to modify, expand, or guess ingredient names. If the context says 'whiskey', you MUST write exactly 'whiskey' and NEVER autocorrect it to 'Bourbon' or 'Rye'. If it says 'tequila', do NOT add '100% Agave'. Copy the names exactly as they appear in the source.\n\n"
+        "CRITICAL RULE: Your knowledge is strictly limited to the provided context. You MUST NOT use outside knowledge to modify, expand, or guess ingredient names. If the context says 'whiskey', you MUST write exactly 'whiskey' and NEVER autocorrect it to 'Bourbon' or 'Rye'. If it says 'tequila', do NOT add '100% Agave'. Copy the names exactly as they appear in the source.\n\n"
         "MANDATORY MARKDOWN FORMATTING RULES:\n"
         "1. Each cocktail MUST start with its title as a Markdown Level 3 header on its own fresh line. Example: ### Boulevardier\n"
         "2. The exact 'Image Markdown' string provided in the context MUST be placed on its own line directly below the title header.\n"
@@ -515,10 +517,10 @@ def stream_llm_response(client_unused, user_input, context, chat_history, match_
 
     if match_type.startswith("fallback"):
         sug = match_type.split("|")[1] if "|" in match_type else "similar items"
-        prompt = f"Context:\n{context}\n\nTASK: Start your response with exactly this line: 'I could not find an exact match. Based on similar items (**{sug}**), try these cocktails:'. Then apply the MANDATORY MARKDOWN FORMATTING RULES. DO NOT ADD ANY COCKTAILS NOT IN THE CONTEXT."
+        prompt = f"Context:\n{context}\n\nTASK: Start your response with exactly this line: 'I could not find an exact match. Based on similar items (**{sug}**), try these cocktails:'. Then apply the MANDATORY MARKDOWN FORMATTING RULES."
     elif match_type.startswith("partial"):
         missing = match_type.split("|")[1] if "|" in match_type else "some items"
-        prompt = f"Context:\n{context}\n\nTASK: Start your response with exactly this line: 'No exact match found for **{missing}**. However, here are recipes based on your other base spirits and ingredients:'. Then apply the MANDATORY MARKDOWN FORMATTING RULES. DO NOT ADD ANY COCKTAILS NOT IN THE CONTEXT."
+        prompt = f"Context:\n{context}\n\nTASK: Start your response with exactly this line: 'No exact match found for **{missing}**. However, here are recipes based on your other base spirits and ingredients:'. Then apply the MANDATORY MARKDOWN FORMATTING RULES."
     else:
         prompt = f"Context:\n{context}\n\nTASK: Format and present these exact cocktails perfectly. Strictly apply the MANDATORY MARKDOWN FORMATTING RULES."
         
@@ -564,11 +566,3 @@ def stream_llm_response(client_unused, user_input, context, chat_history, match_
             _CURRENT_KEY_IDX = (_CURRENT_KEY_IDX + 1) % len(keys_pool)
 
     yield "\n\n⚠️ Error: All available API keys have reached their limits or failed. Please try again later."
-
-if __name__ == "__main__":
-    user = ["Vodka","Tequila","Lemon Juice","Soda","Cola","Espresso","Cream","Egg White","Egg Yolk","Salt"]
-    recipe = ["Tequila","Lime","Salt","Pink Grapefruit Soda"]
-    pct, missing = calc_true_match(user, recipe)
-    assert pct == 50.0, f"Expected 50.0, got {pct}"
-    assert missing == ["Lime", "Pink Grapefruit Soda"], f"Expected ['Lime', 'Pink Grapefruit Soda'], got {missing}"
-    print("calc_true_match logic passes assertion!")
