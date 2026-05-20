@@ -318,10 +318,9 @@
             transform: translateY(-2px);
         }
 
-        /* ── Responsive ─────────────────────────────────────── */
         @media (max-width: 500px) {
             body {
-                padding-bottom: 100px; /* מניעת הסתרת תוכן על ידי הבר הצף */
+                padding-bottom: 40px; /* הקטנו את הריווח כי הכפתור כבר לא תופס מקום למטה */
             }
 
             .container {
@@ -332,20 +331,15 @@
                 font-size: 1.6rem;
             }
 
-            /* הפיכת אזור הכפתור לבר תחתון קבוע (Sticky Bottom Bar) */
+            /* הצמדת אזור הכפתור מתחת לתפריט המרכיבים (Sticky Top) */
             .button-row.is-sticky {
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                background: rgba(255, 255, 255, 0.9);
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-                padding: 16px 20px calc(16px + env(safe-area-inset-bottom));
-                margin-top: 0;
-                box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.05);
+                position: sticky;
+                top: 10px; /* המרחק מהקצה העליון בעת גלילה */
+                background: var(--container-bg); /* שימוש ברקע הלבן כדי שהטקסט לא ישתקף מאחוריו */
+                padding: 15px 0;
+                margin-top: 10px;
+                margin-bottom: 20px;
                 z-index: 1000;
-                border-top: 1px solid rgba(169, 130, 56, 0.15);
             }
 
             #searchBtn {
