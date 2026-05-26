@@ -20,7 +20,7 @@ def get_cocktail_links():
         "https://iba-world.com/cocktails/the-new-era/"
     ]
 
-    cocktail_map = {} # משנים למילון: קישור קוקטייל -> קישור תמונה מהגריד
+    cocktail_map = {} 
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
 
     for category in categories:
@@ -46,12 +46,11 @@ def get_cocktail_links():
                     if href.startswith('https://iba-world.com/iba-cocktail/'):
                         found_on_page += 1
                         
-                        # התיקון: שולפים את התמונה ישירות מהכרטיסייה של הקוקטייל בגריד
+                        
                         img_tag = a_tag.find('img')
                         if img_tag and img_tag.get('src'):
                             cocktail_map[href] = img_tag['src']
                         elif href not in cocktail_map:
-                            # אם הגענו לקישור של הטקסט/כותרת (שאין בו תמונה), נשמור רק אם לא מצאנו את התמונה קודם
                             cocktail_map[href] = None
 
                 logging.info(f"Scanned page {page}. Unique cocktails in map so far: {len(cocktail_map)}")
@@ -75,15 +74,12 @@ def scrape_cocktail_page(url, pre_extracted_image_url=None):
         response.raise_for_status()
         soup = BeautifulSoup(response.text, 'html.parser')
 
-        # חילוץ שם הקוקטייל
         name_tag = soup.find('h1')
         name = name_tag.text.strip() if name_tag else "Unknown"
 
-        # --- חילוץ והורדת התמונה ---
         image_path = "No Image"
         image_url = pre_extracted_image_url if pre_extracted_image_url else ""
         
-        # גיבוי: אם לא הגיעה תמונה מהגריד, מנסים בכל זאת לגרד מהעמוד הפנימי
         if not image_url:
             og_image = soup.find('meta', property='og:image')
             if og_image and og_image.get('content'):
@@ -109,9 +105,7 @@ def scrape_cocktail_page(url, pre_extracted_image_url=None):
                 logging.warning(f" -> Failed to download image for {name}: {img_e}")
         else:
             logging.warning(f" -> No image available for {name}")
-        # ------------------------------------------
-
-        # חילוץ תוכן חסין-תקלות
+    
         content_div = soup.find('div', class_='elementor-widget-theme-post-content')
         if content_div:
             full_text = content_div.get_text(separator=' ', strip=True)
@@ -170,7 +164,7 @@ def main():
 
     logging.info(f"Starting extraction for {test_limit} cocktails...")
 
-    # 2. גירוד הנתונים
+
     for i, (link, pre_img_url) in enumerate(items_list[:test_limit]):
         logging.info(f"Scraping [{i + 1}/{test_limit}]: {link}")
         data = scrape_cocktail_page(link, pre_extracted_image_url=pre_img_url)
@@ -178,8 +172,6 @@ def main():
             cocktails_data.append(data)
 
         time.sleep(1.5)
-
-    # 3. שמירת הנתונים
     df = pd.DataFrame(cocktails_data)
     csv_filename = "iba_live_scraped_data.csv"
     df.to_csv(csv_filename, index=False, encoding='utf-8-sig')
