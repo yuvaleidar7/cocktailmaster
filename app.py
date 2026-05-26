@@ -10,6 +10,7 @@ from groq import Groq
 import logic
 from dotenv import load_dotenv
 from posthog import Posthog
+from fastapi import FastAPI, BackgroundTasks, Request, HTTPException
 
 current_dir = Path(__file__).parent
 env_path = current_dir / ".env"
@@ -47,11 +48,13 @@ async def serve_manifest():
 
 bm25_data = logic.load_bm25_index()
 
-# מודל הבקשה המעודכן
+# מודל הבקשה המעודכן המפריד בין משקה הבסיס לשאר המרכיבים
 class ChatRequest(BaseModel):
-    message: str
+    base_spirits: list = []
+    other_ingredients: list = []
+    flavor: str = "All"
     history: list = []
-    session_id: str = "anonymous_session"  # <--- שינוי: הוספת מזהה סשן כברירת מחדל
+    session_id: str = "anonymous_session"
 
 # פונקציית רקע לשליחת אירועי חיפוש מוצלחים
 def track_search_event(session_id: str, message: str, history_len: int, client_ip: str, match_type: str):
@@ -85,18 +88,23 @@ def track_failed_search_event(session_id: str, message: str, client_ip: str):
 
 @app.post("/chat")
 async def chat_endpoint(request_data: ChatRequest, request: Request, background_tasks: BackgroundTasks):
-    exact_message = request_data.message.lower()
-    client_ip = request.client.host  # שליפת כתובת ה-IP של המשתמש
+    client_ip = request.client.host 
 
-    context, match_type = logic.retrieve_candidates(bm25_data, exact_message, top_k=4)
+    # העברת המשתנים המופרדים ללוגיקה
+    context, match_type = logic.retrieve_candidates(
+        bm25_data, 
+        request_data.base_spirits,
+        request_data.other_ingredients,
+        request_data.flavor, 
+        top_k=4
+    )
 
-    # אם לא נמצא קוקטייל מתאים במאגר
+    exact_message = f"Base: {request_data.base_spirits}, Other: {request_data.other_ingredients}, Flavor: {request_data.flavor}"
+
     if context is None:
-        # תיעוד ברקע שהחיפוש נכשל ומה המשתמש ניסה למצוא
         background_tasks.add_task(track_failed_search_event, request_data.session_id, exact_message, client_ip)
-        return {"error": "No matching recipes found."}
-
-    # אם נמצא קוקטייל - מתעדים את החיפוש בהצלחה יחד עם סוג ההתאמה
+        # זורקים שגיאת 404 כדי שהדפדפן יפעיל את הטיפול בשגיאות ויציג הודעה נקייה למשתמש
+        raise HTTPException(status_code=404, detail="No matching recipes found.")
     background_tasks.add_task(
         track_search_event, 
         request_data.session_id, 
@@ -107,7 +115,7 @@ async def chat_endpoint(request_data: ChatRequest, request: Request, background_
     )
 
     return StreamingResponse(
-        logic.stream_llm_response(client, request_data.message, context, request_data.history, match_type),
+        logic.stream_llm_response(client, exact_message, context, request_data.history, match_type),
         media_type="text/plain"
     )
 

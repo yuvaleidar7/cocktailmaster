@@ -18,7 +18,6 @@ REPLACEMENTS = {
     "100% agave nectar": "agave Nectar (sugar syrup)",
     "Honey Syrup": "honey syrup (sugar syrup)",
 
-    
     # מיצים 
     "freshly squeezed lemon juice": "lemon juice",
     "fresh lemon juice": "lemon juice",
@@ -47,8 +46,9 @@ REPLACEMENTS = {
     "lagavulin": "smoked whisky",
     "islay whisky": "smoked whisky",
     "islay whiskey": "smoked whisky",
-    
-
+    "smoked whiskey": "smoked whisky",
+    "Smoked Whisky": "smoked whisky",
+  
     # ליקרי תפוז
     "cointreau": "orange liqueur",
     "triple sec": "orange liqueur",
@@ -75,6 +75,8 @@ REPLACEMENTS = {
     "tequila blanco": "tequila",
     "tequila silver": "tequila",
     "tequila reposado": "tequila",
+    "Tequila 100% agave": "tequila",
+    "100% Agave Tequila": "tequila",
     "100% agave tequila": "tequila",
     "Tequila 100% agave": "tequila",
     "blanco tequila": "tequila",
@@ -83,6 +85,7 @@ REPLACEMENTS = {
     "anejo mezcal": "mezcal",
     "joven mezcal": "mezcal",
     "Espadin Mezcal": "mezcal",
+    
 
     # רום וקשאסה
     "white cuban rum": "white rum",
@@ -91,6 +94,7 @@ REPLACEMENTS = {
     "Ron Profundo Havana Club":"white rum",
     "Jamaica Overproof White Rum":"white rum",
     "Martinique Molasses Rhum": "white rum",
+    "amaica Overproof White Rum": "white rum",
     
     "Goslings Rum": "dark rum (black rum)",
 
@@ -100,12 +104,8 @@ REPLACEMENTS = {
     "Aged Rum":"dark rum",
     "dark jamaican rum": "dark rum",
     "añejo rum": "dark rum",
-    "añejo rum": "dark rum",
     "Demerara Rum": "dark rum",
     "Amber Jamaican Rum": "dark rum",
-     
-
-
 
     "cachaça": "cachaça",
     "cachaca": "cachaça",
@@ -139,10 +139,8 @@ REPLACEMENTS = {
     # ליקרי מנטה / קרם דה מנטה
     "green crème de menthe": "green mint liqueur",
     "green creme de menthe": "green mint liqueur",
-
     "white crème de menthe": "white mint liqueur",
     "white creme de menthe": "white mint liqueur",
-
     "crème de menthe": "mint liqueur",
     "creme de menthe": "mint liqueur",
 
@@ -180,7 +178,6 @@ REPLACEMENTS = {
     "granulated sugar": "sugar",
     "White Cane Sugar": "sugar",
 
-
     # ביצים, שמנת ומחיות פרי
     "white of one egg": "egg white(optional)",
     "fresh egg white": "egg white(optional)",
@@ -217,39 +214,28 @@ REPLACEMENTS = {
     "lemon vodka": "vodka",
     
     # מבעבעים
-    "champagne": "sparkling wine",
-    "prosecco": "sparkling wine",
-    "cava": "sparkling wine"
+    "champagne":"sparkling wine",
+    "prosecco":"sparkling wine",
+    "cava":"sparkling wine",
+    "Red Tawny Port Wine":"red port",
+    "Chilled Champagne":"sparkling wine",
+     "Chilled sparkling wine":"sparkling wine",
 }
 
+def apply_replacements(text, replacements_dict):
+    if not isinstance(text, str):
+        return text
+    
+    text = text.replace('\n', ', ')
+    
+    for original, replacement in replacements_dict.items():
+        pattern = re.compile(r'\b' + re.escape(original) + r'\b', re.IGNORECASE)
+        text = pattern.sub(replacement, text)
+    return text
 
 def clean_and_transform_cocktails(file_path):
-    print(f"1. Loading raw data from {file_path}...")
+    print("1. Loading raw data...")
     df = pd.read_csv(file_path, encoding='utf-8')
-
-    if 'Preparation' not in df.columns:
-        df['Preparation'] = "Combine all ingredients and mix well."
-    else:
-        df['Preparation'] = df['Preparation'].fillna("Combine all ingredients and mix well.")
-
-    if 'Glassware' not in df.columns:
-        df['Glassware'] = "Standard Glass"
-    else:
-        df['Glassware'] = df['Glassware'].fillna("Standard Glass")
-
-    if 'Image_Path' not in df.columns:
-        df['Image_Path'] = "No Image"
-    else:
-        df['Image_Path'] = df['Image_Path'].fillna("No Image")
-
-    print("1.5. Normalizing ingredient names in dataframe...")
-    sorted_keys = sorted(REPLACEMENTS.keys(), key=len, reverse=True)
-    for key in sorted_keys:
-        pattern = re.compile(re.escape(key), re.IGNORECASE)
-        # מנקה את רשימת המרכיבים
-        df['Ingredients'] = df['Ingredients'].apply(lambda x: pattern.sub(REPLACEMENTS[key], str(x)) if pd.notnull(x) else x)
-        # התוספת החדשה - מנקה גם את אופן ההכנה!
-        df['Preparation'] = df['Preparation'].apply(lambda x: pattern.sub(REPLACEMENTS[key], str(x)) if pd.notnull(x) else x)
 
     print("2. Parsing and converting measurements to ml...")
 
@@ -268,12 +254,19 @@ def clean_and_transform_cocktails(file_path):
             items = text.split(',')
         return "\n".join([f"- {ing.strip()}" for ing in items if ing.strip()])
 
+    # --- התיקון: הפעלת פונקציית ההחלפה על המרכיבים ואופן ההכנה ---
+    df['Ingredients'] = df['Ingredients'].apply(lambda x: apply_replacements(x, REPLACEMENTS))
+    df['Preparation'] = df['Preparation'].apply(lambda x: apply_replacements(x, REPLACEMENTS))
+    # --------------------------------------------------------------
+
     df['Ingredients_Cleaned'] = df['Ingredients'].apply(convert_measurements)
     df['Preparation_Cleaned'] = df['Preparation'].apply(convert_measurements)
     df['Ingredients_Cleaned'] = df['Ingredients_Cleaned'].apply(format_ingredients_as_bullets)
 
+    # הוספת Flavor Profile למסמך הוקטורי כדי שיהיה ניתן לחפש אותו
     df['Vector_Document'] = (
             "Cocktail: " + df['Cocktail Name'] + "\n" +
+            "Flavor Profile: " + df['Flavor Profile'].fillna('Unknown') + "\n" +
             "Glassware: " + df['Glassware'] + "\n" +
             "Ingredients:\n" + df['Ingredients_Cleaned'] + "\n\n" +
             "Preparation:\n" + df['Preparation_Cleaned']

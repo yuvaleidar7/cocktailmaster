@@ -29,38 +29,36 @@ async function searchCocktails() {
     const resultsArea = document.getElementById('resultsArea');
     const freeText = document.getElementById('ingredientsInput').value.trim();
 
-    // Collect all checked chip values
-    const checked = document.querySelectorAll('.tag-label input[type="checkbox"]:checked');
-    const selected = Array.from(checked).map(cb => cb.value);
+    // 1. איסוף משקאות בסיס (רק מהקטגוריה הראשונה)
+    const baseSpiritsChecked = document.querySelectorAll('.category:nth-of-type(1) .tag-label input[type="checkbox"]:checked');
+    const selectedBaseSpirits = Array.from(baseSpiritsChecked).map(cb => cb.value);
 
-    // Combine chips + free-text into one query
-    const combined = [...selected];
-    if (freeText) combined.push(freeText);
+    // 2. איסוף שאר המרכיבים (מכל שאר הקטגוריות, למעט הטעם)
+    const otherChecked = document.querySelectorAll('.category:not(:nth-of-type(1)):not(:last-of-type) .tag-label input[type="checkbox"]:checked');
+    const selectedOther = Array.from(otherChecked).map(cb => cb.value);
 
-    const userInput = combined.join(', ');
-    if (!userInput) return;
+    // 3. הוספת טקסט חופשי לשאר המרכיבים אם הוזן
+    if (freeText) selectedOther.push(freeText);
 
-    // --- ניהול מזהה סשן (Session ID) לטובת אנליטיקס ---
+    // 4. איסוף הטעם
+    const selectedFlavorRadio = document.querySelector('input[name="flavor"]:checked');
+    const selectedFlavor = selectedFlavorRadio ? selectedFlavorRadio.value : "All";
+
+    // עצירה אם לא נבחר כלום
+    if (selectedBaseSpirits.length === 0 && selectedOther.length === 0 && selectedFlavor === "All") return;
+
     if (!sessionStorage.getItem('cocktail_session_id')) {
-        // יצירת מזהה רנדומלי ייחודי מבוסס זמן לסשן הנוכחי
         const randomId = 'sess_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
         sessionStorage.setItem('cocktail_session_id', randomId);
     }
     const sessionId = sessionStorage.getItem('cocktail_session_id');
 
-    // --- איסוף העדפת Dark Mode (אופציונלי - נשלח כחלק מההיסטוריה או מאפייני בקשה מורחבים אם תרצה) ---
-    // כרגע בודק אם קיים class של dark-mode על ה-body או ה-html
-    const isDarkMode = document.body.classList.contains('dark-mode') || document.documentElement.classList.contains('dark-mode');
-
-    // --- שינויי UX ומובייל: השבתת הכפתור ועדכון הטקסט שלו בזמן עבודה ---
     searchBtn.disabled = true;
     searchBtn.innerText = "Mixing... ⏳";
     searchBtn.style.opacity = "0.7";
 
     resultsArea.style.display = 'block';
     resultsArea.innerHTML = "Gathering components... ⏳";
-    
-    // גלילה חלקה אוטומטית לעבר אזור התוצאות במובייל כדי לחסוך גלילה ידנית
     resultsArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     let accumulatedText = "";
@@ -69,13 +67,16 @@ async function searchCocktails() {
         const response = await fetch('/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            // הוספת ה-session_id לפיילוד שנשלח לשרת
+            // שולחים את משקאות הבסיס בנפרד משאר המרכיבים
             body: JSON.stringify({ 
-                message: userInput, 
+                base_spirits: selectedBaseSpirits,
+                other_ingredients: selectedOther,
+                flavor: selectedFlavor,
                 history: [],
                 session_id: sessionId
             })
         });
+        
         
         if (!response.ok) {
             resultsArea.innerHTML = "No matching recipes found or server error.";
@@ -92,11 +93,14 @@ async function searchCocktails() {
             const chunk = decoder.decode(value);
             accumulatedText += chunk;
 
-            // החלפת לוכסנים הפוכים במידת הצורך עבור תמונות
-            const sanitizedText = accumulatedText.replace(/\\/g, '/');
+        // החלפת לוכסנים הפוכים במידת הצורך עבור תמונות
+        let sanitizedText = accumulatedText.replace(/\\/g, '/');
 
-            // הצגת הטקסט והזרמתו בזמן אמת לעמוד
-            resultsArea.innerHTML = marked.parse(sanitizedText);
+        // הוספת ירידת שורה חצי-אוטומטית לפני Flavor Profile
+        sanitizedText = sanitizedText.replace("Flavor Profile:", "\n\nFlavor Profile:");
+
+        // הצגת הטקסט והזרמתו בזמן אמת לעמוד
+        resultsArea.innerHTML = marked.parse(sanitizedText);
         }
 
     } catch (error) {
