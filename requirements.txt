@@ -10,3 +10,4 @@ pydantic>=2.0.0
 python-dotenv>=1.0.0
 pyspellchecker>=0.8.0
 pandas>=2.0.0
+posthog
