@@ -1,0 +1,4509 @@
+{
+  "total_cocktails": 102,
+  "cocktail_registry": [
+    {
+      "name": "Alexander",
+      "flavor": "Sweet",
+      "raw": "- 30 ml Cognac 30 ml chocolate liqueur (Brown) 30 ml cream",
+      "parsed": [
+        "Cognac 30 ml chocolate liqueur (Brown) 30 ml cream"
+      ],
+      "normalized": [
+        "cognac 30 ml chocolate liqueur (brown) 30 ml cream"
+      ],
+      "base_spirits": [
+        "cognac 30 ml chocolate liqueur (brown) 30 ml cream"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Americano",
+      "flavor": "Sweet & Bitter",
+      "raw": "- 30 ml campari 30 ml sweet vermouth A splash of Soda Water",
+      "parsed": [
+        "campari 30 ml sweet vermouth A splash of Soda Water"
+      ],
+      "normalized": [
+        "campari 30 ml sweet vermouth a splash of soda water"
+      ],
+      "base_spirits": [],
+      "other_ings": [
+        "campari 30 ml sweet vermouth a splash of soda water"
+      ]
+    },
+    {
+      "name": "Angel Face",
+      "flavor": "Spirit-Forward",
+      "raw": "- 30 ml Gin 30 ml apricot brandy 30 ml apple brandy",
+      "parsed": [
+        "Gin 30 ml apricot brandy 30 ml apple brandy"
+      ],
+      "normalized": [
+        "gin 30 ml apricot brandy 30 ml apple brandy"
+      ],
+      "base_spirits": [
+        "gin 30 ml apricot brandy 30 ml apple brandy"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Aviation",
+      "flavor": "Sweet & Sour",
+      "raw": "- 45 ml Gin 15 ml cherry liqueur Luxardo 15 ml lemon juice 1 Bar Spoon Crème de Violette",
+      "parsed": [
+        "Gin 15 ml cherry liqueur Luxardo 15 ml lemon juice 1 Bar Spoon Crème de Violette"
+      ],
+      "normalized": [
+        "gin 15 ml cherry liqueur luxardo 15 ml lemon juice 1 bar spoon crème de violette"
+      ],
+      "base_spirits": [
+        "gin 15 ml cherry liqueur luxardo 15 ml lemon juice 1 bar spoon crème de violette"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Between the Sheets",
+      "flavor": "Sweet & Sour",
+      "raw": "- 30 ml White Rum 30 ml Cognac 30 ml orange liqueur 20 ml lemon juice",
+      "parsed": [
+        "White Rum 30 ml Cognac 30 ml orange liqueur 20 ml lemon juice"
+      ],
+      "normalized": [
+        "white rum 30 ml cognac 30 ml orange liqueur 20 ml lemon juice"
+      ],
+      "base_spirits": [
+        "white rum 30 ml cognac 30 ml orange liqueur 20 ml lemon juice"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Boulevardier",
+      "flavor": "Sweet & Bitter",
+      "raw": "- 45 ml whiskey or whiskey 30 ml campari 30 ml sweet vermouth",
+      "parsed": [
+        "whiskey or whiskey 30 ml campari 30 ml sweet vermouth"
+      ],
+      "normalized": [
+        "whiskey or whiskey 30 ml campari 30 ml sweet vermouth"
+      ],
+      "base_spirits": [
+        "whiskey or whiskey 30 ml campari 30 ml sweet vermouth"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Brandy Crusta",
+      "flavor": "Sweet, Sour, Bitter",
+      "raw": "- 52.5 ml brandy 7.5 ml cherry liqueur Luxardo 1 Bar Spoon Curacao 15 ml lemon juice 1 Bar Spoon sugar syrup 2 Dashes angostura bitters",
+      "parsed": [
+        "brandy 7.5 ml cherry liqueur Luxardo 1 Bar Spoon Curacao 15 ml lemon juice 1 Bar Spoon sugar syrup 2 Dashes angostura bitters"
+      ],
+      "normalized": [
+        "brandy 7.5 ml cherry liqueur luxardo 1 bar spoon curacao 15 ml lemon juice 1 bar spoon sugar syrup 2 dashes angostura bitters"
+      ],
+      "base_spirits": [
+        "brandy 7.5 ml cherry liqueur luxardo 1 bar spoon curacao 15 ml lemon juice 1 bar spoon sugar syrup 2 dashes angostura bitters"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Casino",
+      "flavor": "Sweet, Sour, Bitter",
+      "raw": "- 40 ml gin 10 ml cherry liqueur Luxardo 10 ml lemon juice 2 Dashes Orange Bitters",
+      "parsed": [
+        "gin 10 ml cherry liqueur Luxardo 10 ml lemon juice 2 Dashes Orange Bitters"
+      ],
+      "normalized": [
+        "gin 10 ml cherry liqueur luxardo 10 ml lemon juice 2 dashes orange bitters"
+      ],
+      "base_spirits": [
+        "gin 10 ml cherry liqueur luxardo 10 ml lemon juice 2 dashes orange bitters"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Clover Club",
+      "flavor": "Sweet & Sour",
+      "raw": "- 45 ml Gin 15 ml Raspberry Syrup 15 ml lemon juice Few Drops of Egg White",
+      "parsed": [
+        "Gin 15 ml Raspberry Syrup 15 ml lemon juice Few Drops of Egg White"
+      ],
+      "normalized": [
+        "gin 15 ml raspberry syrup 15 ml lemon juice few drops of egg white"
+      ],
+      "base_spirits": [
+        "gin 15 ml raspberry syrup 15 ml lemon juice few drops of egg white"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Daiquiri",
+      "flavor": "Sweet & Sour",
+      "raw": "- 60 ml White Cuban Ron 20 ml lime juice 2 Bar Spoons Superfine Sugar",
+      "parsed": [
+        "White Cuban Ron 20 ml lime juice 2 Bar Spoons Superfine Sugar"
+      ],
+      "normalized": [
+        "white cuban ron 20 ml lime juice 2 bar spoons superfine sugar"
+      ],
+      "base_spirits": [],
+      "other_ings": [
+        "white cuban ron 20 ml lime juice 2 bar spoons superfine sugar"
+      ]
+    },
+    {
+      "name": "Dry Martini",
+      "flavor": "Dry",
+      "raw": "- 60 ml Gin 10 ml Dry Vermouth",
+      "parsed": [
+        "Gin 10 ml Dry Vermouth"
+      ],
+      "normalized": [
+        "gin 10 ml dry vermouth"
+      ],
+      "base_spirits": [
+        "gin 10 ml dry vermouth"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Gin Fizz",
+      "flavor": "Sweet & Sour",
+      "raw": "- 45 ml Gin 30 ml lemon juice 10 ml sugar syrup Splash of Soda Water",
+      "parsed": [
+        "Gin 30 ml lemon juice 10 ml sugar syrup Splash of Soda Water"
+      ],
+      "normalized": [
+        "gin 30 ml lemon juice 10 ml sugar syrup splash of soda water"
+      ],
+      "base_spirits": [
+        "gin 30 ml lemon juice 10 ml sugar syrup splash of soda water"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Hanky Panky",
+      "flavor": "Sweet & Bitter",
+      "raw": "- 45 ml gin 45 ml sweet vermouth 7.5 ml Fernet",
+      "parsed": [
+        "gin 45 ml sweet vermouth 7.5 ml Fernet"
+      ],
+      "normalized": [
+        "gin 45 ml sweet vermouth 7.5 ml fernet"
+      ],
+      "base_spirits": [
+        "gin 45 ml sweet vermouth 7.5 ml fernet"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "John Collins",
+      "flavor": "Sweet & Sour",
+      "raw": "- 45 ml Gin 30 ml lemon juice 15 ml sugar syrup 60 ml  Soda Water",
+      "parsed": [
+        "Gin 30 ml lemon juice 15 ml sugar syrup 60 ml  Soda Water"
+      ],
+      "normalized": [
+        "gin 30 ml lemon juice 15 ml sugar syrup 60 ml  soda water"
+      ],
+      "base_spirits": [
+        "gin 30 ml lemon juice 15 ml sugar syrup 60 ml  soda water"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Last Word",
+      "flavor": "Sweet & Sour",
+      "raw": "- 22.5 ml Gin 22.5 ml green chartreuse 22.5 ml cherry liqueur Luxardo 22.5 ml lime juice",
+      "parsed": [
+        "Gin 22.5 ml green chartreuse 22.5 ml cherry liqueur Luxardo 22.5 ml lime juice"
+      ],
+      "normalized": [
+        "gin 22.5 ml green chartreuse 22.5 ml cherry liqueur luxardo 22.5 ml lime juice"
+      ],
+      "base_spirits": [
+        "gin 22.5 ml green chartreuse 22.5 ml cherry liqueur luxardo 22.5 ml lime juice"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Manhattan",
+      "flavor": "Sweet & Bitter",
+      "raw": "- 50 ml whiskey 20 ml sweet vermouth 1 dash Angostura Bitters",
+      "parsed": [
+        "whiskey 20 ml sweet vermouth 1 dash Angostura Bitters"
+      ],
+      "normalized": [
+        "whiskey 20 ml sweet vermouth 1 dash angostura bitters"
+      ],
+      "base_spirits": [
+        "whiskey 20 ml sweet vermouth 1 dash angostura bitters"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Martinez",
+      "flavor": "Sweet & Bitter",
+      "raw": "- 45 ml gin 45 ml sweet vermouth 1 Bar Spoon cherry liqueur Luxardo 2 Dashes Orange Bitters",
+      "parsed": [
+        "gin 45 ml sweet vermouth 1 Bar Spoon cherry liqueur Luxardo 2 Dashes Orange Bitters"
+      ],
+      "normalized": [
+        "gin 45 ml sweet vermouth 1 bar spoon cherry liqueur luxardo 2 dashes orange bitters"
+      ],
+      "base_spirits": [
+        "gin 45 ml sweet vermouth 1 bar spoon cherry liqueur luxardo 2 dashes orange bitters"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Mary Pickford",
+      "flavor": "Sweet",
+      "raw": "- 45 ml White Rum 45 ml Fresh Pineapple Juice 7.5 ml cherry liqueur Luxardo 5 ml Grenadine Syrup",
+      "parsed": [
+        "White Rum 45 ml Fresh Pineapple Juice 7.5 ml cherry liqueur Luxardo 5 ml Grenadine Syrup"
+      ],
+      "normalized": [
+        "white rum 45 ml fresh pineapple juice 7.5 ml cherry liqueur luxardo 5 ml grenadine syrup"
+      ],
+      "base_spirits": [
+        "white rum 45 ml fresh pineapple juice 7.5 ml cherry liqueur luxardo 5 ml grenadine syrup"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Monkey Gland",
+      "flavor": "Sweet",
+      "raw": "- 45 ml gin 45 ml orange juice 1 Tablespoon Absinthe 1 Tablespoon Grenadine Syrup",
+      "parsed": [
+        "gin 45 ml orange juice 1 Tablespoon Absinthe 1 Tablespoon Grenadine Syrup"
+      ],
+      "normalized": [
+        "gin 45 ml orange juice 1 tablespoon absinthe 1 tablespoon grenadine syrup"
+      ],
+      "base_spirits": [
+        "gin 45 ml orange juice 1 tablespoon absinthe 1 tablespoon grenadine syrup"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Negroni",
+      "flavor": "Sweet & Bitter",
+      "raw": "- 30 ml Gin 30 ml campari 30 ml sweet vermouth",
+      "parsed": [
+        "Gin 30 ml campari 30 ml sweet vermouth"
+      ],
+      "normalized": [
+        "gin 30 ml campari 30 ml sweet vermouth"
+      ],
+      "base_spirits": [
+        "gin 30 ml campari 30 ml sweet vermouth"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Old Fashioned",
+      "flavor": "Sweet & Bitter",
+      "raw": "- 45 ml whiskey or whiskey 1 sugar Few Dashes Angostura Bitters Few Dashes Plain Water",
+      "parsed": [
+        "whiskey or whiskey 1 sugar Few Dashes Angostura Bitters Few Dashes Plain Water"
+      ],
+      "normalized": [
+        "whiskey or whiskey 1 sugar few dashes angostura bitters few dashes plain water"
+      ],
+      "base_spirits": [
+        "whiskey or whiskey 1 sugar few dashes angostura bitters few dashes plain water"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Paradise",
+      "flavor": "Spirit-Forward",
+      "raw": "- 30 ml Gin 20 ml apricot brandy 15 ml orange juice",
+      "parsed": [
+        "Gin 20 ml apricot brandy 15 ml orange juice"
+      ],
+      "normalized": [
+        "gin 20 ml apricot brandy 15 ml orange juice"
+      ],
+      "base_spirits": [
+        "gin 20 ml apricot brandy 15 ml orange juice"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Planters Punch",
+      "flavor": "Sweet & Sour",
+      "raw": "- 45 ml Jamaican Rum 15 ml Lime Juice 30 ml Sugar Cane Juice",
+      "parsed": [
+        "Jamaican Rum 15 ml Lime Juice 30 ml Sugar Cane Juice"
+      ],
+      "normalized": [
+        "jamaican rum 15 ml lime juice 30 ml sugar cane juice"
+      ],
+      "base_spirits": [
+        "jamaican rum 15 ml lime juice 30 ml sugar cane juice"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Porto Flip",
+      "flavor": "Sweet",
+      "raw": "- 15 ml brandy 45 ml red port 10 ml Egg Yolk",
+      "parsed": [
+        "brandy 45 ml red port 10 ml Egg Yolk"
+      ],
+      "normalized": [
+        "brandy 45 ml red port 10 ml egg yolk"
+      ],
+      "base_spirits": [
+        "brandy 45 ml red port 10 ml egg yolk"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Ramos Fizz",
+      "flavor": "Sweet & Sour",
+      "raw": "- 45 ml Gin 15 ml lime juice 15 ml lemon juice 30 ml sugar syrup 60 ml Cream 30ml Egg white 3 Dashes Orange Flower Water 2 Drops Vanilla Extract Soda Water",
+      "parsed": [
+        "Gin 15 ml lime juice 15 ml lemon juice 30 ml sugar syrup 60 ml Cream 30ml Egg white 3 Dashes Orange Flower Water 2 Drops Vanilla Extract Soda Water"
+      ],
+      "normalized": [
+        "gin 15 ml lime juice 15 ml lemon juice 30 ml sugar syrup 60 ml cream 30ml egg white 3 dashes orange flower water 2 drops vanilla extract soda water"
+      ],
+      "base_spirits": [
+        "gin 15 ml lime juice 15 ml lemon juice 30 ml sugar syrup 60 ml cream 30ml egg white 3 dashes orange flower water 2 drops vanilla extract soda water"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Remember the Maine",
+      "flavor": "Sweet",
+      "raw": "- 60 ml whiskey 22.5 ml Sweet Vermouth 15 ml cherry liqueur Luxardo 7.5 ml Absinthe",
+      "parsed": [
+        "whiskey 22.5 ml Sweet Vermouth 15 ml cherry liqueur Luxardo 7.5 ml Absinthe"
+      ],
+      "normalized": [
+        "whiskey 22.5 ml sweet vermouth 15 ml cherry liqueur luxardo 7.5 ml absinthe"
+      ],
+      "base_spirits": [
+        "whiskey 22.5 ml sweet vermouth 15 ml cherry liqueur luxardo 7.5 ml absinthe"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Rusty Nail",
+      "flavor": "Spirit-Forward",
+      "raw": "- 45 ml whiskey 25 ml Drambuie",
+      "parsed": [
+        "whiskey 25 ml Drambuie"
+      ],
+      "normalized": [
+        "whiskey 25 ml drambuie"
+      ],
+      "base_spirits": [
+        "whiskey 25 ml drambuie"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Sazerac",
+      "flavor": "Sweet & Bitter",
+      "raw": "- 50 ml Cognac 10 ml Absinthe 1 sugar 2 Dashes Peychaud’s Bitters",
+      "parsed": [
+        "Cognac 10 ml Absinthe 1 sugar 2 Dashes Peychaud’s Bitters"
+      ],
+      "normalized": [
+        "cognac 10 ml absinthe 1 sugar 2 dashes peychaud’s bitters"
+      ],
+      "base_spirits": [
+        "cognac 10 ml absinthe 1 sugar 2 dashes peychaud’s bitters"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Sidecar",
+      "flavor": "Sweet & Sour",
+      "raw": "- 50 ml Cognac 20 ml orange liqueur 20 ml lemon juice",
+      "parsed": [
+        "Cognac 20 ml orange liqueur 20 ml lemon juice"
+      ],
+      "normalized": [
+        "cognac 20 ml orange liqueur 20 ml lemon juice"
+      ],
+      "base_spirits": [
+        "cognac 20 ml orange liqueur 20 ml lemon juice"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Stinger",
+      "flavor": "Sweet",
+      "raw": "- 50 ml Cognac 20 ml white mint liqueur",
+      "parsed": [
+        "Cognac 20 ml white mint liqueur"
+      ],
+      "normalized": [
+        "cognac 20 ml white mint liqueur"
+      ],
+      "base_spirits": [
+        "cognac 20 ml white mint liqueur"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Tuxedo",
+      "flavor": "Sweet & Bitter",
+      "raw": "- 30 ml gin 30 ml Dry Vermouth 1/2 Bar Spoon cherry liqueur Luxardo 1/4 Bar Spoon of Absinthe 3 Dashes Orange Bitters",
+      "parsed": [
+        "gin 30 ml Dry Vermouth 1/2 Bar Spoon cherry liqueur Luxardo 1/4 Bar Spoon of Absinthe 3 Dashes Orange Bitters"
+      ],
+      "normalized": [
+        "gin 30 ml dry vermouth 1/2 bar spoon cherry liqueur luxardo 1/4 bar spoon of absinthe 3 dashes orange bitters"
+      ],
+      "base_spirits": [
+        "gin 30 ml dry vermouth 1/2 bar spoon cherry liqueur luxardo 1/4 bar spoon of absinthe 3 dashes orange bitters"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Vieux Carré",
+      "flavor": "Sweet & Bitter",
+      "raw": "- 30 ml whiskey 30 ml Cognac 30 ml Sweet Vermouth 1 Bar Spoon Bénédictine 2 Dashes Peychaud’s Bitters",
+      "parsed": [
+        "whiskey 30 ml Cognac 30 ml Sweet Vermouth 1 Bar Spoon Bénédictine 2 Dashes Peychaud’s Bitters"
+      ],
+      "normalized": [
+        "whiskey 30 ml cognac 30 ml sweet vermouth 1 bar spoon bénédictine 2 dashes peychaud’s bitters"
+      ],
+      "base_spirits": [
+        "whiskey 30 ml cognac 30 ml sweet vermouth 1 bar spoon bénédictine 2 dashes peychaud’s bitters"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Whiskey Sour",
+      "flavor": "Sweet & Sour",
+      "raw": "- 45 ml whiskey 25 ml lemon juice 20 ml sugar syrup Few Drops of Egg White (Optional)",
+      "parsed": [
+        "whiskey 25 ml lemon juice 20 ml sugar syrup Few Drops of Egg White (Optional)"
+      ],
+      "normalized": [
+        "whiskey 25 ml lemon juice 20 ml sugar syrup few drops of egg white (optional)"
+      ],
+      "base_spirits": [
+        "whiskey 25 ml lemon juice 20 ml sugar syrup few drops of egg white (optional)"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "White Lady",
+      "flavor": "Sweet & Sour",
+      "raw": "- 40 ml Gin 30 ml orange liqueur 20 ml lemon juice",
+      "parsed": [
+        "Gin 30 ml orange liqueur 20 ml lemon juice"
+      ],
+      "normalized": [
+        "gin 30 ml orange liqueur 20 ml lemon juice"
+      ],
+      "base_spirits": [
+        "gin 30 ml orange liqueur 20 ml lemon juice"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Bellini",
+      "flavor": "Spirit-Forward",
+      "raw": "- 100 ml sparkling wine 50 ml peach puree",
+      "parsed": [
+        "sparkling wine 50 ml peach puree"
+      ],
+      "normalized": [
+        "sparkling wine 50 ml peach puree"
+      ],
+      "base_spirits": [],
+      "other_ings": [
+        "sparkling wine 50 ml peach puree"
+      ]
+    },
+    {
+      "name": "Black Russian",
+      "flavor": "Sweet & Bitter",
+      "raw": "- 50 ml Vodka 20 ml Coffee Liqueur",
+      "parsed": [
+        "Vodka 20 ml Coffee Liqueur"
+      ],
+      "normalized": [
+        "vodka 20 ml coffee liqueur"
+      ],
+      "base_spirits": [
+        "vodka 20 ml coffee liqueur"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Bloody Mary",
+      "flavor": "Sour & Spicy",
+      "raw": "- 45 ml Vodka 90 ml Tomato Juice 15 ml lemon juice 2 dashes Worcestershire Sauce Tabasco\n- Celery Salt\n- Pepper (Up to taste)",
+      "parsed": [
+        "Vodka 90 ml Tomato Juice 15 ml lemon juice 2 dashes Worcestershire Sauce Tabasco",
+        "Celery Salt",
+        "Pepper (Up to taste)"
+      ],
+      "normalized": [
+        "vodka 90 ml tomato juice 15 ml lemon juice 2 dashes worcestershire sauce tabasco",
+        "celery salt",
+        "pepper (up to taste)"
+      ],
+      "base_spirits": [
+        "vodka 90 ml tomato juice 15 ml lemon juice 2 dashes worcestershire sauce tabasco"
+      ],
+      "other_ings": [
+        "celery salt",
+        "pepper (up to taste)"
+      ]
+    },
+    {
+      "name": "Caipirinha",
+      "flavor": "Sweet & Sour",
+      "raw": "- 60 ml cachaça 1 Lime cut into small wedges 4 Teaspoons sugar",
+      "parsed": [
+        "cachaça 1 Lime cut into small wedges 4 Teaspoons sugar"
+      ],
+      "normalized": [
+        "cachaça 1 lime cut into small wedges 4 teaspoons sugar"
+      ],
+      "base_spirits": [
+        "cachaça 1 lime cut into small wedges 4 teaspoons sugar"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Cardinale",
+      "flavor": "Bitter",
+      "raw": "- 40 ml Gin 20 ml Dry Vermouth 10 ml campari",
+      "parsed": [
+        "Gin 20 ml Dry Vermouth 10 ml campari"
+      ],
+      "normalized": [
+        "gin 20 ml dry vermouth 10 ml campari"
+      ],
+      "base_spirits": [
+        "gin 20 ml dry vermouth 10 ml campari"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Champagne Cocktail",
+      "flavor": "Sweet & Bitter",
+      "raw": "- 90 ml Chilled sparkling wine 10 ml Cognac 2 dashes Angostura bitters Few drops of orange liqueur (optional) 1 sugar",
+      "parsed": [
+        "Chilled sparkling wine 10 ml Cognac 2 dashes Angostura bitters Few drops of orange liqueur (optional) 1 sugar"
+      ],
+      "normalized": [
+        "sparkling wine 10 ml cognac 2 dashes angostura bitters few drops of orange liqueur (optional) 1 sugar"
+      ],
+      "base_spirits": [
+        "sparkling wine 10 ml cognac 2 dashes angostura bitters few drops of orange liqueur (optional) 1 sugar"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Corpse Reviver #2",
+      "flavor": "Sweet & Sour",
+      "raw": "- 30 ml Gin 30 ml orange liqueur 30 ml lillet 30 ml lemon juice 1 dash Absinthe",
+      "parsed": [
+        "Gin 30 ml orange liqueur 30 ml lillet 30 ml lemon juice 1 dash Absinthe"
+      ],
+      "normalized": [
+        "gin 30 ml orange liqueur 30 ml lillet 30 ml lemon juice 1 dash absinthe"
+      ],
+      "base_spirits": [
+        "gin 30 ml orange liqueur 30 ml lillet 30 ml lemon juice 1 dash absinthe"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Cosmopolitan",
+      "flavor": "Sweet & Sour",
+      "raw": "- 40 ml Vodka Citron 15 ml orange liqueur 15 ml lime juice 30 ml Cranberry Juice",
+      "parsed": [
+        "Vodka Citron 15 ml orange liqueur 15 ml lime juice 30 ml Cranberry Juice"
+      ],
+      "normalized": [
+        "vodka citron 15 ml orange liqueur 15 ml lime juice 30 ml cranberry juice"
+      ],
+      "base_spirits": [
+        "vodka citron 15 ml orange liqueur 15 ml lime juice 30 ml cranberry juice"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Cuba Libre",
+      "flavor": "Sweet & Sour",
+      "raw": "- 50 ml White Rum 120 ml Cola 10 ml lime juice",
+      "parsed": [
+        "White Rum 120 ml Cola 10 ml lime juice"
+      ],
+      "normalized": [
+        "white rum 120 ml cola 10 ml lime juice"
+      ],
+      "base_spirits": [
+        "white rum 120 ml cola 10 ml lime juice"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "French 75",
+      "flavor": "Sweet & Sour",
+      "raw": "- 30 ml Gin 15 ml lemon juice 15 ml sugar syrup 60 ml sparkling wine",
+      "parsed": [
+        "Gin 15 ml lemon juice 15 ml sugar syrup 60 ml sparkling wine"
+      ],
+      "normalized": [
+        "gin 15 ml lemon juice 15 ml sugar syrup 60 ml sparkling wine"
+      ],
+      "base_spirits": [
+        "gin 15 ml lemon juice 15 ml sugar syrup 60 ml sparkling wine"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "French Connection",
+      "flavor": "Sweet",
+      "raw": "- 35 ml Cognac 35 ml Amaretto",
+      "parsed": [
+        "Cognac 35 ml Amaretto"
+      ],
+      "normalized": [
+        "cognac 35 ml amaretto"
+      ],
+      "base_spirits": [
+        "cognac 35 ml amaretto"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Garibaldi",
+      "flavor": "Bitter",
+      "raw": "- 45 ml campari 120 ml Freshly Squeezed Orange Juice",
+      "parsed": [
+        "campari 120 ml Freshly Squeezed Orange Juice"
+      ],
+      "normalized": [
+        "campari 120 ml freshly squeezed orange juice"
+      ],
+      "base_spirits": [],
+      "other_ings": [
+        "campari 120 ml freshly squeezed orange juice"
+      ]
+    },
+    {
+      "name": "Grasshopper",
+      "flavor": "Sweet",
+      "raw": "- 20 ml chocolate liqueur (White) 20 ml mint liqueur (Green) 20 ml cream",
+      "parsed": [
+        "chocolate liqueur (White) 20 ml mint liqueur (Green) 20 ml cream"
+      ],
+      "normalized": [
+        "chocolate liqueur (white) 20 ml mint liqueur (green) 20 ml cream"
+      ],
+      "base_spirits": [],
+      "other_ings": [
+        "chocolate liqueur (white) 20 ml mint liqueur (green) 20 ml cream"
+      ]
+    },
+    {
+      "name": "Hemingway Special",
+      "flavor": "Sweet & Sour",
+      "raw": "- 60 ml Rum 40 ml Grapefruit Juice 15 ml cherry liqueur Luxardo 15 ml Fresh Lime",
+      "parsed": [
+        "Rum 40 ml Grapefruit Juice 15 ml cherry liqueur Luxardo 15 ml Fresh Lime"
+      ],
+      "normalized": [
+        "rum 40 ml grapefruit juice 15 ml cherry liqueur luxardo 15 ml fresh lime"
+      ],
+      "base_spirits": [
+        "rum 40 ml grapefruit juice 15 ml cherry liqueur luxardo 15 ml fresh lime"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Horse’s Neck",
+      "flavor": "Bitter, Spicy",
+      "raw": "- 40 ml Cognac 120 ml Ginger Ale Dash of Angostura Bitters (optional)",
+      "parsed": [
+        "Cognac 120 ml Ginger Ale Dash of Angostura Bitters (optional)"
+      ],
+      "normalized": [
+        "cognac 120 ml ginger ale dash of angostura bitters (optional)"
+      ],
+      "base_spirits": [
+        "cognac 120 ml ginger ale dash of angostura bitters (optional)"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Irish Coffee",
+      "flavor": "Sweet & Bitter",
+      "raw": "- 50 ml whiskey 120 ml Hot coffee 50 ml cream (Chilled) 1 teaspoon Sugar",
+      "parsed": [
+        "whiskey 120 ml Hot coffee 50 ml cream (Chilled) 1 teaspoon Sugar"
+      ],
+      "normalized": [
+        "whiskey 120 ml hot coffee 50 ml cream (chilled) 1 teaspoon sugar"
+      ],
+      "base_spirits": [
+        "whiskey 120 ml hot coffee 50 ml cream (chilled) 1 teaspoon sugar"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Kir",
+      "flavor": "Spirit-Forward",
+      "raw": "- 90 ml Dry White Wine 10 ml Crème de Cassis",
+      "parsed": [
+        "Dry White Wine 10 ml Crème de Cassis"
+      ],
+      "normalized": [
+        "dry white wine 10 ml crème de cassis"
+      ],
+      "base_spirits": [],
+      "other_ings": [
+        "dry white wine 10 ml crème de cassis"
+      ]
+    },
+    {
+      "name": "Lemon Drop Martini",
+      "flavor": "Sweet & Sour",
+      "raw": "- 30 ml Vodka 20 ml orange liqueur 15 ml Fresh Squeezed Lemon Juice",
+      "parsed": [
+        "Vodka 20 ml orange liqueur 15 ml Fresh Squeezed Lemon Juice"
+      ],
+      "normalized": [
+        "vodka 20 ml orange liqueur 15 ml fresh squeezed lemon juice"
+      ],
+      "base_spirits": [
+        "vodka 20 ml orange liqueur 15 ml fresh squeezed lemon juice"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Long Island Iced Tea",
+      "flavor": "Sweet & Sour",
+      "raw": "- 15 ml Vodka 15 ml Tequila 15 ml White rum 15 ml Gin 15 ml orange liqueur 25 ml Lemon juice 30 ml sugar syrup Top with Cola",
+      "parsed": [
+        "Vodka 15 ml Tequila 15 ml White rum 15 ml Gin 15 ml orange liqueur 25 ml Lemon juice 30 ml sugar syrup Top with Cola"
+      ],
+      "normalized": [
+        "vodka 15 ml tequila 15 ml white rum 15 ml gin 15 ml orange liqueur 25 ml lemon juice 30 ml sugar syrup top with cola"
+      ],
+      "base_spirits": [
+        "vodka 15 ml tequila 15 ml white rum 15 ml gin 15 ml orange liqueur 25 ml lemon juice 30 ml sugar syrup top with cola"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Mai-Tai",
+      "flavor": "Sweet & Sour",
+      "raw": "- 30 ml dark rum 30 ml white rum* 15 ml Orange Curacao 15 ml Orgeat Syrup (Almond) 30 ml Fresh Squeezed Lime Juice 7.5 ml sugar syrup",
+      "parsed": [
+        "dark rum 30 ml white rum* 15 ml Orange Curacao 15 ml Orgeat Syrup (Almond) 30 ml Fresh Squeezed Lime Juice 7.5 ml sugar syrup"
+      ],
+      "normalized": [
+        "dark rum 30 ml white rum* 15 ml orange curacao 15 ml orgeat syrup (almond) 30 ml fresh squeezed lime juice 7.5 ml sugar syrup"
+      ],
+      "base_spirits": [
+        "dark rum 30 ml white rum* 15 ml orange curacao 15 ml orgeat syrup (almond) 30 ml fresh squeezed lime juice 7.5 ml sugar syrup"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Margarita",
+      "flavor": "Sweet & Sour",
+      "raw": "- 50 ml tequila 20 ml orange liqueur 15 ml lime juice",
+      "parsed": [
+        "tequila 20 ml orange liqueur 15 ml lime juice"
+      ],
+      "normalized": [
+        "tequila 20 ml orange liqueur 15 ml lime juice"
+      ],
+      "base_spirits": [
+        "tequila 20 ml orange liqueur 15 ml lime juice"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Mimosa",
+      "flavor": "Spirit-Forward",
+      "raw": "- 75 ml Freshly Squeezed  Orange Juice 75 ml sparkling wine",
+      "parsed": [
+        "Freshly Squeezed  Orange Juice 75 ml sparkling wine"
+      ],
+      "normalized": [
+        "freshly squeezed  orange juice 75 ml sparkling wine"
+      ],
+      "base_spirits": [],
+      "other_ings": [
+        "freshly squeezed  orange juice 75 ml sparkling wine"
+      ]
+    },
+    {
+      "name": "Mint Julep",
+      "flavor": "Sweet",
+      "raw": "- 60 ml whiskey 4 fresh Mint sprigs 1 tsp sugar 2 tsp Water",
+      "parsed": [
+        "whiskey 4 fresh Mint sprigs 1 tsp sugar 2 tsp Water"
+      ],
+      "normalized": [
+        "whiskey 4 fresh mint sprigs 1 tsp sugar 2 tsp water"
+      ],
+      "base_spirits": [
+        "whiskey 4 fresh mint sprigs 1 tsp sugar 2 tsp water"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Mojito",
+      "flavor": "Sweet & Sour",
+      "raw": "- 45 ml White Cuban Ron 20 ml  lime juice 6 pcs Mint Sprigs 2 tsp sugar Soda Water",
+      "parsed": [
+        "White Cuban Ron 20 ml  lime juice 6 pcs Mint Sprigs 2 tsp sugar Soda Water"
+      ],
+      "normalized": [
+        "white cuban ron 20 ml  lime juice 6 pcs mint sprigs 2 tsp sugar soda water"
+      ],
+      "base_spirits": [],
+      "other_ings": [
+        "white cuban ron 20 ml  lime juice 6 pcs mint sprigs 2 tsp sugar soda water"
+      ]
+    },
+    {
+      "name": "Moscow Mule",
+      "flavor": "Sour & Spicy",
+      "raw": "- 45 ml vodka 120 ml Ginger Beer 10 ml lime juice",
+      "parsed": [
+        "vodka 120 ml Ginger Beer 10 ml lime juice"
+      ],
+      "normalized": [
+        "vodka 120 ml ginger beer 10 ml lime juice"
+      ],
+      "base_spirits": [
+        "vodka 120 ml ginger beer 10 ml lime juice"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Pina Colada",
+      "flavor": "Sweet",
+      "raw": "- 50 ml White Rum 30 ml Coconut Cream 50 ml Fresh Pineapple Juice",
+      "parsed": [
+        "White Rum 30 ml Coconut Cream 50 ml Fresh Pineapple Juice"
+      ],
+      "normalized": [
+        "white rum 30 ml coconut cream 50 ml fresh pineapple juice"
+      ],
+      "base_spirits": [
+        "white rum 30 ml coconut cream 50 ml fresh pineapple juice"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Pisco Sour",
+      "flavor": "Sweet & Sour",
+      "raw": "- 60 ml pisco 30 ml lemon juice 20 ml sugar syrup 1 Raw whole Egg White",
+      "parsed": [
+        "pisco 30 ml lemon juice 20 ml sugar syrup 1 Raw whole Egg White"
+      ],
+      "normalized": [
+        "pisco 30 ml lemon juice 20 ml sugar syrup 1 raw whole egg white"
+      ],
+      "base_spirits": [
+        "pisco 30 ml lemon juice 20 ml sugar syrup 1 raw whole egg white"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Rabo de Galo",
+      "flavor": "Sweet & Bitter",
+      "raw": "- 60 ml cachaça 20 ml Sweet Vermouth Cinzano Rosso 15 ml Cynar 2 Drops Angostura (Optional)",
+      "parsed": [
+        "cachaça 20 ml Sweet Vermouth Cinzano Rosso 15 ml Cynar 2 Drops Angostura (Optional)"
+      ],
+      "normalized": [
+        "cachaça 20 ml sweet vermouth cinzano rosso 15 ml cynar 2 drops angostura (optional)"
+      ],
+      "base_spirits": [
+        "cachaça 20 ml sweet vermouth cinzano rosso 15 ml cynar 2 drops angostura (optional)"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Sea Breeze",
+      "flavor": "Sour",
+      "raw": "- 40 ml Vodka 120 ml Cranberry Juice 30 ml Grapefruit Juice",
+      "parsed": [
+        "Vodka 120 ml Cranberry Juice 30 ml Grapefruit Juice"
+      ],
+      "normalized": [
+        "vodka 120 ml cranberry juice 30 ml grapefruit juice"
+      ],
+      "base_spirits": [
+        "vodka 120 ml cranberry juice 30 ml grapefruit juice"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Sex on the Beach",
+      "flavor": "Spirit-Forward",
+      "raw": "- 40 ml Vodka 20 ml peach liqueur 40 ml orange juice 40 ml Cranberry Juice",
+      "parsed": [
+        "Vodka 20 ml peach liqueur 40 ml orange juice 40 ml Cranberry Juice"
+      ],
+      "normalized": [
+        "vodka 20 ml peach liqueur 40 ml orange juice 40 ml cranberry juice"
+      ],
+      "base_spirits": [
+        "vodka 20 ml peach liqueur 40 ml orange juice 40 ml cranberry juice"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Singapore Sling",
+      "flavor": "Sweet, Sour, Bitter",
+      "raw": "- 30 ml Gin 15 ml Cherry Sangue Morlacco 7.5 ml orange liqueur 7.5 ml DOM Bénédictine 120 ml Fresh Pineapple Juice 15 ml lime juice 10 ml Grenadine Syrup A dash of Angostura bitters",
+      "parsed": [
+        "Gin 15 ml Cherry Sangue Morlacco 7.5 ml orange liqueur 7.5 ml DOM Bénédictine 120 ml Fresh Pineapple Juice 15 ml lime juice 10 ml Grenadine Syrup A dash of Angostura bitters"
+      ],
+      "normalized": [
+        "gin 15 ml cherry sangue morlacco 7.5 ml orange liqueur 7.5 ml dom bénédictine 120 ml fresh pineapple juice 15 ml lime juice 10 ml grenadine syrup a dash of angostura bitters"
+      ],
+      "base_spirits": [
+        "gin 15 ml cherry sangue morlacco 7.5 ml orange liqueur 7.5 ml dom bénédictine 120 ml fresh pineapple juice 15 ml lime juice 10 ml grenadine syrup a dash of angostura bitters"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Tequila Sunrise",
+      "flavor": "Sweet",
+      "raw": "- 45 ml Tequila 90 ml orange juice 15 ml Grenadine Syrup",
+      "parsed": [
+        "Tequila 90 ml orange juice 15 ml Grenadine Syrup"
+      ],
+      "normalized": [
+        "tequila 90 ml orange juice 15 ml grenadine syrup"
+      ],
+      "base_spirits": [
+        "tequila 90 ml orange juice 15 ml grenadine syrup"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Vesper",
+      "flavor": "Spirit-Forward",
+      "raw": "- 45 ml Gin 15 ml Vodka 7.5 ml lillet",
+      "parsed": [
+        "Gin 15 ml Vodka 7.5 ml lillet"
+      ],
+      "normalized": [
+        "gin 15 ml vodka 7.5 ml lillet"
+      ],
+      "base_spirits": [
+        "gin 15 ml vodka 7.5 ml lillet"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Zombie",
+      "flavor": "Sweet, Sour, Bitter",
+      "raw": "- 120 ml dark rum\n- 20 ml lime juice\n- 15 ml Falernum\n- 15 ml Donn’s Mix*\n- 1 tsp Grenadine syrup\n- 1 dash Angostura bitters\n- 6 drops absinthe",
+      "parsed": [
+        "dark rum",
+        "lime juice",
+        "Falernum",
+        "Donn’s Mix*",
+        "Grenadine syrup",
+        "dash Angostura bitters",
+        "absinthe"
+      ],
+      "normalized": [
+        "dark rum",
+        "lime juice",
+        "falernum",
+        "donn’s mix*",
+        "grenadine syrup",
+        "dash angostura bitters",
+        "absinthe"
+      ],
+      "base_spirits": [
+        "dark rum"
+      ],
+      "other_ings": [
+        "lime juice",
+        "falernum",
+        "donn’s mix*",
+        "grenadine syrup",
+        "dash angostura bitters",
+        "absinthe"
+      ]
+    },
+    {
+      "name": "Bee’s Knees",
+      "flavor": "Sweet & Sour",
+      "raw": "- 52.5 ml gin 2 teaspoons honey syrup (sugar syrup) 22.5 ml lemon juice 22.5 ml orange juice",
+      "parsed": [
+        "gin 2 teaspoons honey syrup (sugar syrup) 22.5 ml lemon juice 22.5 ml orange juice"
+      ],
+      "normalized": [
+        "gin 2 teaspoons honey syrup (sugar syrup) (sugar syrup) 22.5 ml lemon juice 22.5 ml orange juice"
+      ],
+      "base_spirits": [
+        "gin 2 teaspoons honey syrup (sugar syrup) (sugar syrup) 22.5 ml lemon juice 22.5 ml orange juice"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Bramble",
+      "flavor": "Sweet & Sour",
+      "raw": "- 50 ml Gin 25 ml lemon juice 12.5 ml sugar syrup 15 ml Crème de Mûre",
+      "parsed": [
+        "Gin 25 ml lemon juice 12.5 ml sugar syrup 15 ml Crème de Mûre"
+      ],
+      "normalized": [
+        "gin 25 ml lemon juice 12.5 ml sugar syrup 15 ml crème de mûre"
+      ],
+      "base_spirits": [
+        "gin 25 ml lemon juice 12.5 ml sugar syrup 15 ml crème de mûre"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Canchanchara",
+      "flavor": "Sweet & Sour",
+      "raw": "- 60 ml Cuban Aguardiente 15 ml lime juice 15 ml Raw Honey 50 ml Water",
+      "parsed": [
+        "Cuban Aguardiente 15 ml lime juice 15 ml Raw Honey 50 ml Water"
+      ],
+      "normalized": [
+        "cuban aguardiente 15 ml lime juice 15 ml raw honey 50 ml water"
+      ],
+      "base_spirits": [],
+      "other_ings": [
+        "cuban aguardiente 15 ml lime juice 15 ml raw honey 50 ml water"
+      ]
+    },
+    {
+      "name": "Chartreuse Swizzle",
+      "flavor": "Sweet & Sour",
+      "raw": "- 45 ml green chartreuse 30 ml Fresh Pineapple Juice 22.5 ml lime juice 15 ml Falernum",
+      "parsed": [
+        "green chartreuse 30 ml Fresh Pineapple Juice 22.5 ml lime juice 15 ml Falernum"
+      ],
+      "normalized": [
+        "green chartreuse 30 ml fresh pineapple juice 22.5 ml lime juice 15 ml falernum"
+      ],
+      "base_spirits": [],
+      "other_ings": [
+        "green chartreuse 30 ml fresh pineapple juice 22.5 ml lime juice 15 ml falernum"
+      ]
+    },
+    {
+      "name": "Dark ‘N’ Stormy",
+      "flavor": "Spicy",
+      "raw": "- 60 ml dark rum (black rum) 100 ml Ginger Beer",
+      "parsed": [
+        "dark rum (black rum) 100 ml Ginger Beer"
+      ],
+      "normalized": [
+        "dark rum (black rum) 100 ml ginger beer"
+      ],
+      "base_spirits": [
+        "dark rum (black rum) 100 ml ginger beer"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Don’s Special Daiquiri",
+      "flavor": "Sweet & Sour",
+      "raw": "- 30 ml dark rum 15 ml white rum 15 ml passion fruit syrup 15 ml lime juice 15 ml honey syrup (sugar syrup)",
+      "parsed": [
+        "dark rum 15 ml white rum 15 ml passion fruit syrup 15 ml lime juice 15 ml honey syrup (sugar syrup)"
+      ],
+      "normalized": [
+        "dark rum 15 ml white rum 15 ml passion fruit syrup 15 ml lime juice 15 ml honey syrup (sugar syrup) (sugar syrup)"
+      ],
+      "base_spirits": [
+        "dark rum 15 ml white rum 15 ml passion fruit syrup 15 ml lime juice 15 ml honey syrup (sugar syrup) (sugar syrup)"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Espresso Martini",
+      "flavor": "Sweet & Bitter",
+      "raw": "- 50 ml Vodka 30 ml coffee liqueur 10 ml sugar syrup 1 strong Espresso",
+      "parsed": [
+        "Vodka 30 ml coffee liqueur 10 ml sugar syrup 1 strong Espresso"
+      ],
+      "normalized": [
+        "vodka 30 ml coffee liqueur 10 ml sugar syrup 1 strong espresso"
+      ],
+      "base_spirits": [
+        "vodka 30 ml coffee liqueur 10 ml sugar syrup 1 strong espresso"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Fernandito",
+      "flavor": "Sweet & Bitter",
+      "raw": "- 50 ml Fernet Branca Fill up with Cola",
+      "parsed": [
+        "Fernet Branca Fill up with Cola"
+      ],
+      "normalized": [
+        "fernet branca fill up with cola"
+      ],
+      "base_spirits": [],
+      "other_ings": [
+        "fernet branca fill up with cola"
+      ]
+    },
+    {
+      "name": "French Martini",
+      "flavor": "Sweet",
+      "raw": "- 45 ml Vodka 15 ml Raspberry Liqueur 15 ml Fresh Pineapple Juice",
+      "parsed": [
+        "Vodka 15 ml Raspberry Liqueur 15 ml Fresh Pineapple Juice"
+      ],
+      "normalized": [
+        "vodka 15 ml raspberry liqueur 15 ml fresh pineapple juice"
+      ],
+      "base_spirits": [
+        "vodka 15 ml raspberry liqueur 15 ml fresh pineapple juice"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Gin Basil Smash",
+      "flavor": "Sweet & Sour",
+      "raw": "- 60ml Gin 22.5 ml lemon juice 22.5 ml sugar syrup 10 pcs Italian Basil leaves",
+      "parsed": [
+        "Gin 22.5 ml lemon juice 22.5 ml sugar syrup 10 pcs Italian Basil leaves"
+      ],
+      "normalized": [
+        "gin 22.5 ml lemon juice 22.5 ml sugar syrup 10 pcs italian basil leaves"
+      ],
+      "base_spirits": [
+        "gin 22.5 ml lemon juice 22.5 ml sugar syrup 10 pcs italian basil leaves"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Grand Margarita",
+      "flavor": "Sweet & Sour",
+      "raw": "- 45 ml tequila 30 ml  orange liqueur 15 ml lime juice",
+      "parsed": [
+        "tequila 30 ml  orange liqueur 15 ml lime juice"
+      ],
+      "normalized": [
+        "tequila 30 ml  orange liqueur 15 ml lime juice"
+      ],
+      "base_spirits": [
+        "tequila 30 ml  orange liqueur 15 ml lime juice"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "IBA Tiki",
+      "flavor": "Sweet & Sour",
+      "raw": "- 30 ml white rum 30 ml Ron Smoky Havana Club 15 ml Licor Amaretto 5 ml Licor Frangelico 5 drops cherry liqueur Luxardo 30 ml Passion Fruit Puree 90 Fresh Pineapple Juice 30 lime juice 1 pc Gengibre Slice",
+      "parsed": [
+        "white rum 30 ml Ron Smoky Havana Club 15 ml Licor Amaretto 5 ml Licor Frangelico 5 drops cherry liqueur Luxardo 30 ml Passion Fruit Puree 90 Fresh Pineapple Juice 30 lime juice 1 pc Gengibre Slice"
+      ],
+      "normalized": [
+        "white rum 30 ml ron smoky havana club 15 ml licor amaretto 5 ml licor frangelico 5 drops cherry liqueur luxardo 30 ml passion fruit puree 90 fresh pineapple juice 30 lime juice 1 pc gengibre slice"
+      ],
+      "base_spirits": [
+        "white rum 30 ml ron smoky havana club 15 ml licor amaretto 5 ml licor frangelico 5 drops cherry liqueur luxardo 30 ml passion fruit puree 90 fresh pineapple juice 30 lime juice 1 pc gengibre slice"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Illegal",
+      "flavor": "Sweet & Sour",
+      "raw": "- 30 ml mezcal 15 ml white rum 15 ml Falernum 1 Bar Spoon cherry liqueur Luxardo 22.5 ml lime juice 15 ml sugar syrup Few Drops of Egg White (Optional)",
+      "parsed": [
+        "mezcal 15 ml white rum 15 ml Falernum 1 Bar Spoon cherry liqueur Luxardo 22.5 ml lime juice 15 ml sugar syrup Few Drops of Egg White (Optional)"
+      ],
+      "normalized": [
+        "mezcal 15 ml white rum 15 ml falernum 1 bar spoon cherry liqueur luxardo 22.5 ml lime juice 15 ml sugar syrup few drops of egg white (optional)"
+      ],
+      "base_spirits": [
+        "mezcal 15 ml white rum 15 ml falernum 1 bar spoon cherry liqueur luxardo 22.5 ml lime juice 15 ml sugar syrup few drops of egg white (optional)"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Jungle Bird",
+      "flavor": "Sweet, Sour, Bitter",
+      "raw": "- 45 ml Blackstrap rum 22.5 ml Campari 45 ml Pineapple juice 15 ml lime juice 15 ml sugar syrup",
+      "parsed": [
+        "Blackstrap rum 22.5 ml Campari 45 ml Pineapple juice 15 ml lime juice 15 ml sugar syrup"
+      ],
+      "normalized": [
+        "blackstrap rum 22.5 ml campari 45 ml pineapple juice 15 ml lime juice 15 ml sugar syrup"
+      ],
+      "base_spirits": [
+        "blackstrap rum 22.5 ml campari 45 ml pineapple juice 15 ml lime juice 15 ml sugar syrup"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Missionary’s Downfall",
+      "flavor": "Sweet & Sour",
+      "raw": "- 30 ml White rum 15 ml Peach brandy 15 ml lime juice 30 ml Honey Mix 10 pcs Mint Leaves 3 to 4 pcs Pineapple Chunks",
+      "parsed": [
+        "White rum 15 ml Peach brandy 15 ml lime juice 30 ml Honey Mix 10 pcs Mint Leaves 3 to 4 pcs Pineapple Chunks"
+      ],
+      "normalized": [
+        "white rum 15 ml peach brandy 15 ml lime juice 30 ml honey mix 10 pcs mint leaves 3 to 4 pcs pineapple chunks"
+      ],
+      "base_spirits": [
+        "white rum 15 ml peach brandy 15 ml lime juice 30 ml honey mix 10 pcs mint leaves 3 to 4 pcs pineapple chunks"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Naked and Famous",
+      "flavor": "Sour, Bitter",
+      "raw": "- 22.5 ml Mezcal 22.5 ml yellow chartreuse 22.5 ml Aperol 22.5 ml lime juice",
+      "parsed": [
+        "Mezcal 22.5 ml yellow chartreuse 22.5 ml Aperol 22.5 ml lime juice"
+      ],
+      "normalized": [
+        "mezcal 22.5 ml yellow chartreuse 22.5 ml aperol 22.5 ml lime juice"
+      ],
+      "base_spirits": [
+        "mezcal 22.5 ml yellow chartreuse 22.5 ml aperol 22.5 ml lime juice"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "New York Sour",
+      "flavor": "Sweet & Sour",
+      "raw": "- 60 ml whiskey or whiskey 22.5 ml sugar syrup 30 ml lemon juice Few Drops of Egg White 15 ml Red wine (Shiraz or Malbech)",
+      "parsed": [
+        "whiskey or whiskey 22.5 ml sugar syrup 30 ml lemon juice Few Drops of Egg White 15 ml Red wine (Shiraz or Malbech)"
+      ],
+      "normalized": [
+        "whiskey or whiskey 22.5 ml sugar syrup 30 ml lemon juice few drops of egg white 15 ml red wine (shiraz or malbech)"
+      ],
+      "base_spirits": [
+        "whiskey or whiskey 22.5 ml sugar syrup 30 ml lemon juice few drops of egg white 15 ml red wine (shiraz or malbech)"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Old Cuban",
+      "flavor": "Sweet, Sour, Bitter",
+      "raw": "- 6/8 pcs Mint Leaves 45 ml dark rum 22.5 ml lime juice 30 ml sugar syrup 2 Dashes Angostura Bitters 60 ml Brut sparkling wine or sparkling wine",
+      "parsed": [
+        "Mint Leaves 45 ml dark rum 22.5 ml lime juice 30 ml sugar syrup 2 Dashes Angostura Bitters 60 ml Brut sparkling wine or sparkling wine"
+      ],
+      "normalized": [
+        "mint leaves 45 ml dark rum 22.5 ml lime juice 30 ml sugar syrup 2 dashes angostura bitters 60 ml brut sparkling wine or sparkling wine"
+      ],
+      "base_spirits": [
+        "mint leaves 45 ml dark rum 22.5 ml lime juice 30 ml sugar syrup 2 dashes angostura bitters 60 ml brut sparkling wine or sparkling wine"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Paloma",
+      "flavor": "Sweet & Sour",
+      "raw": "- 50 ml tequila 5 ml Fresh lime A pinch of Salt 100 ml Pink Grapefruit Soda",
+      "parsed": [
+        "tequila 5 ml Fresh lime A pinch of Salt 100 ml Pink Grapefruit Soda"
+      ],
+      "normalized": [
+        "tequila 5 ml fresh lime a pinch of salt 100 ml pink grapefruit soda"
+      ],
+      "base_spirits": [
+        "tequila 5 ml fresh lime a pinch of salt 100 ml pink grapefruit soda"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Paper Plane",
+      "flavor": "Sour, Bitter",
+      "raw": "- 30 ml whiskey 30 ml Amaro Nonino 30 ml Aperol 30 ml lemon juice",
+      "parsed": [
+        "whiskey 30 ml Amaro Nonino 30 ml Aperol 30 ml lemon juice"
+      ],
+      "normalized": [
+        "whiskey 30 ml amaro nonino 30 ml aperol 30 ml lemon juice"
+      ],
+      "base_spirits": [
+        "whiskey 30 ml amaro nonino 30 ml aperol 30 ml lemon juice"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Penicillin",
+      "flavor": "Sweet, Sour, Spicy",
+      "raw": "- 60 ml whiskey 7.5 ml smoked whisky 22.5 ml lemon juice 22.5 ml honey syrup (sugar syrup) 2-3 quarter size sliced fresh ginger",
+      "parsed": [
+        "whiskey 7.5 ml smoked whisky 22.5 ml lemon juice 22.5 ml honey syrup (sugar syrup) 2-3 quarter size sliced fresh ginger"
+      ],
+      "normalized": [
+        "whiskey 7.5 ml smoked whisky 22.5 ml lemon juice 22.5 ml honey syrup (sugar syrup) (sugar syrup) 2-3 quarter size sliced fresh ginger"
+      ],
+      "base_spirits": [
+        "whiskey 7.5 ml smoked whisky 22.5 ml lemon juice 22.5 ml honey syrup (sugar syrup) (sugar syrup) 2-3 quarter size sliced fresh ginger"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Pisco Punch",
+      "flavor": "Sweet & Sour",
+      "raw": "- 60 ml pisco 22.5 ml Fresh Pineapple Juice 15 ml sugar syrup 15 ml lemon juice 30 ml Dry White Wine 3 pcs Cloves",
+      "parsed": [
+        "pisco 22.5 ml Fresh Pineapple Juice 15 ml sugar syrup 15 ml lemon juice 30 ml Dry White Wine 3 pcs Cloves"
+      ],
+      "normalized": [
+        "pisco 22.5 ml fresh pineapple juice 15 ml sugar syrup 15 ml lemon juice 30 ml dry white wine 3 pcs cloves"
+      ],
+      "base_spirits": [
+        "pisco 22.5 ml fresh pineapple juice 15 ml sugar syrup 15 ml lemon juice 30 ml dry white wine 3 pcs cloves"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Porn Star Martini",
+      "flavor": "Sweet",
+      "raw": "- 50 ml Vanilla Vodka 20 ml Passion Fruit Liqueur 50 ml Passion Fruit Puree 2 Bar Spoons Vanilla Sugar 50 ml sparkling wine to serve on the side",
+      "parsed": [
+        "Vanilla Vodka 20 ml Passion Fruit Liqueur 50 ml Passion Fruit Puree 2 Bar Spoons Vanilla Sugar 50 ml sparkling wine to serve on the side"
+      ],
+      "normalized": [
+        "vanilla vodka 20 ml passion fruit liqueur 50 ml passion fruit puree 2 bar spoons vanilla sugar 50 ml sparkling wine to serve on the side"
+      ],
+      "base_spirits": [
+        "vanilla vodka 20 ml passion fruit liqueur 50 ml passion fruit puree 2 bar spoons vanilla sugar 50 ml sparkling wine to serve on the side"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Russian Spring Punch",
+      "flavor": "Sweet & Sour",
+      "raw": "- 25 ml Vodka 25 ml lemon juice 15 ml blackcurrant liqueur 10 ml sugar syrup Top up with Sparkling Wine",
+      "parsed": [
+        "Vodka 25 ml lemon juice 15 ml blackcurrant liqueur 10 ml sugar syrup Top up with Sparkling Wine"
+      ],
+      "normalized": [
+        "vodka 25 ml lemon juice 15 ml blackcurrant liqueur 10 ml sugar syrup top up with sparkling wine"
+      ],
+      "base_spirits": [
+        "vodka 25 ml lemon juice 15 ml blackcurrant liqueur 10 ml sugar syrup top up with sparkling wine"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Sherry Cobbler",
+      "flavor": "Sweet & Sour",
+      "raw": "- 45 ml Amontillado sherry 45 ml Palo Cortado 1 tsp Superfine Sugar (or granulated) 1/2  Orange Wheel 1/2  Lemon Wheel",
+      "parsed": [
+        "Amontillado sherry 45 ml Palo Cortado 1 tsp Superfine Sugar (or granulated) 1/2  Orange Wheel 1/2  Lemon Wheel"
+      ],
+      "normalized": [
+        "amontillado sherry 45 ml palo cortado 1 tsp superfine sugar (or granulated) 1/2  orange wheel 1/2  lemon wheel"
+      ],
+      "base_spirits": [],
+      "other_ings": [
+        "amontillado sherry 45 ml palo cortado 1 tsp superfine sugar (or granulated) 1/2  orange wheel 1/2  lemon wheel"
+      ]
+    },
+    {
+      "name": "South Side",
+      "flavor": "Sweet & Sour",
+      "raw": "- 60 ml gin 30 ml Fresh Lemon  Juice 15 ml sugar syrup 5/6 Mint leaves Few drops Egg white (Optional)",
+      "parsed": [
+        "gin 30 ml Fresh Lemon  Juice 15 ml sugar syrup 5/6 Mint leaves Few drops Egg white (Optional)"
+      ],
+      "normalized": [
+        "gin 30 ml fresh lemon  juice 15 ml sugar syrup 5/6 mint leaves few drops egg white (optional)"
+      ],
+      "base_spirits": [
+        "gin 30 ml fresh lemon  juice 15 ml sugar syrup 5/6 mint leaves few drops egg white (optional)"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Spicy Fifty",
+      "flavor": "Sweet, Sour, Spicy",
+      "raw": "- 50 ml Vodka Vanilla 15 ml Elderflower Cordial 15 ml lime juice 10 ml Monin honey syrup (sugar syrup) 2 thin Slices Red Chili Pepper",
+      "parsed": [
+        "Vodka Vanilla 15 ml Elderflower Cordial 15 ml lime juice 10 ml Monin honey syrup (sugar syrup) 2 thin Slices Red Chili Pepper"
+      ],
+      "normalized": [
+        "vodka vanilla 15 ml elderflower cordial 15 ml lime juice 10 ml monin honey syrup (sugar syrup) (sugar syrup) 2 thin slices red chili pepper"
+      ],
+      "base_spirits": [
+        "vodka vanilla 15 ml elderflower cordial 15 ml lime juice 10 ml monin honey syrup (sugar syrup) (sugar syrup) 2 thin slices red chili pepper"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Spritz",
+      "flavor": "Bitter",
+      "raw": "- 90 ml sparkling wine 60 ml Aperol Splash of Soda water",
+      "parsed": [
+        "sparkling wine 60 ml Aperol Splash of Soda water"
+      ],
+      "normalized": [
+        "sparkling wine 60 ml aperol splash of soda water"
+      ],
+      "base_spirits": [],
+      "other_ings": [
+        "sparkling wine 60 ml aperol splash of soda water"
+      ]
+    },
+    {
+      "name": "Suffering Bastard",
+      "flavor": "Sour, Bitter, Spicy",
+      "raw": "- 30 ml Cognac or brandy 30 ml Gin 15 ml lime juice 2 Dashes Angostura Bitters Top up Ginger beer",
+      "parsed": [
+        "Cognac or brandy 30 ml Gin 15 ml lime juice 2 Dashes Angostura Bitters Top up Ginger beer"
+      ],
+      "normalized": [
+        "cognac or brandy 30 ml gin 15 ml lime juice 2 dashes angostura bitters top up ginger beer"
+      ],
+      "base_spirits": [
+        "cognac or brandy 30 ml gin 15 ml lime juice 2 dashes angostura bitters top up ginger beer"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Three Dots and a Dash",
+      "flavor": "Sweet, Sour, Bitter",
+      "raw": "- 45 ml Rhum Martinique Agricole 15 ml Blended dark rum 7.5 ml Falernum 7.5 ml Allspice Saint Elizabeth15 ml lime juice 15 ml orange juice 15 ml honey syrup (sugar syrup) 2 Dashes Angostura Bitters",
+      "parsed": [
+        "Rhum Martinique Agricole 15 ml Blended dark rum 7.5 ml Falernum 7.5 ml Allspice Saint Elizabeth15 ml lime juice 15 ml orange juice 15 ml honey syrup (sugar syrup) 2 Dashes Angostura Bitters"
+      ],
+      "normalized": [
+        "rhum martinique agricole 15 ml blended dark rum 7.5 ml falernum 7.5 ml allspice saint elizabeth15 ml lime juice 15 ml orange juice 15 ml honey syrup (sugar syrup) (sugar syrup) 2 dashes angostura bitters"
+      ],
+      "base_spirits": [
+        "rhum martinique agricole 15 ml blended dark rum 7.5 ml falernum 7.5 ml allspice saint elizabeth15 ml lime juice 15 ml orange juice 15 ml honey syrup (sugar syrup) (sugar syrup) 2 dashes angostura bitters"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Tipperary",
+      "flavor": "Sweet & Bitter",
+      "raw": "- 50 ml whiskey 25 ml sweet vermouth 15 ml green chartreuse 2 Dashes Angostura Bitters",
+      "parsed": [
+        "whiskey 25 ml sweet vermouth 15 ml green chartreuse 2 Dashes Angostura Bitters"
+      ],
+      "normalized": [
+        "whiskey 25 ml sweet vermouth 15 ml green chartreuse 2 dashes angostura bitters"
+      ],
+      "base_spirits": [
+        "whiskey 25 ml sweet vermouth 15 ml green chartreuse 2 dashes angostura bitters"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Tommy’s Margarita",
+      "flavor": "Sweet & Sour",
+      "raw": "- 60 ml tequila 30 ml lime juice 30 ml agave nectar (sugar syrup)",
+      "parsed": [
+        "tequila 30 ml lime juice 30 ml agave nectar (sugar syrup)"
+      ],
+      "normalized": [
+        "tequila 30 ml lime juice 30 ml agave nectar (sugar syrup) (sugar syrup)"
+      ],
+      "base_spirits": [
+        "tequila 30 ml lime juice 30 ml agave nectar (sugar syrup) (sugar syrup)"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Trinidad Sour",
+      "flavor": "Sweet, Sour, Bitter",
+      "raw": "- 45 ml Angostura Bitters 30 ml Orgeat Syrup 22.5 ml lemon juice 15 ml whiskey",
+      "parsed": [
+        "Angostura Bitters 30 ml Orgeat Syrup 22.5 ml lemon juice 15 ml whiskey"
+      ],
+      "normalized": [
+        "angostura bitters 30 ml orgeat syrup 22.5 ml lemon juice 15 ml whiskey"
+      ],
+      "base_spirits": [
+        "angostura bitters 30 ml orgeat syrup 22.5 ml lemon juice 15 ml whiskey"
+      ],
+      "other_ings": []
+    },
+    {
+      "name": "Ve.N.To",
+      "flavor": "Sweet & Sour",
+      "raw": "- 45 ml White Smooth Grappa 22.5 ml lemon juice 15 ml Honey mix (replace water with chamomile)* 15 ml Chamomile cordial Few Drops of Egg White (Optional)",
+      "parsed": [
+        "White Smooth Grappa 22.5 ml lemon juice 15 ml Honey mix (replace water with chamomile)* 15 ml Chamomile cordial Few Drops of Egg White (Optional)"
+      ],
+      "normalized": [
+        "white smooth grappa 22.5 ml lemon juice 15 ml honey mix (replace water with chamomile)* 15 ml chamomile cordial few drops of egg white (optional)"
+      ],
+      "base_spirits": [
+        "white smooth grappa 22.5 ml lemon juice 15 ml honey mix (replace water with chamomile)* 15 ml chamomile cordial few drops of egg white (optional)"
+      ],
+      "other_ings": []
+    }
+  ],
+  "all_unique_ingredients": [
+    "absinthe",
+    "amontillado sherry 45 ml palo cortado 1 tsp superfine sugar (or granulated) 1/2  orange wheel 1/2  lemon wheel",
+    "angostura bitters 30 ml orgeat syrup 22.5 ml lemon juice 15 ml whiskey",
+    "blackstrap rum 22.5 ml campari 45 ml pineapple juice 15 ml lime juice 15 ml sugar syrup",
+    "brandy 45 ml red port 10 ml egg yolk",
+    "brandy 7.5 ml cherry liqueur luxardo 1 bar spoon curacao 15 ml lemon juice 1 bar spoon sugar syrup 2 dashes angostura bitters",
+    "cachaça 1 lime cut into small wedges 4 teaspoons sugar",
+    "cachaça 20 ml sweet vermouth cinzano rosso 15 ml cynar 2 drops angostura (optional)",
+    "campari 120 ml freshly squeezed orange juice",
+    "campari 30 ml sweet vermouth a splash of soda water",
+    "celery salt",
+    "chocolate liqueur (white) 20 ml mint liqueur (green) 20 ml cream",
+    "cognac 10 ml absinthe 1 sugar 2 dashes peychaud’s bitters",
+    "cognac 120 ml ginger ale dash of angostura bitters (optional)",
+    "cognac 20 ml orange liqueur 20 ml lemon juice",
+    "cognac 20 ml white mint liqueur",
+    "cognac 30 ml chocolate liqueur (brown) 30 ml cream",
+    "cognac 35 ml amaretto",
+    "cognac or brandy 30 ml gin 15 ml lime juice 2 dashes angostura bitters top up ginger beer",
+    "cuban aguardiente 15 ml lime juice 15 ml raw honey 50 ml water",
+    "dark rum",
+    "dark rum (black rum) 100 ml ginger beer",
+    "dark rum 15 ml white rum 15 ml passion fruit syrup 15 ml lime juice 15 ml honey syrup (sugar syrup) (sugar syrup)",
+    "dark rum 30 ml white rum* 15 ml orange curacao 15 ml orgeat syrup (almond) 30 ml fresh squeezed lime juice 7.5 ml sugar syrup",
+    "dash angostura bitters",
+    "donn’s mix*",
+    "dry white wine 10 ml crème de cassis",
+    "falernum",
+    "fernet branca fill up with cola",
+    "freshly squeezed  orange juice 75 ml sparkling wine",
+    "gin 10 ml cherry liqueur luxardo 10 ml lemon juice 2 dashes orange bitters",
+    "gin 10 ml dry vermouth",
+    "gin 15 ml cherry liqueur luxardo 15 ml lemon juice 1 bar spoon crème de violette",
+    "gin 15 ml cherry sangue morlacco 7.5 ml orange liqueur 7.5 ml dom bénédictine 120 ml fresh pineapple juice 15 ml lime juice 10 ml grenadine syrup a dash of angostura bitters",
+    "gin 15 ml lemon juice 15 ml sugar syrup 60 ml sparkling wine",
+    "gin 15 ml lime juice 15 ml lemon juice 30 ml sugar syrup 60 ml cream 30ml egg white 3 dashes orange flower water 2 drops vanilla extract soda water",
+    "gin 15 ml raspberry syrup 15 ml lemon juice few drops of egg white",
+    "gin 15 ml vodka 7.5 ml lillet",
+    "gin 2 teaspoons honey syrup (sugar syrup) (sugar syrup) 22.5 ml lemon juice 22.5 ml orange juice",
+    "gin 20 ml apricot brandy 15 ml orange juice",
+    "gin 20 ml dry vermouth 10 ml campari",
+    "gin 22.5 ml green chartreuse 22.5 ml cherry liqueur luxardo 22.5 ml lime juice",
+    "gin 22.5 ml lemon juice 22.5 ml sugar syrup 10 pcs italian basil leaves",
+    "gin 25 ml lemon juice 12.5 ml sugar syrup 15 ml crème de mûre",
+    "gin 30 ml apricot brandy 30 ml apple brandy",
+    "gin 30 ml campari 30 ml sweet vermouth",
+    "gin 30 ml dry vermouth 1/2 bar spoon cherry liqueur luxardo 1/4 bar spoon of absinthe 3 dashes orange bitters",
+    "gin 30 ml fresh lemon  juice 15 ml sugar syrup 5/6 mint leaves few drops egg white (optional)",
+    "gin 30 ml lemon juice 10 ml sugar syrup splash of soda water",
+    "gin 30 ml lemon juice 15 ml sugar syrup 60 ml  soda water",
+    "gin 30 ml orange liqueur 20 ml lemon juice",
+    "gin 30 ml orange liqueur 30 ml lillet 30 ml lemon juice 1 dash absinthe",
+    "gin 45 ml orange juice 1 tablespoon absinthe 1 tablespoon grenadine syrup",
+    "gin 45 ml sweet vermouth 1 bar spoon cherry liqueur luxardo 2 dashes orange bitters",
+    "gin 45 ml sweet vermouth 7.5 ml fernet",
+    "green chartreuse 30 ml fresh pineapple juice 22.5 ml lime juice 15 ml falernum",
+    "grenadine syrup",
+    "jamaican rum 15 ml lime juice 30 ml sugar cane juice",
+    "lime juice",
+    "mezcal 15 ml white rum 15 ml falernum 1 bar spoon cherry liqueur luxardo 22.5 ml lime juice 15 ml sugar syrup few drops of egg white (optional)",
+    "mezcal 22.5 ml yellow chartreuse 22.5 ml aperol 22.5 ml lime juice",
+    "mint leaves 45 ml dark rum 22.5 ml lime juice 30 ml sugar syrup 2 dashes angostura bitters 60 ml brut sparkling wine or sparkling wine",
+    "pepper (up to taste)",
+    "pisco 22.5 ml fresh pineapple juice 15 ml sugar syrup 15 ml lemon juice 30 ml dry white wine 3 pcs cloves",
+    "pisco 30 ml lemon juice 20 ml sugar syrup 1 raw whole egg white",
+    "rhum martinique agricole 15 ml blended dark rum 7.5 ml falernum 7.5 ml allspice saint elizabeth15 ml lime juice 15 ml orange juice 15 ml honey syrup (sugar syrup) (sugar syrup) 2 dashes angostura bitters",
+    "rum 40 ml grapefruit juice 15 ml cherry liqueur luxardo 15 ml fresh lime",
+    "sparkling wine 10 ml cognac 2 dashes angostura bitters few drops of orange liqueur (optional) 1 sugar",
+    "sparkling wine 50 ml peach puree",
+    "sparkling wine 60 ml aperol splash of soda water",
+    "tequila 20 ml orange liqueur 15 ml lime juice",
+    "tequila 30 ml lime juice 30 ml agave nectar (sugar syrup) (sugar syrup)",
+    "tequila 30 ml  orange liqueur 15 ml lime juice",
+    "tequila 5 ml fresh lime a pinch of salt 100 ml pink grapefruit soda",
+    "tequila 90 ml orange juice 15 ml grenadine syrup",
+    "vanilla vodka 20 ml passion fruit liqueur 50 ml passion fruit puree 2 bar spoons vanilla sugar 50 ml sparkling wine to serve on the side",
+    "vodka 120 ml cranberry juice 30 ml grapefruit juice",
+    "vodka 120 ml ginger beer 10 ml lime juice",
+    "vodka 15 ml raspberry liqueur 15 ml fresh pineapple juice",
+    "vodka 15 ml tequila 15 ml white rum 15 ml gin 15 ml orange liqueur 25 ml lemon juice 30 ml sugar syrup top with cola",
+    "vodka 20 ml coffee liqueur",
+    "vodka 20 ml orange liqueur 15 ml fresh squeezed lemon juice",
+    "vodka 20 ml peach liqueur 40 ml orange juice 40 ml cranberry juice",
+    "vodka 25 ml lemon juice 15 ml blackcurrant liqueur 10 ml sugar syrup top up with sparkling wine",
+    "vodka 30 ml coffee liqueur 10 ml sugar syrup 1 strong espresso",
+    "vodka 90 ml tomato juice 15 ml lemon juice 2 dashes worcestershire sauce tabasco",
+    "vodka citron 15 ml orange liqueur 15 ml lime juice 30 ml cranberry juice",
+    "vodka vanilla 15 ml elderflower cordial 15 ml lime juice 10 ml monin honey syrup (sugar syrup) (sugar syrup) 2 thin slices red chili pepper",
+    "whiskey 120 ml hot coffee 50 ml cream (chilled) 1 teaspoon sugar",
+    "whiskey 20 ml sweet vermouth 1 dash angostura bitters",
+    "whiskey 22.5 ml sweet vermouth 15 ml cherry liqueur luxardo 7.5 ml absinthe",
+    "whiskey 25 ml drambuie",
+    "whiskey 25 ml lemon juice 20 ml sugar syrup few drops of egg white (optional)",
+    "whiskey 25 ml sweet vermouth 15 ml green chartreuse 2 dashes angostura bitters",
+    "whiskey 30 ml amaro nonino 30 ml aperol 30 ml lemon juice",
+    "whiskey 30 ml cognac 30 ml sweet vermouth 1 bar spoon bénédictine 2 dashes peychaud’s bitters",
+    "whiskey 4 fresh mint sprigs 1 tsp sugar 2 tsp water",
+    "whiskey 7.5 ml smoked whisky 22.5 ml lemon juice 22.5 ml honey syrup (sugar syrup) (sugar syrup) 2-3 quarter size sliced fresh ginger",
+    "whiskey or whiskey 1 sugar few dashes angostura bitters few dashes plain water",
+    "whiskey or whiskey 22.5 ml sugar syrup 30 ml lemon juice few drops of egg white 15 ml red wine (shiraz or malbech)",
+    "whiskey or whiskey 30 ml campari 30 ml sweet vermouth",
+    "white cuban ron 20 ml lime juice 2 bar spoons superfine sugar",
+    "white cuban ron 20 ml  lime juice 6 pcs mint sprigs 2 tsp sugar soda water",
+    "white rum 120 ml cola 10 ml lime juice",
+    "white rum 15 ml peach brandy 15 ml lime juice 30 ml honey mix 10 pcs mint leaves 3 to 4 pcs pineapple chunks",
+    "white rum 30 ml coconut cream 50 ml fresh pineapple juice",
+    "white rum 30 ml cognac 30 ml orange liqueur 20 ml lemon juice",
+    "white rum 30 ml ron smoky havana club 15 ml licor amaretto 5 ml licor frangelico 5 drops cherry liqueur luxardo 30 ml passion fruit puree 90 fresh pineapple juice 30 lime juice 1 pc gengibre slice",
+    "white rum 45 ml fresh pineapple juice 7.5 ml cherry liqueur luxardo 5 ml grenadine syrup",
+    "white smooth grappa 22.5 ml lemon juice 15 ml honey mix (replace water with chamomile)* 15 ml chamomile cordial few drops of egg white (optional)"
+  ],
+  "exact_match_results": [
+    {
+      "name": "Alexander",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Alexander"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "cognac 30 ml chocolate liqueur (brown) 30 ml cream"
+      ],
+      "other": []
+    },
+    {
+      "name": "Americano",
+      "status": "FOUND",
+      "match_pcts": [
+        90,
+        60,
+        60,
+        0
+      ],
+      "returned_names": [
+        "Americano",
+        "Negroni",
+        "Boulevardier",
+        "Spritz"
+      ],
+      "has_zero_match": true,
+      "match_type": "strict",
+      "base": [],
+      "other": [
+        "campari 30 ml sweet vermouth a splash of soda water"
+      ]
+    },
+    {
+      "name": "Angel Face",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Angel Face"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 30 ml apricot brandy 30 ml apple brandy"
+      ],
+      "other": []
+    },
+    {
+      "name": "Aviation",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Aviation"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 15 ml cherry liqueur luxardo 15 ml lemon juice 1 bar spoon crème de violette"
+      ],
+      "other": []
+    },
+    {
+      "name": "Between the Sheets",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "Between the Sheets"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "white rum 30 ml cognac 30 ml orange liqueur 20 ml lemon juice"
+      ],
+      "other": []
+    },
+    {
+      "name": "Boulevardier",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Boulevardier"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "whiskey or whiskey 30 ml campari 30 ml sweet vermouth"
+      ],
+      "other": []
+    },
+    {
+      "name": "Brandy Crusta",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "Brandy Crusta"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "brandy 7.5 ml cherry liqueur luxardo 1 bar spoon curacao 15 ml lemon juice 1 bar spoon sugar syrup 2 dashes angostura bitters"
+      ],
+      "other": []
+    },
+    {
+      "name": "Casino",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "Casino"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 10 ml cherry liqueur luxardo 10 ml lemon juice 2 dashes orange bitters"
+      ],
+      "other": []
+    },
+    {
+      "name": "Clover Club",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Clover Club"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 15 ml raspberry syrup 15 ml lemon juice few drops of egg white"
+      ],
+      "other": []
+    },
+    {
+      "name": "Daiquiri",
+      "status": "FOUND",
+      "match_pcts": [
+        90,
+        0,
+        0,
+        0
+      ],
+      "returned_names": [
+        "Daiquiri",
+        "Mojito",
+        "Old Cuban",
+        "Illegal"
+      ],
+      "has_zero_match": true,
+      "match_type": "strict",
+      "base": [],
+      "other": [
+        "white cuban ron 20 ml lime juice 2 bar spoons superfine sugar"
+      ]
+    },
+    {
+      "name": "Dry Martini",
+      "status": "FOUND",
+      "match_pcts": [
+        90
+      ],
+      "returned_names": [
+        "Dry Martini"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 10 ml dry vermouth"
+      ],
+      "other": []
+    },
+    {
+      "name": "Gin Fizz",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Gin Fizz"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 30 ml lemon juice 10 ml sugar syrup splash of soda water"
+      ],
+      "other": []
+    },
+    {
+      "name": "Hanky Panky",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Hanky Panky"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 45 ml sweet vermouth 7.5 ml fernet"
+      ],
+      "other": []
+    },
+    {
+      "name": "John Collins",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "John Collins"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 30 ml lemon juice 15 ml sugar syrup 60 ml  soda water"
+      ],
+      "other": []
+    },
+    {
+      "name": "Last Word",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "Last Word"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 22.5 ml green chartreuse 22.5 ml cherry liqueur luxardo 22.5 ml lime juice"
+      ],
+      "other": []
+    },
+    {
+      "name": "Manhattan",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Manhattan"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "whiskey 20 ml sweet vermouth 1 dash angostura bitters"
+      ],
+      "other": []
+    },
+    {
+      "name": "Martinez",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Martinez"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 45 ml sweet vermouth 1 bar spoon cherry liqueur luxardo 2 dashes orange bitters"
+      ],
+      "other": []
+    },
+    {
+      "name": "Mary Pickford",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "Mary Pickford"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "white rum 45 ml fresh pineapple juice 7.5 ml cherry liqueur luxardo 5 ml grenadine syrup"
+      ],
+      "other": []
+    },
+    {
+      "name": "Monkey Gland",
+      "status": "FOUND",
+      "match_pcts": [
+        90
+      ],
+      "returned_names": [
+        "Monkey Gland"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 45 ml orange juice 1 tablespoon absinthe 1 tablespoon grenadine syrup"
+      ],
+      "other": []
+    },
+    {
+      "name": "Negroni",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Negroni"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 30 ml campari 30 ml sweet vermouth"
+      ],
+      "other": []
+    },
+    {
+      "name": "Old Fashioned",
+      "status": "FOUND",
+      "match_pcts": [
+        100
+      ],
+      "returned_names": [
+        "Old Fashioned"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "whiskey or whiskey 1 sugar few dashes angostura bitters few dashes plain water"
+      ],
+      "other": []
+    },
+    {
+      "name": "Paradise",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Paradise"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 20 ml apricot brandy 15 ml orange juice"
+      ],
+      "other": []
+    },
+    {
+      "name": "Planters Punch",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Planters Punch"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "jamaican rum 15 ml lime juice 30 ml sugar cane juice"
+      ],
+      "other": []
+    },
+    {
+      "name": "Porto Flip",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Porto Flip"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "brandy 45 ml red port 10 ml egg yolk"
+      ],
+      "other": []
+    },
+    {
+      "name": "Ramos Fizz",
+      "status": "FOUND",
+      "match_pcts": [
+        29
+      ],
+      "returned_names": [
+        "Ramos Fizz"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 15 ml lime juice 15 ml lemon juice 30 ml sugar syrup 60 ml cream 30ml egg white 3 dashes orange flower water 2 drops vanilla extract soda water"
+      ],
+      "other": []
+    },
+    {
+      "name": "Remember the Maine",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "Remember the Maine"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "whiskey 22.5 ml sweet vermouth 15 ml cherry liqueur luxardo 7.5 ml absinthe"
+      ],
+      "other": []
+    },
+    {
+      "name": "Rusty Nail",
+      "status": "FOUND",
+      "match_pcts": [
+        90
+      ],
+      "returned_names": [
+        "Rusty Nail"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "whiskey 25 ml drambuie"
+      ],
+      "other": []
+    },
+    {
+      "name": "Sazerac",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Sazerac"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "cognac 10 ml absinthe 1 sugar 2 dashes peychaud’s bitters"
+      ],
+      "other": []
+    },
+    {
+      "name": "Sidecar",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Sidecar"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "cognac 20 ml orange liqueur 20 ml lemon juice"
+      ],
+      "other": []
+    },
+    {
+      "name": "Stinger",
+      "status": "FOUND",
+      "match_pcts": [
+        90
+      ],
+      "returned_names": [
+        "Stinger"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "cognac 20 ml white mint liqueur"
+      ],
+      "other": []
+    },
+    {
+      "name": "Tuxedo",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Tuxedo"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 30 ml dry vermouth 1/2 bar spoon cherry liqueur luxardo 1/4 bar spoon of absinthe 3 dashes orange bitters"
+      ],
+      "other": []
+    },
+    {
+      "name": "Vieux Carré",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "Vieux Carré"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "whiskey 30 ml cognac 30 ml sweet vermouth 1 bar spoon bénédictine 2 dashes peychaud’s bitters"
+      ],
+      "other": []
+    },
+    {
+      "name": "Whiskey Sour",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Whiskey Sour"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "whiskey 25 ml lemon juice 20 ml sugar syrup few drops of egg white (optional)"
+      ],
+      "other": []
+    },
+    {
+      "name": "White Lady",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "White Lady"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 30 ml orange liqueur 20 ml lemon juice"
+      ],
+      "other": []
+    },
+    {
+      "name": "Bellini",
+      "status": "FOUND",
+      "match_pcts": [
+        90,
+        50,
+        0,
+        0
+      ],
+      "returned_names": [
+        "Bellini",
+        "Porn Star Martini",
+        "French 75",
+        "Kir"
+      ],
+      "has_zero_match": true,
+      "match_type": "strict",
+      "base": [],
+      "other": [
+        "sparkling wine 50 ml peach puree"
+      ]
+    },
+    {
+      "name": "Black Russian",
+      "status": "FOUND",
+      "match_pcts": [
+        90
+      ],
+      "returned_names": [
+        "Black Russian"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "vodka 20 ml coffee liqueur"
+      ],
+      "other": []
+    },
+    {
+      "name": "Bloody Mary",
+      "status": "FOUND",
+      "match_pcts": [
+        90
+      ],
+      "returned_names": [
+        "Bloody Mary"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "vodka 90 ml tomato juice 15 ml lemon juice 2 dashes worcestershire sauce tabasco"
+      ],
+      "other": [
+        "celery salt",
+        "pepper (up to taste)"
+      ]
+    },
+    {
+      "name": "Caipirinha",
+      "status": "FOUND",
+      "match_pcts": [
+        100
+      ],
+      "returned_names": [
+        "Caipirinha"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "cachaça 1 lime cut into small wedges 4 teaspoons sugar"
+      ],
+      "other": []
+    },
+    {
+      "name": "Cardinale",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Cardinale"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 20 ml dry vermouth 10 ml campari"
+      ],
+      "other": []
+    },
+    {
+      "name": "Champagne Cocktail",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Champagne Cocktail"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "sparkling wine 10 ml cognac 2 dashes angostura bitters few drops of orange liqueur (optional) 1 sugar"
+      ],
+      "other": []
+    },
+    {
+      "name": "Corpse Reviver #2",
+      "status": "FOUND",
+      "match_pcts": [
+        60
+      ],
+      "returned_names": [
+        "Corpse Reviver #2"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 30 ml orange liqueur 30 ml lillet 30 ml lemon juice 1 dash absinthe"
+      ],
+      "other": []
+    },
+    {
+      "name": "Cosmopolitan",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "Cosmopolitan"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "vodka citron 15 ml orange liqueur 15 ml lime juice 30 ml cranberry juice"
+      ],
+      "other": []
+    },
+    {
+      "name": "Cuba Libre",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Cuba Libre"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "white rum 120 ml cola 10 ml lime juice"
+      ],
+      "other": []
+    },
+    {
+      "name": "French 75",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "French 75"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 15 ml lemon juice 15 ml sugar syrup 60 ml sparkling wine"
+      ],
+      "other": []
+    },
+    {
+      "name": "French Connection",
+      "status": "FOUND",
+      "match_pcts": [
+        90
+      ],
+      "returned_names": [
+        "French Connection"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "cognac 35 ml amaretto"
+      ],
+      "other": []
+    },
+    {
+      "name": "Garibaldi",
+      "status": "FOUND",
+      "match_pcts": [
+        90,
+        90,
+        0,
+        0
+      ],
+      "returned_names": [
+        "Garibaldi",
+        "Mimosa",
+        "Jungle Bird",
+        "Negroni"
+      ],
+      "has_zero_match": true,
+      "match_type": "strict",
+      "base": [],
+      "other": [
+        "campari 120 ml freshly squeezed orange juice"
+      ]
+    },
+    {
+      "name": "Grasshopper",
+      "status": "FOUND",
+      "match_pcts": [
+        80,
+        70,
+        0,
+        0
+      ],
+      "returned_names": [
+        "Grasshopper",
+        "Stinger",
+        "Alexander",
+        "Mojito"
+      ],
+      "has_zero_match": true,
+      "match_type": "strict",
+      "base": [],
+      "other": [
+        "chocolate liqueur (white) 20 ml mint liqueur (green) 20 ml cream"
+      ]
+    },
+    {
+      "name": "Hemingway Special",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "Hemingway Special"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "rum 40 ml grapefruit juice 15 ml cherry liqueur luxardo 15 ml fresh lime"
+      ],
+      "other": []
+    },
+    {
+      "name": "Horse’s Neck",
+      "status": "FOUND",
+      "match_pcts": [
+        90
+      ],
+      "returned_names": [
+        "Horse’s Neck"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "cognac 120 ml ginger ale dash of angostura bitters (optional)"
+      ],
+      "other": []
+    },
+    {
+      "name": "Irish Coffee",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Irish Coffee"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "whiskey 120 ml hot coffee 50 ml cream (chilled) 1 teaspoon sugar"
+      ],
+      "other": []
+    },
+    {
+      "name": "Kir",
+      "status": "FOUND",
+      "match_pcts": [
+        90,
+        0,
+        0,
+        0
+      ],
+      "returned_names": [
+        "Kir",
+        "Pisco Punch",
+        "Dry Martini",
+        "Cardinale"
+      ],
+      "has_zero_match": true,
+      "match_type": "strict",
+      "base": [],
+      "other": [
+        "dry white wine 10 ml crème de cassis"
+      ]
+    },
+    {
+      "name": "Lemon Drop Martini",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Lemon Drop Martini"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "vodka 20 ml orange liqueur 15 ml fresh squeezed lemon juice"
+      ],
+      "other": []
+    },
+    {
+      "name": "Long Island Iced Tea",
+      "status": "FOUND",
+      "match_pcts": [
+        39
+      ],
+      "returned_names": [
+        "Long Island Iced Tea"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "vodka 15 ml tequila 15 ml white rum 15 ml gin 15 ml orange liqueur 25 ml lemon juice 30 ml sugar syrup top with cola"
+      ],
+      "other": []
+    },
+    {
+      "name": "Mai-Tai",
+      "status": "FOUND",
+      "match_pcts": [
+        50
+      ],
+      "returned_names": [
+        "Mai-Tai"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "dark rum 30 ml white rum* 15 ml orange curacao 15 ml orgeat syrup (almond) 30 ml fresh squeezed lime juice 7.5 ml sugar syrup"
+      ],
+      "other": []
+    },
+    {
+      "name": "Margarita",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Margarita"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "tequila 20 ml orange liqueur 15 ml lime juice"
+      ],
+      "other": []
+    },
+    {
+      "name": "Mimosa",
+      "status": "FOUND",
+      "match_pcts": [
+        90,
+        90,
+        0,
+        0
+      ],
+      "returned_names": [
+        "Mimosa",
+        "Garibaldi",
+        "Bellini",
+        "French 75"
+      ],
+      "has_zero_match": true,
+      "match_type": "strict",
+      "base": [],
+      "other": [
+        "freshly squeezed  orange juice 75 ml sparkling wine"
+      ]
+    },
+    {
+      "name": "Mint Julep",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Mint Julep"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "whiskey 4 fresh mint sprigs 1 tsp sugar 2 tsp water"
+      ],
+      "other": []
+    },
+    {
+      "name": "Mojito",
+      "status": "FOUND",
+      "match_pcts": [
+        70,
+        0,
+        0,
+        0
+      ],
+      "returned_names": [
+        "Mojito",
+        "Mint Julep",
+        "Gin Fizz",
+        "Old Cuban"
+      ],
+      "has_zero_match": true,
+      "match_type": "strict",
+      "base": [],
+      "other": [
+        "white cuban ron 20 ml  lime juice 6 pcs mint sprigs 2 tsp sugar soda water"
+      ]
+    },
+    {
+      "name": "Moscow Mule",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Moscow Mule"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "vodka 120 ml ginger beer 10 ml lime juice"
+      ],
+      "other": []
+    },
+    {
+      "name": "Pina Colada",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Pina Colada"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "white rum 30 ml coconut cream 50 ml fresh pineapple juice"
+      ],
+      "other": []
+    },
+    {
+      "name": "Pisco Sour",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Pisco Sour"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "pisco 30 ml lemon juice 20 ml sugar syrup 1 raw whole egg white"
+      ],
+      "other": []
+    },
+    {
+      "name": "Rabo de Galo",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "Rabo de Galo"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "cachaça 20 ml sweet vermouth cinzano rosso 15 ml cynar 2 drops angostura (optional)"
+      ],
+      "other": []
+    },
+    {
+      "name": "Sea Breeze",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Sea Breeze"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "vodka 120 ml cranberry juice 30 ml grapefruit juice"
+      ],
+      "other": []
+    },
+    {
+      "name": "Sex on the Beach",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "Sex on the Beach"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "vodka 20 ml peach liqueur 40 ml orange juice 40 ml cranberry juice"
+      ],
+      "other": []
+    },
+    {
+      "name": "Singapore Sling",
+      "status": "FOUND",
+      "match_pcts": [
+        39
+      ],
+      "returned_names": [
+        "Singapore Sling"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 15 ml cherry sangue morlacco 7.5 ml orange liqueur 7.5 ml dom bénédictine 120 ml fresh pineapple juice 15 ml lime juice 10 ml grenadine syrup a dash of angostura bitters"
+      ],
+      "other": []
+    },
+    {
+      "name": "Tequila Sunrise",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Tequila Sunrise"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "tequila 90 ml orange juice 15 ml grenadine syrup"
+      ],
+      "other": []
+    },
+    {
+      "name": "Vesper",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Vesper"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 15 ml vodka 7.5 ml lillet"
+      ],
+      "other": []
+    },
+    {
+      "name": "Zombie",
+      "status": "FOUND",
+      "match_pcts": [
+        100,
+        90,
+        70,
+        70
+      ],
+      "returned_names": [
+        "Zombie",
+        "Dark ‘N’ Stormy",
+        "Three Dots and a Dash",
+        "Old Cuban"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "dark rum"
+      ],
+      "other": [
+        "lime juice",
+        "falernum",
+        "donn’s mix*",
+        "grenadine syrup",
+        "dash angostura bitters",
+        "absinthe"
+      ]
+    },
+    {
+      "name": "Bee’s Knees",
+      "status": "NO_RESULT",
+      "base": [
+        "gin 2 teaspoons honey syrup (sugar syrup) (sugar syrup) 22.5 ml lemon juice 22.5 ml orange juice"
+      ],
+      "other": []
+    },
+    {
+      "name": "Bramble",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "Bramble"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 25 ml lemon juice 12.5 ml sugar syrup 15 ml crème de mûre"
+      ],
+      "other": []
+    },
+    {
+      "name": "Canchanchara",
+      "status": "FOUND",
+      "match_pcts": [
+        70,
+        0,
+        0,
+        0
+      ],
+      "returned_names": [
+        "Canchanchara",
+        "Ve.N.To",
+        "Spicy Fifty",
+        "Mojito"
+      ],
+      "has_zero_match": true,
+      "match_type": "strict",
+      "base": [],
+      "other": [
+        "cuban aguardiente 15 ml lime juice 15 ml raw honey 50 ml water"
+      ]
+    },
+    {
+      "name": "Chartreuse Swizzle",
+      "status": "FOUND",
+      "match_pcts": [
+        70,
+        0,
+        0,
+        0
+      ],
+      "returned_names": [
+        "Chartreuse Swizzle",
+        "Last Word",
+        "Naked and Famous",
+        "Tipperary"
+      ],
+      "has_zero_match": true,
+      "match_type": "strict",
+      "base": [],
+      "other": [
+        "green chartreuse 30 ml fresh pineapple juice 22.5 ml lime juice 15 ml falernum"
+      ]
+    },
+    {
+      "name": "Dark ‘N’ Stormy",
+      "status": "FOUND",
+      "match_pcts": [
+        90
+      ],
+      "returned_names": [
+        "Dark ‘N’ Stormy"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "dark rum (black rum) 100 ml ginger beer"
+      ],
+      "other": []
+    },
+    {
+      "name": "Don’s Special Daiquiri",
+      "status": "NO_RESULT",
+      "base": [
+        "dark rum 15 ml white rum 15 ml passion fruit syrup 15 ml lime juice 15 ml honey syrup (sugar syrup) (sugar syrup)"
+      ],
+      "other": []
+    },
+    {
+      "name": "Espresso Martini",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Espresso Martini"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "vodka 30 ml coffee liqueur 10 ml sugar syrup 1 strong espresso"
+      ],
+      "other": []
+    },
+    {
+      "name": "Fernandito",
+      "status": "FOUND",
+      "match_pcts": [
+        100,
+        0,
+        0,
+        0
+      ],
+      "returned_names": [
+        "Fernandito",
+        "Hanky Panky",
+        "Cuba Libre",
+        "Long Island Iced Tea"
+      ],
+      "has_zero_match": true,
+      "match_type": "strict",
+      "base": [],
+      "other": [
+        "fernet branca fill up with cola"
+      ]
+    },
+    {
+      "name": "French Martini",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "French Martini"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "vodka 15 ml raspberry liqueur 15 ml fresh pineapple juice"
+      ],
+      "other": []
+    },
+    {
+      "name": "Gin Basil Smash",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "Gin Basil Smash"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 22.5 ml lemon juice 22.5 ml sugar syrup 10 pcs italian basil leaves"
+      ],
+      "other": []
+    },
+    {
+      "name": "Grand Margarita",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Grand Margarita"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "tequila 30 ml  orange liqueur 15 ml lime juice"
+      ],
+      "other": []
+    },
+    {
+      "name": "IBA Tiki",
+      "status": "FOUND",
+      "match_pcts": [
+        50
+      ],
+      "returned_names": [
+        "IBA Tiki"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "white rum 30 ml ron smoky havana club 15 ml licor amaretto 5 ml licor frangelico 5 drops cherry liqueur luxardo 30 ml passion fruit puree 90 fresh pineapple juice 30 lime juice 1 pc gengibre slice"
+      ],
+      "other": []
+    },
+    {
+      "name": "Illegal",
+      "status": "FOUND",
+      "match_pcts": [
+        60
+      ],
+      "returned_names": [
+        "Illegal"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "mezcal 15 ml white rum 15 ml falernum 1 bar spoon cherry liqueur luxardo 22.5 ml lime juice 15 ml sugar syrup few drops of egg white (optional)"
+      ],
+      "other": []
+    },
+    {
+      "name": "Jungle Bird",
+      "status": "FOUND",
+      "match_pcts": [
+        60
+      ],
+      "returned_names": [
+        "Jungle Bird"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "blackstrap rum 22.5 ml campari 45 ml pineapple juice 15 ml lime juice 15 ml sugar syrup"
+      ],
+      "other": []
+    },
+    {
+      "name": "Missionary’s Downfall",
+      "status": "FOUND",
+      "match_pcts": [
+        50
+      ],
+      "returned_names": [
+        "Missionary’s Downfall"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "white rum 15 ml peach brandy 15 ml lime juice 30 ml honey mix 10 pcs mint leaves 3 to 4 pcs pineapple chunks"
+      ],
+      "other": []
+    },
+    {
+      "name": "Naked and Famous",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "Naked and Famous"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "mezcal 22.5 ml yellow chartreuse 22.5 ml aperol 22.5 ml lime juice"
+      ],
+      "other": []
+    },
+    {
+      "name": "New York Sour",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "New York Sour"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "whiskey or whiskey 22.5 ml sugar syrup 30 ml lemon juice few drops of egg white 15 ml red wine (shiraz or malbech)"
+      ],
+      "other": []
+    },
+    {
+      "name": "Old Cuban",
+      "status": "FOUND",
+      "match_pcts": [
+        50
+      ],
+      "returned_names": [
+        "Old Cuban"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "mint leaves 45 ml dark rum 22.5 ml lime juice 30 ml sugar syrup 2 dashes angostura bitters 60 ml brut sparkling wine or sparkling wine"
+      ],
+      "other": []
+    },
+    {
+      "name": "Paloma",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "Paloma"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "tequila 5 ml fresh lime a pinch of salt 100 ml pink grapefruit soda"
+      ],
+      "other": []
+    },
+    {
+      "name": "Paper Plane",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "Paper Plane"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "whiskey 30 ml amaro nonino 30 ml aperol 30 ml lemon juice"
+      ],
+      "other": []
+    },
+    {
+      "name": "Penicillin",
+      "status": "NO_RESULT",
+      "base": [
+        "whiskey 7.5 ml smoked whisky 22.5 ml lemon juice 22.5 ml honey syrup (sugar syrup) (sugar syrup) 2-3 quarter size sliced fresh ginger"
+      ],
+      "other": []
+    },
+    {
+      "name": "Pisco Punch",
+      "status": "FOUND",
+      "match_pcts": [
+        50
+      ],
+      "returned_names": [
+        "Pisco Punch"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "pisco 22.5 ml fresh pineapple juice 15 ml sugar syrup 15 ml lemon juice 30 ml dry white wine 3 pcs cloves"
+      ],
+      "other": []
+    },
+    {
+      "name": "Porn Star Martini",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "Porn Star Martini"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "vanilla vodka 20 ml passion fruit liqueur 50 ml passion fruit puree 2 bar spoons vanilla sugar 50 ml sparkling wine to serve on the side"
+      ],
+      "other": []
+    },
+    {
+      "name": "Russian Spring Punch",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "Russian Spring Punch"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "vodka 25 ml lemon juice 15 ml blackcurrant liqueur 10 ml sugar syrup top up with sparkling wine"
+      ],
+      "other": []
+    },
+    {
+      "name": "Sherry Cobbler",
+      "status": "FOUND",
+      "match_pcts": [
+        80,
+        0,
+        0,
+        0
+      ],
+      "returned_names": [
+        "Sherry Cobbler",
+        "Three Dots and a Dash",
+        "Bee’s Knees",
+        "Tuxedo"
+      ],
+      "has_zero_match": true,
+      "match_type": "strict",
+      "base": [],
+      "other": [
+        "amontillado sherry 45 ml palo cortado 1 tsp superfine sugar (or granulated) 1/2  orange wheel 1/2  lemon wheel"
+      ]
+    },
+    {
+      "name": "South Side",
+      "status": "FOUND",
+      "match_pcts": [
+        80
+      ],
+      "returned_names": [
+        "South Side"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "gin 30 ml fresh lemon  juice 15 ml sugar syrup 5/6 mint leaves few drops egg white (optional)"
+      ],
+      "other": []
+    },
+    {
+      "name": "Spicy Fifty",
+      "status": "NO_RESULT",
+      "base": [
+        "vodka vanilla 15 ml elderflower cordial 15 ml lime juice 10 ml monin honey syrup (sugar syrup) (sugar syrup) 2 thin slices red chili pepper"
+      ],
+      "other": []
+    },
+    {
+      "name": "Spritz",
+      "status": "FOUND",
+      "match_pcts": [
+        90,
+        0,
+        0,
+        0
+      ],
+      "returned_names": [
+        "Spritz",
+        "French 75",
+        "Old Cuban",
+        "Kir"
+      ],
+      "has_zero_match": true,
+      "match_type": "strict",
+      "base": [],
+      "other": [
+        "sparkling wine 60 ml aperol splash of soda water"
+      ]
+    },
+    {
+      "name": "Suffering Bastard",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "Suffering Bastard"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "cognac or brandy 30 ml gin 15 ml lime juice 2 dashes angostura bitters top up ginger beer"
+      ],
+      "other": []
+    },
+    {
+      "name": "Three Dots and a Dash",
+      "status": "NO_RESULT",
+      "base": [
+        "rhum martinique agricole 15 ml blended dark rum 7.5 ml falernum 7.5 ml allspice saint elizabeth15 ml lime juice 15 ml orange juice 15 ml honey syrup (sugar syrup) (sugar syrup) 2 dashes angostura bitters"
+      ],
+      "other": []
+    },
+    {
+      "name": "Tipperary",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "Tipperary"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "whiskey 25 ml sweet vermouth 15 ml green chartreuse 2 dashes angostura bitters"
+      ],
+      "other": []
+    },
+    {
+      "name": "Tommy’s Margarita",
+      "status": "NO_RESULT",
+      "base": [
+        "tequila 30 ml lime juice 30 ml agave nectar (sugar syrup) (sugar syrup)"
+      ],
+      "other": []
+    },
+    {
+      "name": "Trinidad Sour",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "Trinidad Sour"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "angostura bitters 30 ml orgeat syrup 22.5 ml lemon juice 15 ml whiskey"
+      ],
+      "other": []
+    },
+    {
+      "name": "Ve.N.To",
+      "status": "FOUND",
+      "match_pcts": [
+        70
+      ],
+      "returned_names": [
+        "Ve.N.To"
+      ],
+      "has_zero_match": false,
+      "match_type": "strict",
+      "base": [
+        "white smooth grappa 22.5 ml lemon juice 15 ml honey mix (replace water with chamomile)* 15 ml chamomile cordial few drops of egg white (optional)"
+      ],
+      "other": []
+    }
+  ],
+  "single_ingredient_results": [
+    {
+      "ingredient": "absinthe",
+      "weight": 4,
+      "returned_results": true,
+      "match_pcts": [
+        70,
+        60,
+        60,
+        50
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "amontillado sherry 45 ml palo cortado 1 tsp superfine sugar (or granulated) 1/2  orange wheel 1/2  lemon wheel",
+      "weight": 4,
+      "returned_results": true,
+      "match_pcts": [
+        80,
+        0,
+        0,
+        0
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "angostura bitters 30 ml orgeat syrup 22.5 ml lemon juice 15 ml whiskey",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "blackstrap rum 22.5 ml campari 45 ml pineapple juice 15 ml lime juice 15 ml sugar syrup",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        60
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "brandy 45 ml red port 10 ml egg yolk",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "brandy 7.5 ml cherry liqueur luxardo 1 bar spoon curacao 15 ml lemon juice 1 bar spoon sugar syrup 2 dashes angostura bitters",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "cachaça 1 lime cut into small wedges 4 teaspoons sugar",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        100
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "cachaça 20 ml sweet vermouth cinzano rosso 15 ml cynar 2 drops angostura (optional)",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "campari 120 ml freshly squeezed orange juice",
+      "weight": 4,
+      "returned_results": true,
+      "match_pcts": [
+        90,
+        90,
+        0,
+        0
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "campari 30 ml sweet vermouth a splash of soda water",
+      "weight": 4,
+      "returned_results": true,
+      "match_pcts": [
+        90,
+        60,
+        60,
+        0
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "celery salt",
+      "weight": 1,
+      "returned_results": true,
+      "match_pcts": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "has_nonzero": false,
+      "is_empty": false
+    },
+    {
+      "ingredient": "chocolate liqueur (white) 20 ml mint liqueur (green) 20 ml cream",
+      "weight": 4,
+      "returned_results": true,
+      "match_pcts": [
+        80,
+        70,
+        0,
+        0
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "cognac 10 ml absinthe 1 sugar 2 dashes peychaud’s bitters",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "cognac 120 ml ginger ale dash of angostura bitters (optional)",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        90
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "cognac 20 ml orange liqueur 20 ml lemon juice",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "cognac 20 ml white mint liqueur",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        90
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "cognac 30 ml chocolate liqueur (brown) 30 ml cream",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "cognac 35 ml amaretto",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        90
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "cognac or brandy 30 ml gin 15 ml lime juice 2 dashes angostura bitters top up ginger beer",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "cuban aguardiente 15 ml lime juice 15 ml raw honey 50 ml water",
+      "weight": 3,
+      "returned_results": true,
+      "match_pcts": [
+        70,
+        0,
+        0,
+        0
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "dark rum",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        90,
+        60,
+        50,
+        50
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "dark rum (black rum) 100 ml ginger beer",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        90
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "dark rum 15 ml white rum 15 ml passion fruit syrup 15 ml lime juice 15 ml honey syrup (sugar syrup) (sugar syrup)",
+      "weight": 5,
+      "returned_results": false,
+      "match_pcts": [],
+      "has_nonzero": false,
+      "is_empty": true
+    },
+    {
+      "ingredient": "dark rum 30 ml white rum* 15 ml orange curacao 15 ml orgeat syrup (almond) 30 ml fresh squeezed lime juice 7.5 ml sugar syrup",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        50
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "dash angostura bitters",
+      "weight": 1,
+      "returned_results": true,
+      "match_pcts": [
+        20,
+        10,
+        0,
+        0
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "donn’s mix*",
+      "weight": 1,
+      "returned_results": true,
+      "match_pcts": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "has_nonzero": false,
+      "is_empty": false
+    },
+    {
+      "ingredient": "dry white wine 10 ml crème de cassis",
+      "weight": 4,
+      "returned_results": true,
+      "match_pcts": [
+        90,
+        0,
+        0,
+        0
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "falernum",
+      "weight": 1,
+      "returned_results": true,
+      "match_pcts": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "has_nonzero": false,
+      "is_empty": false
+    },
+    {
+      "ingredient": "fernet branca fill up with cola",
+      "weight": 4,
+      "returned_results": true,
+      "match_pcts": [
+        100,
+        0,
+        0,
+        0
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "freshly squeezed  orange juice 75 ml sparkling wine",
+      "weight": 4,
+      "returned_results": true,
+      "match_pcts": [
+        90,
+        90,
+        0,
+        0
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 10 ml cherry liqueur luxardo 10 ml lemon juice 2 dashes orange bitters",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 10 ml dry vermouth",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        90
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 15 ml cherry liqueur luxardo 15 ml lemon juice 1 bar spoon crème de violette",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 15 ml cherry sangue morlacco 7.5 ml orange liqueur 7.5 ml dom bénédictine 120 ml fresh pineapple juice 15 ml lime juice 10 ml grenadine syrup a dash of angostura bitters",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        39
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 15 ml lemon juice 15 ml sugar syrup 60 ml sparkling wine",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 15 ml lime juice 15 ml lemon juice 30 ml sugar syrup 60 ml cream 30ml egg white 3 dashes orange flower water 2 drops vanilla extract soda water",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        29
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 15 ml raspberry syrup 15 ml lemon juice few drops of egg white",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 15 ml vodka 7.5 ml lillet",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 2 teaspoons honey syrup (sugar syrup) (sugar syrup) 22.5 ml lemon juice 22.5 ml orange juice",
+      "weight": 5,
+      "returned_results": false,
+      "match_pcts": [],
+      "has_nonzero": false,
+      "is_empty": true
+    },
+    {
+      "ingredient": "gin 20 ml apricot brandy 15 ml orange juice",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 20 ml dry vermouth 10 ml campari",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 22.5 ml green chartreuse 22.5 ml cherry liqueur luxardo 22.5 ml lime juice",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 22.5 ml lemon juice 22.5 ml sugar syrup 10 pcs italian basil leaves",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 25 ml lemon juice 12.5 ml sugar syrup 15 ml crème de mûre",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 30 ml apricot brandy 30 ml apple brandy",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 30 ml campari 30 ml sweet vermouth",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 30 ml dry vermouth 1/2 bar spoon cherry liqueur luxardo 1/4 bar spoon of absinthe 3 dashes orange bitters",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 30 ml fresh lemon  juice 15 ml sugar syrup 5/6 mint leaves few drops egg white (optional)",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 30 ml lemon juice 10 ml sugar syrup splash of soda water",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 30 ml lemon juice 15 ml sugar syrup 60 ml  soda water",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 30 ml orange liqueur 20 ml lemon juice",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 30 ml orange liqueur 30 ml lillet 30 ml lemon juice 1 dash absinthe",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        60
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 45 ml orange juice 1 tablespoon absinthe 1 tablespoon grenadine syrup",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        90
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 45 ml sweet vermouth 1 bar spoon cherry liqueur luxardo 2 dashes orange bitters",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "gin 45 ml sweet vermouth 7.5 ml fernet",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "green chartreuse 30 ml fresh pineapple juice 22.5 ml lime juice 15 ml falernum",
+      "weight": 4,
+      "returned_results": true,
+      "match_pcts": [
+        70,
+        0,
+        0,
+        0
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "grenadine syrup",
+      "weight": 3,
+      "returned_results": true,
+      "match_pcts": [
+        50,
+        40,
+        29,
+        0
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "jamaican rum 15 ml lime juice 30 ml sugar cane juice",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "lime juice",
+      "weight": 2,
+      "returned_results": true,
+      "match_pcts": [
+        56,
+        36,
+        20,
+        20
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "mezcal 15 ml white rum 15 ml falernum 1 bar spoon cherry liqueur luxardo 22.5 ml lime juice 15 ml sugar syrup few drops of egg white (optional)",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        60
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "mezcal 22.5 ml yellow chartreuse 22.5 ml aperol 22.5 ml lime juice",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "mint leaves 45 ml dark rum 22.5 ml lime juice 30 ml sugar syrup 2 dashes angostura bitters 60 ml brut sparkling wine or sparkling wine",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        50
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "pepper (up to taste)",
+      "weight": 1,
+      "returned_results": true,
+      "match_pcts": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "has_nonzero": false,
+      "is_empty": false
+    },
+    {
+      "ingredient": "pisco 22.5 ml fresh pineapple juice 15 ml sugar syrup 15 ml lemon juice 30 ml dry white wine 3 pcs cloves",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        50
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "pisco 30 ml lemon juice 20 ml sugar syrup 1 raw whole egg white",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "rhum martinique agricole 15 ml blended dark rum 7.5 ml falernum 7.5 ml allspice saint elizabeth15 ml lime juice 15 ml orange juice 15 ml honey syrup (sugar syrup) (sugar syrup) 2 dashes angostura bitters",
+      "weight": 5,
+      "returned_results": false,
+      "match_pcts": [],
+      "has_nonzero": false,
+      "is_empty": true
+    },
+    {
+      "ingredient": "rum 40 ml grapefruit juice 15 ml cherry liqueur luxardo 15 ml fresh lime",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "sparkling wine 10 ml cognac 2 dashes angostura bitters few drops of orange liqueur (optional) 1 sugar",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "sparkling wine 50 ml peach puree",
+      "weight": 4,
+      "returned_results": true,
+      "match_pcts": [
+        90,
+        50,
+        0,
+        0
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "sparkling wine 60 ml aperol splash of soda water",
+      "weight": 4,
+      "returned_results": true,
+      "match_pcts": [
+        90,
+        0,
+        0,
+        0
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "tequila 20 ml orange liqueur 15 ml lime juice",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "tequila 30 ml lime juice 30 ml agave nectar (sugar syrup) (sugar syrup)",
+      "weight": 5,
+      "returned_results": false,
+      "match_pcts": [],
+      "has_nonzero": false,
+      "is_empty": true
+    },
+    {
+      "ingredient": "tequila 30 ml  orange liqueur 15 ml lime juice",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "tequila 5 ml fresh lime a pinch of salt 100 ml pink grapefruit soda",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "tequila 90 ml orange juice 15 ml grenadine syrup",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "vanilla vodka 20 ml passion fruit liqueur 50 ml passion fruit puree 2 bar spoons vanilla sugar 50 ml sparkling wine to serve on the side",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "vodka 120 ml cranberry juice 30 ml grapefruit juice",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "vodka 120 ml ginger beer 10 ml lime juice",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "vodka 15 ml raspberry liqueur 15 ml fresh pineapple juice",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "vodka 15 ml tequila 15 ml white rum 15 ml gin 15 ml orange liqueur 25 ml lemon juice 30 ml sugar syrup top with cola",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        39
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "vodka 20 ml coffee liqueur",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        90
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "vodka 20 ml orange liqueur 15 ml fresh squeezed lemon juice",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "vodka 20 ml peach liqueur 40 ml orange juice 40 ml cranberry juice",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "vodka 25 ml lemon juice 15 ml blackcurrant liqueur 10 ml sugar syrup top up with sparkling wine",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "vodka 30 ml coffee liqueur 10 ml sugar syrup 1 strong espresso",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "vodka 90 ml tomato juice 15 ml lemon juice 2 dashes worcestershire sauce tabasco",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        41
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "vodka citron 15 ml orange liqueur 15 ml lime juice 30 ml cranberry juice",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "vodka vanilla 15 ml elderflower cordial 15 ml lime juice 10 ml monin honey syrup (sugar syrup) (sugar syrup) 2 thin slices red chili pepper",
+      "weight": 5,
+      "returned_results": false,
+      "match_pcts": [],
+      "has_nonzero": false,
+      "is_empty": true
+    },
+    {
+      "ingredient": "whiskey 120 ml hot coffee 50 ml cream (chilled) 1 teaspoon sugar",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "whiskey 20 ml sweet vermouth 1 dash angostura bitters",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "whiskey 22.5 ml sweet vermouth 15 ml cherry liqueur luxardo 7.5 ml absinthe",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "whiskey 25 ml drambuie",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        90
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "whiskey 25 ml lemon juice 20 ml sugar syrup few drops of egg white (optional)",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "whiskey 25 ml sweet vermouth 15 ml green chartreuse 2 dashes angostura bitters",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "whiskey 30 ml amaro nonino 30 ml aperol 30 ml lemon juice",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "whiskey 30 ml cognac 30 ml sweet vermouth 1 bar spoon bénédictine 2 dashes peychaud’s bitters",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "whiskey 4 fresh mint sprigs 1 tsp sugar 2 tsp water",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "whiskey 7.5 ml smoked whisky 22.5 ml lemon juice 22.5 ml honey syrup (sugar syrup) (sugar syrup) 2-3 quarter size sliced fresh ginger",
+      "weight": 5,
+      "returned_results": false,
+      "match_pcts": [],
+      "has_nonzero": false,
+      "is_empty": true
+    },
+    {
+      "ingredient": "whiskey or whiskey 1 sugar few dashes angostura bitters few dashes plain water",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        100
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "whiskey or whiskey 22.5 ml sugar syrup 30 ml lemon juice few drops of egg white 15 ml red wine (shiraz or malbech)",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "whiskey or whiskey 30 ml campari 30 ml sweet vermouth",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "white cuban ron 20 ml lime juice 2 bar spoons superfine sugar",
+      "weight": 3,
+      "returned_results": true,
+      "match_pcts": [
+        90,
+        0,
+        0,
+        0
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "white cuban ron 20 ml  lime juice 6 pcs mint sprigs 2 tsp sugar soda water",
+      "weight": 4,
+      "returned_results": true,
+      "match_pcts": [
+        70,
+        0,
+        0,
+        0
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "white rum 120 ml cola 10 ml lime juice",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "white rum 15 ml peach brandy 15 ml lime juice 30 ml honey mix 10 pcs mint leaves 3 to 4 pcs pineapple chunks",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        50
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "white rum 30 ml coconut cream 50 ml fresh pineapple juice",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        80
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "white rum 30 ml cognac 30 ml orange liqueur 20 ml lemon juice",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "white rum 30 ml ron smoky havana club 15 ml licor amaretto 5 ml licor frangelico 5 drops cherry liqueur luxardo 30 ml passion fruit puree 90 fresh pineapple juice 30 lime juice 1 pc gengibre slice",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        50
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "white rum 45 ml fresh pineapple juice 7.5 ml cherry liqueur luxardo 5 ml grenadine syrup",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    },
+    {
+      "ingredient": "white smooth grappa 22.5 ml lemon juice 15 ml honey mix (replace water with chamomile)* 15 ml chamomile cordial few drops of egg white (optional)",
+      "weight": 5,
+      "returned_results": true,
+      "match_pcts": [
+        70
+      ],
+      "has_nonzero": true,
+      "is_empty": false
+    }
+  ]
+}

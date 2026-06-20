@@ -258,7 +258,7 @@ _WEIGHT_CATEGORIES = {
     },
     
     "liqueurs_wine": {
-        "words": ['campari', 'aperol', 'amaretto', 'coffee', 'liqueur', 'drambuie', 'chartreuse', 'crème', 'fernet', 'bénédictine', 'nonino', 'schnapps', 'vermouth', 'lillet', 'champagne', 'prosecco', 'wine', 'port', 'sherry', 'absinthe', 'pernod', 'orange', 'chocolate', 'mint', 'cherry', 'peach', 'elderflower'],
+        "words": ['campari', 'aperol', 'amaretto', 'coffee', 'liqueur', 'drambuie', 'chartreuse', 'crème', 'fernet', 'bénédictine', 'nonino', 'schnapps', 'vermouth', 'lillet', 'champagne', 'prosecco', 'wine', 'port', 'sherry', 'absinthe', 'pernod', 'orange', 'chocolate', 'mint', 'cherry', 'peach', 'elderflower', 'falernum'],
         "multiplier": 4
     },
     "syrups_sweets": {
@@ -492,6 +492,9 @@ def retrieve_candidates(bm25_data, base_spirits, other_ingredients, flavor="All"
         final_score = base_score - penalty
         match_pct = int(max(0.0, final_score) * 100)
         
+        if match_pct == 0:
+            continue
+                    
         best_overall_match_count = max(best_overall_match_count, len(current_matched))
         
         results.append({
@@ -508,6 +511,9 @@ def retrieve_candidates(bm25_data, base_spirits, other_ingredients, flavor="All"
         x['matched_count'],
         x['bm25_score']
     ), reverse=True)
+    
+    if not results:
+        return None, "none"
 
     final_top_results = results[:top_k]
     
