@@ -605,7 +605,7 @@ def stream_llm_response(client_unused, user_input, context, chat_history, match_
             local_client = groq.Groq(api_key=active_key)
 
             completion = local_client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
+                model="openai/gpt-oss-20b",
                 messages=messages,
                 stream=True,
             )
